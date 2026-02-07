@@ -1,0 +1,24 @@
+{
+  "salary": 381000,
+  "gross_salary": 381000,
+  "state": "New York",
+  "state_code": "NY",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 97467,
+  "state_tax": 23722,
+  "social_security": 10329,
+  "medicare": 5525,
+  "medicare_surtax": 1629,
+  "total_tax": 138672,
+  "effective_tax_rate": 36.4,
+  "net_salary": 242328,
+  "monthly_take_home": 20194,
+  "biweekly_take_home": 9320,
+  "benefits": {
+    "employer_401k_match": 11430,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 398430
+}

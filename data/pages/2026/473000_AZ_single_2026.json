@@ -1,0 +1,24 @@
+{
+  "salary": 473000,
+  "gross_salary": 473000,
+  "state": "Arizona",
+  "state_code": "AZ",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 129667,
+  "state_tax": 11825,
+  "social_security": 10329,
+  "medicare": 6859,
+  "medicare_surtax": 2457,
+  "total_tax": 161137,
+  "effective_tax_rate": 34.07,
+  "net_salary": 311863,
+  "monthly_take_home": 25989,
+  "biweekly_take_home": 11995,
+  "benefits": {
+    "employer_401k_match": 14190,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 493190
+}

@@ -1,0 +1,23 @@
+{
+  "salary": 156000,
+  "gross_salary": 156000,
+  "state": "Washington",
+  "state_code": "WA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 26907,
+  "state_tax": 0,
+  "social_security": 9672,
+  "medicare": 2262,
+  "medicare_surtax": 0,
+  "total_tax": 38841,
+  "effective_tax_rate": 24.9,
+  "net_salary": 117159,
+  "monthly_take_home": 9763,
+  "biweekly_take_home": 4506,
+  "benefits": {
+    "employer_401k_match": 4680,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 166680
+}

@@ -1,0 +1,24 @@
+{
+  "salary": 82000,
+  "gross_salary": 82000,
+  "state": "Washington",
+  "state_code": "WA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 9569,
+  "state_tax": 0,
+  "social_security": 5084,
+  "medicare": 1189,
+  "medicare_surtax": 0,
+  "total_tax": 15842,
+  "effective_tax_rate": 19.32,
+  "net_salary": 66158,
+  "monthly_take_home": 5513,
+  "biweekly_take_home": 2545,
+  "benefits": {
+    "employer_401k_match": 2460,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 90460
+}

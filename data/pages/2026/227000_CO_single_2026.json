@@ -1,0 +1,24 @@
+{
+  "salary": 227000,
+  "gross_salary": 227000,
+  "state": "Colorado",
+  "state_code": "CO",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 44747,
+  "state_tax": 9988,
+  "social_security": 10329,
+  "medicare": 3292,
+  "medicare_surtax": 243,
+  "total_tax": 68599,
+  "effective_tax_rate": 30.22,
+  "net_salary": 158401,
+  "monthly_take_home": 13200,
+  "biweekly_take_home": 6092,
+  "benefits": {
+    "employer_401k_match": 6810,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 239810
+}

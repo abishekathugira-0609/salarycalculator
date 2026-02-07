@@ -1,0 +1,23 @@
+{
+  "salary": 379000,
+  "gross_salary": 379000,
+  "state": "Virginia",
+  "state_code": "VA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 97810,
+  "state_tax": 21793,
+  "social_security": 9932,
+  "medicare": 5496,
+  "medicare_surtax": 1611,
+  "total_tax": 136642,
+  "effective_tax_rate": 36.05,
+  "net_salary": 242358,
+  "monthly_take_home": 20197,
+  "biweekly_take_home": 9321,
+  "benefits": {
+    "employer_401k_match": 11370,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 396370
+}

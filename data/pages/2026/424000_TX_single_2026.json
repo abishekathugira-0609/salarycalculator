@@ -1,0 +1,24 @@
+{
+  "salary": 424000,
+  "gross_salary": 424000,
+  "state": "Texas",
+  "state_code": "TX",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 112517,
+  "state_tax": 0,
+  "social_security": 10329,
+  "medicare": 6148,
+  "medicare_surtax": 2016,
+  "total_tax": 131010,
+  "effective_tax_rate": 30.9,
+  "net_salary": 292990,
+  "monthly_take_home": 24416,
+  "biweekly_take_home": 11269,
+  "benefits": {
+    "employer_401k_match": 12720,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 442720
+}

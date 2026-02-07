@@ -1,0 +1,23 @@
+{
+  "salary": 76000,
+  "gross_salary": 76000,
+  "state": "Texas",
+  "state_code": "TX",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 8495,
+  "state_tax": 0,
+  "social_security": 4712,
+  "medicare": 1102,
+  "medicare_surtax": 0,
+  "total_tax": 14309,
+  "effective_tax_rate": 18.83,
+  "net_salary": 61691,
+  "monthly_take_home": 5141,
+  "biweekly_take_home": 2373,
+  "benefits": {
+    "employer_401k_match": 2280,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 84280
+}

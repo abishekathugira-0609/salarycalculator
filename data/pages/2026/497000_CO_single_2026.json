@@ -1,0 +1,24 @@
+{
+  "salary": 497000,
+  "gross_salary": 497000,
+  "state": "Colorado",
+  "state_code": "CO",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 138067,
+  "state_tax": 21868,
+  "social_security": 10329,
+  "medicare": 7207,
+  "medicare_surtax": 2673,
+  "total_tax": 180144,
+  "effective_tax_rate": 36.25,
+  "net_salary": 316856,
+  "monthly_take_home": 26405,
+  "biweekly_take_home": 12187,
+  "benefits": {
+    "employer_401k_match": 14910,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 517910
+}

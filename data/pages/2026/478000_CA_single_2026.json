@@ -1,0 +1,24 @@
+{
+  "salary": 478000,
+  "gross_salary": 478000,
+  "state": "California",
+  "state_code": "CA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 131417,
+  "state_tax": 44707,
+  "social_security": 10329,
+  "medicare": 6931,
+  "medicare_surtax": 2502,
+  "total_tax": 195886,
+  "effective_tax_rate": 40.98,
+  "net_salary": 282114,
+  "monthly_take_home": 23510,
+  "biweekly_take_home": 10851,
+  "benefits": {
+    "employer_401k_match": 14340,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 498340
+}

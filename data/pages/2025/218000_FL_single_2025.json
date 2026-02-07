@@ -1,0 +1,23 @@
+{
+  "salary": 218000,
+  "gross_salary": 218000,
+  "state": "Florida",
+  "state_code": "FL",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 42679,
+  "state_tax": 0,
+  "social_security": 9932,
+  "medicare": 3161,
+  "medicare_surtax": 162,
+  "total_tax": 55934,
+  "effective_tax_rate": 25.66,
+  "net_salary": 162066,
+  "monthly_take_home": 13506,
+  "biweekly_take_home": 6233,
+  "benefits": {
+    "employer_401k_match": 6540,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 230540
+}

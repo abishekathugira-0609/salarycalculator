@@ -1,0 +1,24 @@
+{
+  "salary": 154000,
+  "gross_salary": 154000,
+  "state": "Florida",
+  "state_code": "FL",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 26111,
+  "state_tax": 0,
+  "social_security": 9548,
+  "medicare": 2233,
+  "medicare_surtax": 0,
+  "total_tax": 37892,
+  "effective_tax_rate": 24.61,
+  "net_salary": 116108,
+  "monthly_take_home": 9676,
+  "biweekly_take_home": 4466,
+  "benefits": {
+    "employer_401k_match": 4620,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 164620
+}

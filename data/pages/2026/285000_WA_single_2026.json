@@ -1,0 +1,24 @@
+{
+  "salary": 285000,
+  "gross_salary": 285000,
+  "state": "Washington",
+  "state_code": "WA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 63867,
+  "state_tax": 0,
+  "social_security": 10329,
+  "medicare": 4133,
+  "medicare_surtax": 765,
+  "total_tax": 79094,
+  "effective_tax_rate": 27.75,
+  "net_salary": 205906,
+  "monthly_take_home": 17159,
+  "biweekly_take_home": 7919,
+  "benefits": {
+    "employer_401k_match": 8550,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 299550
+}

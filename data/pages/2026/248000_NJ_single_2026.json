@@ -1,0 +1,24 @@
+{
+  "salary": 248000,
+  "gross_salary": 248000,
+  "state": "New Jersey",
+  "state_code": "NJ",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 51467,
+  "state_tax": 13671,
+  "social_security": 10329,
+  "medicare": 3596,
+  "medicare_surtax": 432,
+  "total_tax": 79495,
+  "effective_tax_rate": 32.05,
+  "net_salary": 168505,
+  "monthly_take_home": 14042,
+  "biweekly_take_home": 6481,
+  "benefits": {
+    "employer_401k_match": 7440,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 261440
+}

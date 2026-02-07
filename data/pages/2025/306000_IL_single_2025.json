@@ -1,0 +1,23 @@
+{
+  "salary": 306000,
+  "gross_salary": 306000,
+  "state": "Illinois",
+  "state_code": "IL",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 72260,
+  "state_tax": 15147,
+  "social_security": 9932,
+  "medicare": 4437,
+  "medicare_surtax": 954,
+  "total_tax": 102730,
+  "effective_tax_rate": 33.57,
+  "net_salary": 203270,
+  "monthly_take_home": 16939,
+  "biweekly_take_home": 7818,
+  "benefits": {
+    "employer_401k_match": 9180,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 321180
+}

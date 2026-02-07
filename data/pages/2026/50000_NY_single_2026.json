@@ -1,0 +1,24 @@
+{
+  "salary": 50000,
+  "gross_salary": 50000,
+  "state": "New York",
+  "state_code": "NY",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 3919,
+  "state_tax": 2243,
+  "social_security": 3100,
+  "medicare": 725,
+  "medicare_surtax": 0,
+  "total_tax": 9987,
+  "effective_tax_rate": 19.97,
+  "net_salary": 40013,
+  "monthly_take_home": 3334,
+  "biweekly_take_home": 1539,
+  "benefits": {
+    "employer_401k_match": 1500,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 57500
+}

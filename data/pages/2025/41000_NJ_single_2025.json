@@ -1,0 +1,23 @@
+{
+  "salary": 41000,
+  "gross_salary": 41000,
+  "state": "New Jersey",
+  "state_code": "NJ",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 2900,
+  "state_tax": 773,
+  "social_security": 2542,
+  "medicare": 595,
+  "medicare_surtax": 0,
+  "total_tax": 6810,
+  "effective_tax_rate": 16.61,
+  "net_salary": 34190,
+  "monthly_take_home": 2849,
+  "biweekly_take_home": 1315,
+  "benefits": {
+    "employer_401k_match": 1230,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 48230
+}

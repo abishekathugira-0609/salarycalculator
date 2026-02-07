@@ -1,0 +1,23 @@
+{
+  "salary": 210000,
+  "gross_salary": 210000,
+  "state": "North Carolina",
+  "state_code": "NC",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 40119,
+  "state_tax": 9975,
+  "social_security": 9932,
+  "medicare": 3045,
+  "medicare_surtax": 90,
+  "total_tax": 63161,
+  "effective_tax_rate": 30.08,
+  "net_salary": 146839,
+  "monthly_take_home": 12237,
+  "biweekly_take_home": 5648,
+  "benefits": {
+    "employer_401k_match": 6300,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 222300
+}

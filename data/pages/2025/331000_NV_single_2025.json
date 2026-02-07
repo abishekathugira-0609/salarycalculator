@@ -1,0 +1,23 @@
+{
+  "salary": 331000,
+  "gross_salary": 331000,
+  "state": "Nevada",
+  "state_code": "NV",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 81010,
+  "state_tax": 0,
+  "social_security": 9932,
+  "medicare": 4800,
+  "medicare_surtax": 1179,
+  "total_tax": 96921,
+  "effective_tax_rate": 29.28,
+  "net_salary": 234079,
+  "monthly_take_home": 19507,
+  "biweekly_take_home": 9003,
+  "benefits": {
+    "employer_401k_match": 9930,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 346930
+}

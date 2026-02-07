@@ -1,0 +1,24 @@
+{
+  "salary": 257000,
+  "gross_salary": 257000,
+  "state": "North Carolina",
+  "state_code": "NC",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 54347,
+  "state_tax": 12208,
+  "social_security": 10329,
+  "medicare": 3727,
+  "medicare_surtax": 513,
+  "total_tax": 81124,
+  "effective_tax_rate": 31.57,
+  "net_salary": 175876,
+  "monthly_take_home": 14656,
+  "biweekly_take_home": 6764,
+  "benefits": {
+    "employer_401k_match": 7710,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 270710
+}

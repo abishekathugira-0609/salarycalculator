@@ -1,0 +1,24 @@
+{
+  "salary": 121000,
+  "gross_salary": 121000,
+  "state": "Virginia",
+  "state_code": "VA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 18191,
+  "state_tax": 6958,
+  "social_security": 7502,
+  "medicare": 1755,
+  "medicare_surtax": 0,
+  "total_tax": 34406,
+  "effective_tax_rate": 28.43,
+  "net_salary": 86594,
+  "monthly_take_home": 7216,
+  "biweekly_take_home": 3331,
+  "benefits": {
+    "employer_401k_match": 3630,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 130630
+}

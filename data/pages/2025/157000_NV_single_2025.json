@@ -1,0 +1,23 @@
+{
+  "salary": 157000,
+  "gross_salary": 157000,
+  "state": "Nevada",
+  "state_code": "NV",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 27147,
+  "state_tax": 0,
+  "social_security": 9734,
+  "medicare": 2277,
+  "medicare_surtax": 0,
+  "total_tax": 39158,
+  "effective_tax_rate": 24.94,
+  "net_salary": 117842,
+  "monthly_take_home": 9820,
+  "biweekly_take_home": 4532,
+  "benefits": {
+    "employer_401k_match": 4710,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 167710
+}

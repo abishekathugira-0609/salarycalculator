@@ -1,0 +1,24 @@
+{
+  "salary": 279000,
+  "gross_salary": 279000,
+  "state": "Washington, D.C.",
+  "state_code": "DC",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 61767,
+  "state_tax": 21279,
+  "social_security": 10329,
+  "medicare": 4046,
+  "medicare_surtax": 711,
+  "total_tax": 98132,
+  "effective_tax_rate": 35.17,
+  "net_salary": 180868,
+  "monthly_take_home": 15072,
+  "biweekly_take_home": 6956,
+  "benefits": {
+    "employer_401k_match": 8370,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 293370
+}

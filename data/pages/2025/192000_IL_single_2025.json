@@ -1,0 +1,23 @@
+{
+  "salary": 192000,
+  "gross_salary": 192000,
+  "state": "Illinois",
+  "state_code": "IL",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 35547,
+  "state_tax": 9504,
+  "social_security": 9932,
+  "medicare": 2784,
+  "medicare_surtax": 0,
+  "total_tax": 57767,
+  "effective_tax_rate": 30.09,
+  "net_salary": 134233,
+  "monthly_take_home": 11186,
+  "biweekly_take_home": 5163,
+  "benefits": {
+    "employer_401k_match": 5760,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 203760
+}

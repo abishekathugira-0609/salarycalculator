@@ -1,0 +1,23 @@
+{
+  "salary": 344000,
+  "gross_salary": 344000,
+  "state": "Washington, D.C.",
+  "state_code": "DC",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 85560,
+  "state_tax": 28266,
+  "social_security": 9932,
+  "medicare": 4988,
+  "medicare_surtax": 1296,
+  "total_tax": 130042,
+  "effective_tax_rate": 37.8,
+  "net_salary": 213958,
+  "monthly_take_home": 17830,
+  "biweekly_take_home": 8229,
+  "benefits": {
+    "employer_401k_match": 10320,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 360320
+}

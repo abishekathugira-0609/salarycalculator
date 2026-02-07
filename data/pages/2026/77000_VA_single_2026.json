@@ -1,0 +1,24 @@
+{
+  "salary": 77000,
+  "gross_salary": 77000,
+  "state": "Virginia",
+  "state_code": "VA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 8469,
+  "state_tax": 4428,
+  "social_security": 4774,
+  "medicare": 1117,
+  "medicare_surtax": 0,
+  "total_tax": 18788,
+  "effective_tax_rate": 24.4,
+  "net_salary": 58212,
+  "monthly_take_home": 4851,
+  "biweekly_take_home": 2239,
+  "benefits": {
+    "employer_401k_match": 2310,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 85310
+}

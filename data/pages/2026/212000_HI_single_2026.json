@@ -1,0 +1,24 @@
+{
+  "salary": 212000,
+  "gross_salary": 212000,
+  "state": "Hawaii",
+  "state_code": "HI",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 40031,
+  "state_tax": 18207,
+  "social_security": 10329,
+  "medicare": 3074,
+  "medicare_surtax": 108,
+  "total_tax": 71749,
+  "effective_tax_rate": 33.84,
+  "net_salary": 140251,
+  "monthly_take_home": 11688,
+  "biweekly_take_home": 5394,
+  "benefits": {
+    "employer_401k_match": 6360,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 224360
+}

@@ -1,0 +1,24 @@
+{
+  "salary": 163000,
+  "gross_salary": 163000,
+  "state": "New Jersey",
+  "state_code": "NJ",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 28271,
+  "state_tax": 8257,
+  "social_security": 10106,
+  "medicare": 2364,
+  "medicare_surtax": 0,
+  "total_tax": 48998,
+  "effective_tax_rate": 30.06,
+  "net_salary": 114002,
+  "monthly_take_home": 9500,
+  "biweekly_take_home": 4385,
+  "benefits": {
+    "employer_401k_match": 4890,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 173890
+}

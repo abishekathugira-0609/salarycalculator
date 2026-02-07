@@ -1,0 +1,23 @@
+{
+  "salary": 50000,
+  "gross_salary": 50000,
+  "state": "Florida",
+  "state_code": "FL",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 3980,
+  "state_tax": 0,
+  "social_security": 3100,
+  "medicare": 725,
+  "medicare_surtax": 0,
+  "total_tax": 7805,
+  "effective_tax_rate": 15.61,
+  "net_salary": 42195,
+  "monthly_take_home": 3516,
+  "biweekly_take_home": 1623,
+  "benefits": {
+    "employer_401k_match": 1500,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 57500
+}

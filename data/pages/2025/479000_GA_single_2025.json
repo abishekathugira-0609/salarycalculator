@@ -1,0 +1,23 @@
+{
+  "salary": 479000,
+  "gross_salary": 479000,
+  "state": "Georgia",
+  "state_code": "GA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 132810,
+  "state_tax": 25818,
+  "social_security": 9932,
+  "medicare": 6946,
+  "medicare_surtax": 2511,
+  "total_tax": 178017,
+  "effective_tax_rate": 37.16,
+  "net_salary": 300983,
+  "monthly_take_home": 25082,
+  "biweekly_take_home": 11576,
+  "benefits": {
+    "employer_401k_match": 14370,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 499370
+}

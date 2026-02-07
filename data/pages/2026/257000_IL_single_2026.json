@@ -1,0 +1,24 @@
+{
+  "salary": 257000,
+  "gross_salary": 257000,
+  "state": "Illinois",
+  "state_code": "IL",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 54347,
+  "state_tax": 12722,
+  "social_security": 10329,
+  "medicare": 3727,
+  "medicare_surtax": 513,
+  "total_tax": 81638,
+  "effective_tax_rate": 31.77,
+  "net_salary": 175362,
+  "monthly_take_home": 14614,
+  "biweekly_take_home": 6745,
+  "benefits": {
+    "employer_401k_match": 7710,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 270710
+}

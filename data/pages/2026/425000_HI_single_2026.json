@@ -1,0 +1,24 @@
+{
+  "salary": 425000,
+  "gross_salary": 425000,
+  "state": "Hawaii",
+  "state_code": "HI",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 112867,
+  "state_tax": 41637,
+  "social_security": 10329,
+  "medicare": 6163,
+  "medicare_surtax": 2025,
+  "total_tax": 173021,
+  "effective_tax_rate": 40.71,
+  "net_salary": 251979,
+  "monthly_take_home": 20998,
+  "biweekly_take_home": 9692,
+  "benefits": {
+    "employer_401k_match": 12750,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 443750
+}

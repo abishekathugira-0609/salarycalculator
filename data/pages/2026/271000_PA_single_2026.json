@@ -1,0 +1,24 @@
+{
+  "salary": 271000,
+  "gross_salary": 271000,
+  "state": "Pennsylvania",
+  "state_code": "PA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 58967,
+  "state_tax": 8320,
+  "social_security": 10329,
+  "medicare": 3930,
+  "medicare_surtax": 639,
+  "total_tax": 82185,
+  "effective_tax_rate": 30.33,
+  "net_salary": 188815,
+  "monthly_take_home": 15735,
+  "biweekly_take_home": 7262,
+  "benefits": {
+    "employer_401k_match": 8130,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 285130
+}

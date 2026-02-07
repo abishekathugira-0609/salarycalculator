@@ -1,0 +1,23 @@
+{
+  "salary": 106000,
+  "gross_salary": 106000,
+  "state": "North Carolina",
+  "state_code": "NC",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 15095,
+  "state_tax": 5035,
+  "social_security": 6572,
+  "medicare": 1537,
+  "medicare_surtax": 0,
+  "total_tax": 28239,
+  "effective_tax_rate": 26.64,
+  "net_salary": 77761,
+  "monthly_take_home": 6480,
+  "biweekly_take_home": 2991,
+  "benefits": {
+    "employer_401k_match": 3180,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 115180
+}

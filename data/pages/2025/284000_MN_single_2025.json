@@ -1,0 +1,23 @@
+{
+  "salary": 284000,
+  "gross_salary": 284000,
+  "state": "Minnesota",
+  "state_code": "MN",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 64560,
+  "state_tax": 21268,
+  "social_security": 9932,
+  "medicare": 4118,
+  "medicare_surtax": 756,
+  "total_tax": 100634,
+  "effective_tax_rate": 35.43,
+  "net_salary": 183366,
+  "monthly_take_home": 15281,
+  "biweekly_take_home": 7053,
+  "benefits": {
+    "employer_401k_match": 8520,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 298520
+}

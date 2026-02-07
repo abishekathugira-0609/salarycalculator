@@ -1,0 +1,23 @@
+{
+  "salary": 338000,
+  "gross_salary": 338000,
+  "state": "Washington",
+  "state_code": "WA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 83460,
+  "state_tax": 0,
+  "social_security": 9932,
+  "medicare": 4901,
+  "medicare_surtax": 1242,
+  "total_tax": 99535,
+  "effective_tax_rate": 29.45,
+  "net_salary": 238465,
+  "monthly_take_home": 19872,
+  "biweekly_take_home": 9172,
+  "benefits": {
+    "employer_401k_match": 10140,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 354140
+}

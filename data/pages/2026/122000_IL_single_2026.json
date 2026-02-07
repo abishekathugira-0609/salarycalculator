@@ -1,0 +1,24 @@
+{
+  "salary": 122000,
+  "gross_salary": 122000,
+  "state": "Illinois",
+  "state_code": "IL",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 18431,
+  "state_tax": 6039,
+  "social_security": 7564,
+  "medicare": 1769,
+  "medicare_surtax": 0,
+  "total_tax": 33803,
+  "effective_tax_rate": 27.71,
+  "net_salary": 88197,
+  "monthly_take_home": 7350,
+  "biweekly_take_home": 3392,
+  "benefits": {
+    "employer_401k_match": 3660,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 131660
+}

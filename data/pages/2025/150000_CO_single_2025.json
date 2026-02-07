@@ -1,0 +1,23 @@
+{
+  "salary": 150000,
+  "gross_salary": 150000,
+  "state": "Colorado",
+  "state_code": "CO",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 25467,
+  "state_tax": 6600,
+  "social_security": 9300,
+  "medicare": 2175,
+  "medicare_surtax": 0,
+  "total_tax": 43542,
+  "effective_tax_rate": 29.03,
+  "net_salary": 106458,
+  "monthly_take_home": 8872,
+  "biweekly_take_home": 4095,
+  "benefits": {
+    "employer_401k_match": 4500,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 160500
+}

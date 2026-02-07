@@ -1,0 +1,23 @@
+{
+  "salary": 200000,
+  "gross_salary": 200000,
+  "state": "California",
+  "state_code": "CA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 37467,
+  "state_tax": 14838,
+  "social_security": 9932,
+  "medicare": 2900,
+  "medicare_surtax": 0,
+  "total_tax": 65137,
+  "effective_tax_rate": 32.57,
+  "net_salary": 134863,
+  "monthly_take_home": 11239,
+  "biweekly_take_home": 5187,
+  "benefits": {
+    "employer_401k_match": 6000,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 212000
+}

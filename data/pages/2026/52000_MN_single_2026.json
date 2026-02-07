@@ -1,0 +1,24 @@
+{
+  "salary": 52000,
+  "gross_salary": 52000,
+  "state": "Minnesota",
+  "state_code": "MN",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 4159,
+  "state_tax": 2145,
+  "social_security": 3224,
+  "medicare": 754,
+  "medicare_surtax": 0,
+  "total_tax": 10282,
+  "effective_tax_rate": 19.77,
+  "net_salary": 41718,
+  "monthly_take_home": 3477,
+  "biweekly_take_home": 1605,
+  "benefits": {
+    "employer_401k_match": 1560,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 59560
+}

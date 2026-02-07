@@ -1,0 +1,24 @@
+{
+  "salary": 183000,
+  "gross_salary": 183000,
+  "state": "Minnesota",
+  "state_code": "MN",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 33071,
+  "state_tax": 11755,
+  "social_security": 10329,
+  "medicare": 2654,
+  "medicare_surtax": 0,
+  "total_tax": 57809,
+  "effective_tax_rate": 31.59,
+  "net_salary": 125191,
+  "monthly_take_home": 10433,
+  "biweekly_take_home": 4815,
+  "benefits": {
+    "employer_401k_match": 5490,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 194490
+}

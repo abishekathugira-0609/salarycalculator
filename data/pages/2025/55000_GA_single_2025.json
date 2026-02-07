@@ -1,0 +1,23 @@
+{
+  "salary": 55000,
+  "gross_salary": 55000,
+  "state": "Georgia",
+  "state_code": "GA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 4580,
+  "state_tax": 2965,
+  "social_security": 3410,
+  "medicare": 798,
+  "medicare_surtax": 0,
+  "total_tax": 11753,
+  "effective_tax_rate": 21.37,
+  "net_salary": 43247,
+  "monthly_take_home": 3604,
+  "biweekly_take_home": 1663,
+  "benefits": {
+    "employer_401k_match": 1650,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 62650
+}

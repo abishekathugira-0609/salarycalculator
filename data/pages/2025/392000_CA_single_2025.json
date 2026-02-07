@@ -1,0 +1,23 @@
+{
+  "salary": 392000,
+  "gross_salary": 392000,
+  "state": "California",
+  "state_code": "CA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 102360,
+  "state_tax": 34129,
+  "social_security": 9932,
+  "medicare": 5684,
+  "medicare_surtax": 1728,
+  "total_tax": 153833,
+  "effective_tax_rate": 39.24,
+  "net_salary": 238167,
+  "monthly_take_home": 19847,
+  "biweekly_take_home": 9160,
+  "benefits": {
+    "employer_401k_match": 11760,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 409760
+}

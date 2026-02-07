@@ -1,0 +1,23 @@
+{
+  "salary": 68000,
+  "gross_salary": 68000,
+  "state": "Washington, D.C.",
+  "state_code": "DC",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 6735,
+  "state_tax": 3120,
+  "social_security": 4216,
+  "medicare": 986,
+  "medicare_surtax": 0,
+  "total_tax": 15057,
+  "effective_tax_rate": 22.14,
+  "net_salary": 52943,
+  "monthly_take_home": 4412,
+  "biweekly_take_home": 2036,
+  "benefits": {
+    "employer_401k_match": 2040,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 76040
+}

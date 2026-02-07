@@ -1,0 +1,23 @@
+{
+  "salary": 56000,
+  "gross_salary": 56000,
+  "state": "California",
+  "state_code": "CA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 4700,
+  "state_tax": 1692,
+  "social_security": 3472,
+  "medicare": 812,
+  "medicare_surtax": 0,
+  "total_tax": 10676,
+  "effective_tax_rate": 19.06,
+  "net_salary": 45324,
+  "monthly_take_home": 3777,
+  "biweekly_take_home": 1743,
+  "benefits": {
+    "employer_401k_match": 1680,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 63680
+}

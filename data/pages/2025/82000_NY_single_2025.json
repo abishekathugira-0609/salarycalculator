@@ -1,0 +1,23 @@
+{
+  "salary": 82000,
+  "gross_salary": 82000,
+  "state": "New York",
+  "state_code": "NY",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 9815,
+  "state_tax": 4115,
+  "social_security": 5084,
+  "medicare": 1189,
+  "medicare_surtax": 0,
+  "total_tax": 20203,
+  "effective_tax_rate": 24.64,
+  "net_salary": 61797,
+  "monthly_take_home": 5150,
+  "biweekly_take_home": 2377,
+  "benefits": {
+    "employer_401k_match": 2460,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 90460
+}

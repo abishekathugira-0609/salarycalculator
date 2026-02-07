@@ -1,0 +1,24 @@
+{
+  "salary": 66000,
+  "gross_salary": 66000,
+  "state": "Florida",
+  "state_code": "FL",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 6049,
+  "state_tax": 0,
+  "social_security": 4092,
+  "medicare": 957,
+  "medicare_surtax": 0,
+  "total_tax": 11098,
+  "effective_tax_rate": 16.82,
+  "net_salary": 54902,
+  "monthly_take_home": 4575,
+  "biweekly_take_home": 2112,
+  "benefits": {
+    "employer_401k_match": 1980,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 73980
+}

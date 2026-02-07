@@ -1,0 +1,23 @@
+{
+  "salary": 214000,
+  "gross_salary": 214000,
+  "state": "Colorado",
+  "state_code": "CO",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 41399,
+  "state_tax": 9416,
+  "social_security": 9932,
+  "medicare": 3103,
+  "medicare_surtax": 126,
+  "total_tax": 63976,
+  "effective_tax_rate": 29.9,
+  "net_salary": 150024,
+  "monthly_take_home": 12502,
+  "biweekly_take_home": 5770,
+  "benefits": {
+    "employer_401k_match": 6420,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 226420
+}

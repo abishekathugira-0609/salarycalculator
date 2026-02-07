@@ -1,0 +1,23 @@
+{
+  "salary": 195000,
+  "gross_salary": 195000,
+  "state": "Texas",
+  "state_code": "TX",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 36267,
+  "state_tax": 0,
+  "social_security": 9932,
+  "medicare": 2828,
+  "medicare_surtax": 0,
+  "total_tax": 49027,
+  "effective_tax_rate": 25.14,
+  "net_salary": 145973,
+  "monthly_take_home": 12164,
+  "biweekly_take_home": 5614,
+  "benefits": {
+    "employer_401k_match": 5850,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 206850
+}

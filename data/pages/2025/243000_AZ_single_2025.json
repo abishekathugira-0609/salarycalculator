@@ -1,0 +1,23 @@
+{
+  "salary": 243000,
+  "gross_salary": 243000,
+  "state": "Arizona",
+  "state_code": "AZ",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 50679,
+  "state_tax": 6075,
+  "social_security": 9932,
+  "medicare": 3524,
+  "medicare_surtax": 387,
+  "total_tax": 70597,
+  "effective_tax_rate": 29.05,
+  "net_salary": 172403,
+  "monthly_take_home": 14367,
+  "biweekly_take_home": 6631,
+  "benefits": {
+    "employer_401k_match": 7290,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 256290
+}

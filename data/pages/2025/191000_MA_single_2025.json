@@ -1,0 +1,23 @@
+{
+  "salary": 191000,
+  "gross_salary": 191000,
+  "state": "Massachusetts",
+  "state_code": "MA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 35307,
+  "state_tax": 9550,
+  "social_security": 9932,
+  "medicare": 2770,
+  "medicare_surtax": 0,
+  "total_tax": 57559,
+  "effective_tax_rate": 30.14,
+  "net_salary": 133441,
+  "monthly_take_home": 11120,
+  "biweekly_take_home": 5132,
+  "benefits": {
+    "employer_401k_match": 5730,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 202730
+}

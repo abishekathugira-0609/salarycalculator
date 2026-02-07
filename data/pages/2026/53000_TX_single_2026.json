@@ -1,0 +1,24 @@
+{
+  "salary": 53000,
+  "gross_salary": 53000,
+  "state": "Texas",
+  "state_code": "TX",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 4279,
+  "state_tax": 0,
+  "social_security": 3286,
+  "medicare": 769,
+  "medicare_surtax": 0,
+  "total_tax": 8334,
+  "effective_tax_rate": 15.72,
+  "net_salary": 44666,
+  "monthly_take_home": 3722,
+  "biweekly_take_home": 1718,
+  "benefits": {
+    "employer_401k_match": 1590,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 60590
+}

@@ -1,0 +1,24 @@
+{
+  "salary": 50000,
+  "gross_salary": 50000,
+  "state": "Minnesota",
+  "state_code": "MN",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 3919,
+  "state_tax": 2009,
+  "social_security": 3100,
+  "medicare": 725,
+  "medicare_surtax": 0,
+  "total_tax": 9753,
+  "effective_tax_rate": 19.51,
+  "net_salary": 40247,
+  "monthly_take_home": 3354,
+  "biweekly_take_home": 1548,
+  "benefits": {
+    "employer_401k_match": 1500,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 57500
+}

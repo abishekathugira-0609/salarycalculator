@@ -1,0 +1,23 @@
+{
+  "salary": 379000,
+  "gross_salary": 379000,
+  "state": "Pennsylvania",
+  "state_code": "PA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 97810,
+  "state_tax": 11635,
+  "social_security": 9932,
+  "medicare": 5496,
+  "medicare_surtax": 1611,
+  "total_tax": 126484,
+  "effective_tax_rate": 33.37,
+  "net_salary": 252516,
+  "monthly_take_home": 21043,
+  "biweekly_take_home": 9712,
+  "benefits": {
+    "employer_401k_match": 11370,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 396370
+}

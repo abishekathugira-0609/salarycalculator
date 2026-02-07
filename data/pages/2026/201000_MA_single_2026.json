@@ -1,0 +1,24 @@
+{
+  "salary": 201000,
+  "gross_salary": 201000,
+  "state": "Massachusetts",
+  "state_code": "MA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 37391,
+  "state_tax": 10050,
+  "social_security": 10329,
+  "medicare": 2915,
+  "medicare_surtax": 9,
+  "total_tax": 60694,
+  "effective_tax_rate": 30.2,
+  "net_salary": 140306,
+  "monthly_take_home": 11692,
+  "biweekly_take_home": 5396,
+  "benefits": {
+    "employer_401k_match": 6030,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 213030
+}

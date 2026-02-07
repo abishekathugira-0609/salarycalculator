@@ -1,0 +1,23 @@
+{
+  "salary": 244000,
+  "gross_salary": 244000,
+  "state": "New York",
+  "state_code": "NY",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 50999,
+  "state_tax": 14337,
+  "social_security": 9932,
+  "medicare": 3538,
+  "medicare_surtax": 396,
+  "total_tax": 79202,
+  "effective_tax_rate": 32.46,
+  "net_salary": 164798,
+  "monthly_take_home": 13733,
+  "biweekly_take_home": 6338,
+  "benefits": {
+    "employer_401k_match": 7320,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 257320
+}

@@ -1,0 +1,24 @@
+{
+  "salary": 500000,
+  "gross_salary": 500000,
+  "state": "Washington",
+  "state_code": "WA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 139117,
+  "state_tax": 0,
+  "social_security": 10329,
+  "medicare": 7250,
+  "medicare_surtax": 2700,
+  "total_tax": 159396,
+  "effective_tax_rate": 31.88,
+  "net_salary": 340604,
+  "monthly_take_home": 28384,
+  "biweekly_take_home": 13100,
+  "benefits": {
+    "employer_401k_match": 15000,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 521000
+}

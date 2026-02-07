@@ -1,0 +1,23 @@
+{
+  "salary": 363000,
+  "gross_salary": 363000,
+  "state": "Georgia",
+  "state_code": "GA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 92210,
+  "state_tax": 19566,
+  "social_security": 9932,
+  "medicare": 5264,
+  "medicare_surtax": 1467,
+  "total_tax": 128439,
+  "effective_tax_rate": 35.38,
+  "net_salary": 234561,
+  "monthly_take_home": 19547,
+  "biweekly_take_home": 9022,
+  "benefits": {
+    "employer_401k_match": 10890,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 379890
+}

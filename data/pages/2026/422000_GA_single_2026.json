@@ -1,0 +1,24 @@
+{
+  "salary": 422000,
+  "gross_salary": 422000,
+  "state": "Georgia",
+  "state_code": "GA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 111817,
+  "state_tax": 22746,
+  "social_security": 10329,
+  "medicare": 6119,
+  "medicare_surtax": 1998,
+  "total_tax": 153009,
+  "effective_tax_rate": 36.26,
+  "net_salary": 268991,
+  "monthly_take_home": 22416,
+  "biweekly_take_home": 10346,
+  "benefits": {
+    "employer_401k_match": 12660,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 440660
+}

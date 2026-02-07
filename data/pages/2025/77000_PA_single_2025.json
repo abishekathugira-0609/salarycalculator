@@ -1,0 +1,23 @@
+{
+  "salary": 77000,
+  "gross_salary": 77000,
+  "state": "Pennsylvania",
+  "state_code": "PA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 8715,
+  "state_tax": 2364,
+  "social_security": 4774,
+  "medicare": 1117,
+  "medicare_surtax": 0,
+  "total_tax": 16970,
+  "effective_tax_rate": 22.04,
+  "net_salary": 60030,
+  "monthly_take_home": 5003,
+  "biweekly_take_home": 2309,
+  "benefits": {
+    "employer_401k_match": 2310,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 85310
+}

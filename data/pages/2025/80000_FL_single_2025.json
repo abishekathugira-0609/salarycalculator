@@ -1,0 +1,23 @@
+{
+  "salary": 80000,
+  "gross_salary": 80000,
+  "state": "Florida",
+  "state_code": "FL",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 9375,
+  "state_tax": 0,
+  "social_security": 4960,
+  "medicare": 1160,
+  "medicare_surtax": 0,
+  "total_tax": 15495,
+  "effective_tax_rate": 19.37,
+  "net_salary": 64505,
+  "monthly_take_home": 5375,
+  "biweekly_take_home": 2481,
+  "benefits": {
+    "employer_401k_match": 2400,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 88400
+}

@@ -1,0 +1,23 @@
+{
+  "salary": 174000,
+  "gross_salary": 174000,
+  "state": "Hawaii",
+  "state_code": "HI",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 31227,
+  "state_tax": 14027,
+  "social_security": 9932,
+  "medicare": 2523,
+  "medicare_surtax": 0,
+  "total_tax": 57709,
+  "effective_tax_rate": 33.17,
+  "net_salary": 116291,
+  "monthly_take_home": 9691,
+  "biweekly_take_home": 4473,
+  "benefits": {
+    "employer_401k_match": 5220,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 185220
+}

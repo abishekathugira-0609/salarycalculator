@@ -1,0 +1,23 @@
+{
+  "salary": 76000,
+  "gross_salary": 76000,
+  "state": "Hawaii",
+  "state_code": "HI",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 8495,
+  "state_tax": 5342,
+  "social_security": 4712,
+  "medicare": 1102,
+  "medicare_surtax": 0,
+  "total_tax": 19651,
+  "effective_tax_rate": 25.86,
+  "net_salary": 56349,
+  "monthly_take_home": 4696,
+  "biweekly_take_home": 2167,
+  "benefits": {
+    "employer_401k_match": 2280,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 84280
+}

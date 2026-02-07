@@ -1,0 +1,23 @@
+{
+  "salary": 449000,
+  "gross_salary": 449000,
+  "state": "New York",
+  "state_code": "NY",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 122310,
+  "state_tax": 28380,
+  "social_security": 9932,
+  "medicare": 6511,
+  "medicare_surtax": 2241,
+  "total_tax": 169374,
+  "effective_tax_rate": 37.72,
+  "net_salary": 279626,
+  "monthly_take_home": 23302,
+  "biweekly_take_home": 10755,
+  "benefits": {
+    "employer_401k_match": 13470,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 468470
+}

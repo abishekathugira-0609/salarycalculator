@@ -1,0 +1,23 @@
+{
+  "salary": 303000,
+  "gross_salary": 303000,
+  "state": "New Jersey",
+  "state_code": "NJ",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 71210,
+  "state_tax": 17175,
+  "social_security": 9932,
+  "medicare": 4394,
+  "medicare_surtax": 927,
+  "total_tax": 103638,
+  "effective_tax_rate": 34.2,
+  "net_salary": 199362,
+  "monthly_take_home": 16614,
+  "biweekly_take_home": 7668,
+  "benefits": {
+    "employer_401k_match": 9090,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 318090
+}

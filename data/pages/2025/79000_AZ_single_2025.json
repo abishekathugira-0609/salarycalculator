@@ -1,0 +1,23 @@
+{
+  "salary": 79000,
+  "gross_salary": 79000,
+  "state": "Arizona",
+  "state_code": "AZ",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 9155,
+  "state_tax": 1975,
+  "social_security": 4898,
+  "medicare": 1146,
+  "medicare_surtax": 0,
+  "total_tax": 17174,
+  "effective_tax_rate": 21.74,
+  "net_salary": 61826,
+  "monthly_take_home": 5152,
+  "biweekly_take_home": 2378,
+  "benefits": {
+    "employer_401k_match": 2370,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 87370
+}

@@ -1,0 +1,24 @@
+{
+  "salary": 262000,
+  "gross_salary": 262000,
+  "state": "Nevada",
+  "state_code": "NV",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 55947,
+  "state_tax": 0,
+  "social_security": 10329,
+  "medicare": 3799,
+  "medicare_surtax": 558,
+  "total_tax": 70633,
+  "effective_tax_rate": 26.96,
+  "net_salary": 191367,
+  "monthly_take_home": 15947,
+  "biweekly_take_home": 7360,
+  "benefits": {
+    "employer_401k_match": 7860,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 275860
+}

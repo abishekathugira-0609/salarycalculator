@@ -1,0 +1,24 @@
+{
+  "salary": 74000,
+  "gross_salary": 74000,
+  "state": "Georgia",
+  "state_code": "GA",
+  "filing_status": "Single",
+  "tax_year": 2026,
+  "estimate_type": "projected",
+  "federal_tax": 7809,
+  "state_tax": 3989,
+  "social_security": 4588,
+  "medicare": 1073,
+  "medicare_surtax": 0,
+  "total_tax": 17459,
+  "effective_tax_rate": 23.59,
+  "net_salary": 56541,
+  "monthly_take_home": 4712,
+  "biweekly_take_home": 2175,
+  "benefits": {
+    "employer_401k_match": 2220,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 82220
+}

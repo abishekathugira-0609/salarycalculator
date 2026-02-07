@@ -1,0 +1,23 @@
+{
+  "salary": 199000,
+  "gross_salary": 199000,
+  "state": "California",
+  "state_code": "CA",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 37227,
+  "state_tax": 14745,
+  "social_security": 9932,
+  "medicare": 2886,
+  "medicare_surtax": 0,
+  "total_tax": 64790,
+  "effective_tax_rate": 32.56,
+  "net_salary": 134210,
+  "monthly_take_home": 11184,
+  "biweekly_take_home": 5162,
+  "benefits": {
+    "employer_401k_match": 5970,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 210970
+}

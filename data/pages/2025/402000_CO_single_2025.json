@@ -1,0 +1,23 @@
+{
+  "salary": 402000,
+  "gross_salary": 402000,
+  "state": "Colorado",
+  "state_code": "CO",
+  "filing_status": "Single",
+  "tax_year": 2025,
+  "federal_tax": 105860,
+  "state_tax": 17688,
+  "social_security": 9932,
+  "medicare": 5829,
+  "medicare_surtax": 1818,
+  "total_tax": 141127,
+  "effective_tax_rate": 35.11,
+  "net_salary": 260873,
+  "monthly_take_home": 21739,
+  "biweekly_take_home": 10034,
+  "benefits": {
+    "employer_401k_match": 12060,
+    "health_insurance_value": 6000
+  },
+  "total_compensation": 420060
+}
