@@ -7,7 +7,9 @@ import { calculateSalary } from "@/lib/tax";
 export default function CalculatorPage() {
   const [salary, setSalary] = useState<number>(100000);
   const [state, setState] = useState<string>("CA");
-  const [taxYear, setYear] = useState<number>(2025);
+  // const [taxYear, setYear] = useState<2025 | 2026 | undefined>(2025);
+  const [taxYear, setYear] = useState<2025 | 2026>(2025);
+
   const [includeNYC, setIncludeNYC] = useState<boolean>(false);
 
   const [result, setResult] =
@@ -127,7 +129,7 @@ export default function CalculatorPage() {
   <select
     value={taxYear}   // ✅ FIXED
     onChange={(e) => {
-      setYear(Number(e.target.value)); // ✅ clean cast
+      setYear(e.target.value === '2025' ? 2025 : e.target.value === '2026' ? 2026 : 2026); // Set to 2025, 2026, or undefined
     }}
     className="w-full border rounded-lg px-3 py-2"
   >
