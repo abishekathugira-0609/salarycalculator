@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS, CityCost } from "@/data/city-costs";
 
-export const dynamic = "force-static"; // ✅ REQUIRED
+// export const dynamic = "force-static"; // ✅ REQUIRED
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 
 type PageProps = {
@@ -46,40 +48,40 @@ function slugifyCity(city: string) {
   return city.toLowerCase().replace(/\s+/g, "-");
 }
 
-export async function generateStaticParams() {
-  const params: { slug: string }[] = [];
-  const YEAR = "2026";
+// export async function generateStaticParams() {
+//   const params: { slug: string }[] = [];
+//   const YEAR = "2026";
 
-  Object.values(CITY_COSTS).forEach((cities) => {
-    cities.forEach((city) => {
-      const citySlug = city.city.toLowerCase().replace(/\s+/g, "-");
+//   Object.values(CITY_COSTS).forEach((cities) => {
+//     cities.forEach((city) => {
+//       const citySlug = city.city.toLowerCase().replace(/\s+/g, "-");
 
-      const dataDir = path.join(
-        process.cwd(),
-        "data",
-        "pages",
-        YEAR
-      );
+//       const dataDir = path.join(
+//         process.cwd(),
+//         "data",
+//         "pages",
+//         YEAR
+//       );
 
-      if (!fs.existsSync(dataDir)) return;
+//       if (!fs.existsSync(dataDir)) return;
 
-      const files = fs.readdirSync(dataDir);
+//       const files = fs.readdirSync(dataDir);
 
-      files.forEach((file) => {
-        // matches: 450000_TX_single_2026.json
-        const [salary, stateCode] = file.split("_");
+//       files.forEach((file) => {
+//         // matches: 450000_TX_single_2026.json
+//         const [salary, stateCode] = file.split("_");
 
-        if (stateCode !== city.stateCode) return;
+//         if (stateCode !== city.stateCode) return;
 
-        params.push({
-          slug: `is-${salary}-enough-in-${citySlug}`,
-        });
-      });
-    });
-  });
+//         params.push({
+//           slug: `is-${salary}-enough-in-${citySlug}`,
+//         });
+//       });
+//     });
+//   });
 
-  return params;
-}
+//   return params;
+// }
 
 
 /* -----------------------------
@@ -247,6 +249,32 @@ export default async function LivingCityPage({ params }: PageProps) {
             </li>
           </ul>
         </section>
+        <section className="border-t pt-6 text-sm">
+  <h3 className="font-semibold mb-3">
+    Related salary insights
+  </h3>
+
+  <ul className="space-y-2 text-blue-600">
+    <li>
+      <a href={`/salary/${salary}-${city.state.toLowerCase().replace(/\s+/g, "-")}`}>
+        ${salary.toLocaleString()} salary after tax in {city.state}
+      </a>
+    </li>
+
+    <li>
+      <a href={`/living/is-${salary}-enough-in-${city.state.toLowerCase().replace(/\s+/g, "-")}`}>
+        Is ${salary.toLocaleString()} enough to live in {city.state}?
+      </a>
+    </li>
+
+    <li>
+      <a href={`/best-cities/${city.state.toLowerCase().replace(/\s+/g, "-")}/${salary}`}>
+        Best cities in {city.state} for a ${salary.toLocaleString()} salary
+      </a>
+    </li>
+  </ul>
+</section>
+
 
       </div>
     </main>

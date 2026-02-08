@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import WhatIfToggle from "./WhatIfToggle";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-export const dynamic = "force-static";
+
+// export const dynamic = "force-static";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -52,40 +55,40 @@ function getMeterPercent(salary: number) {
 /* -----------------------------
    STATIC PARAMS
 ------------------------------ */
-export async function generateStaticParams() {
-  const years = ["2025", "2026"];
-  const params: { slug: string }[] = [];
-  const seen = new Set<string>();
+// export async function generateStaticParams() {
+//   const years = ["2025", "2026"];
+//   const params: { slug: string }[] = [];
+//   const seen = new Set<string>();
 
-  for (const year of years) {
-    const dir = path.join(process.cwd(), "data", "pages", year);
-    if (!fs.existsSync(dir)) continue;
+//   for (const year of years) {
+//     const dir = path.join(process.cwd(), "data", "pages", year);
+//     if (!fs.existsSync(dir)) continue;
 
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
-      const [amount, stateCode] = file.split("_");
+//     const files = fs.readdirSync(dir);
+//     for (const file of files) {
+//       const [amount, stateCode] = file.split("_");
 
-      const stateSlug = Object.keys(STATE_SLUG_TO_CODE).find(
-        (k) => STATE_SLUG_TO_CODE[k] === stateCode
-      );
-      if (!stateSlug) continue;
+//       const stateSlug = Object.keys(STATE_SLUG_TO_CODE).find(
+//         (k) => STATE_SLUG_TO_CODE[k] === stateCode
+//       );
+//       if (!stateSlug) continue;
 
-      // year-specific
-      params.push({
-        slug: `${amount}-${stateSlug}-${year}`,
-      });
+//       // year-specific
+//       params.push({
+//         slug: `${amount}-${stateSlug}-${year}`,
+//       });
 
-      // yearless (latest)
-      const yearless = `${amount}-${stateSlug}`;
-      if (!seen.has(yearless)) {
-        params.push({ slug: yearless });
-        seen.add(yearless);
-      }
-    }
-  }
+//       // yearless (latest)
+//       const yearless = `${amount}-${stateSlug}`;
+//       if (!seen.has(yearless)) {
+//         params.push({ slug: yearless });
+//         seen.add(yearless);
+//       }
+//     }
+//   }
 
-  return params;
-}
+//   return params;
+// }
 
 /* -----------------------------
    METADATA
