@@ -1,8 +1,7 @@
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS } from "@/data/city-costs";
+import { getSalaryData } from "@/lib/getSalaryData";
 
 export const revalidate = 86400; // 24 hours ISR
 
@@ -72,17 +71,8 @@ if (!stateCities) return notFound();
   const stateCode = stateCities[0]?.stateCode;
   if (!stateCode) return notFound();
 
-  const filePath = path.join(
-    process.cwd(),
-    "data",
-    "pages",
-    YEAR,
-    `${salary}_${stateCode}_single_${YEAR}.json`
-  );
-
-  if (!fs.existsSync(filePath)) return notFound();
-
-  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const data = getSalaryData(salary, stateCode, YEAR);
+  if (!data) return notFound();
   const monthlyTakeHome = Math.round(data.net_salary / 12);
 
   /* -----------------------------

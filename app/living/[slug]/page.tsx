@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
@@ -13,6 +11,7 @@ import {
   getOtherStates,
   getSalaryLadder,
 } from "@/lib/links-gen";
+import { getSalaryData } from "@/lib/getSalaryData";
 
 
 /* -----------------------------
@@ -130,17 +129,8 @@ export default async function LivingPage({ params }: PageProps) {
 
   const YEAR = "2026";
 
-  const filePath = path.join(
-    process.cwd(),
-    "data",
-    "pages",
-    YEAR,
-    `${amount}_${stateCode}_single_${YEAR}.json`
-  );
-
-  if (!fs.existsSync(filePath)) return notFound();
-
-  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const data = getSalaryData(amount, stateCode, YEAR);
+  if (!data) return notFound();
 
   const monthly = Math.round(data.net_salary / 12);
   type Lifestyle =

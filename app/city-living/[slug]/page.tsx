@@ -1,8 +1,7 @@
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS, CityCost } from "@/data/city-costs";
+import { getSalaryData } from "@/lib/getSalaryData";
 
 export const revalidate = 86400; // 24 hours ISR
 export const runtime = "nodejs";
@@ -136,17 +135,8 @@ export default async function LivingCityPage({ params }: PageProps) {
 
   if (!city) return notFound();
 
-  const filePath = path.join(
-    process.cwd(),
-    "data",
-    "pages",
-    YEAR,
-    `${salary}_${city.stateCode}_single_${YEAR}.json`
-  );
-
-  if (!fs.existsSync(filePath)) return notFound();
-
-  const salaryData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const salaryData = getSalaryData(String(salary), city.stateCode, YEAR);
+  if (!salaryData) return notFound();
 
   const monthlyTakeHome = Math.round(salaryData.net_salary / 12);
   const monthlyCost = city.rent + city.other;
@@ -223,7 +213,7 @@ export default async function LivingCityPage({ params }: PageProps) {
         {/* INTERNAL LINKS */}
         <section className="border-t pt-6 text-sm">
           <h3 className="font-semibold mb-3">
-            Explore related salary insights
+            Related salary insights
           </h3>
 
           <ul className="space-y-2 text-blue-600">
@@ -232,6 +222,13 @@ export default async function LivingCityPage({ params }: PageProps) {
                 ${salary.toLocaleString()} salary after tax in {city.state}
               </a>
             </li>
+
+            <li>
+              <a href={`/living/is-${salary}-enough-in-${city.state.toLowerCase().replace(/\s+/g, "-")}`}>
+                Is ${salary.toLocaleString()} enough to live in {city.state}?
+              </a>
+            </li>
+
             <li>
               <a href={`/best-cities/${city.state.toLowerCase().replace(/\s+/g, "-")}/${salary}`}>
                 Best cities in {city.state} for a ${salary.toLocaleString()} salary
@@ -239,31 +236,6 @@ export default async function LivingCityPage({ params }: PageProps) {
             </li>
           </ul>
         </section>
-        <section className="border-t pt-6 text-sm">
-  <h3 className="font-semibold mb-3">
-    Related salary insights
-  </h3>
-
-  <ul className="space-y-2 text-blue-600">
-    <li>
-      <a href={`/salary/${salary}-${city.state.toLowerCase().replace(/\s+/g, "-")}`}>
-        ${salary.toLocaleString()} salary after tax in {city.state}
-      </a>
-    </li>
-
-    <li>
-      <a href={`/living/is-${salary}-enough-in-${city.state.toLowerCase().replace(/\s+/g, "-")}`}>
-        Is ${salary.toLocaleString()} enough to live in {city.state}?
-      </a>
-    </li>
-
-    <li>
-      <a href={`/best-cities/${city.state.toLowerCase().replace(/\s+/g, "-")}/${salary}`}>
-        Best cities in {city.state} for a ${salary.toLocaleString()} salary
-      </a>
-    </li>
-  </ul>
-</section>
 
 
       </div>
