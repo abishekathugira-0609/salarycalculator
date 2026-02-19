@@ -1,10 +1,10 @@
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import WhatIfToggle from "./WhatIfToggle";
 import { getNearbySalaries, getOtherStates, getSalaryLadder } from "@/lib/links-gen";
 import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
+import { getSalaryData } from "@/lib/getSalaryData";
+
 
 
 export const revalidate = 86400; // 24 hours ISR
@@ -133,12 +133,16 @@ export default async function SalaryPage({ params }: PageProps) {
   const stateCode = STATE_SLUG_TO_CODE[stateSlug];
   if (!stateCode) return notFound();
 
+  const data = getSalaryData(amount, stateCode, year);
 
-  const dataDir = path.join(process.cwd(), "data", "pages", year);
-  const filePath = path.join(
-    dataDir,
-    `${amount}_${stateCode}_single_${year}.json`
-  );
+   if (!data) return notFound();
+
+
+  // const dataDir = path.join(process.cwd(), "data", "pages", year);
+  // const filePath = path.join(
+  //   dataDir,
+  //   `${amount}_${stateCode}_single_${year}.json`
+  // );
 
 const salaryNumber = Number(amount);
 const nearbySalaries = getNearbySalaries(salaryNumber);
@@ -175,8 +179,8 @@ const accuracyMap: Record<string, { label: string; className: string }> = {
 };
 
 const accuracy = accuracyMap[stateCode];
-  if (!fs.existsSync(filePath)) return notFound();
-  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  // if (!fs.existsSync(filePath)) return notFound();
+  // const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
 /**
  * Comparison states
  */
@@ -195,18 +199,11 @@ const comparisonStates = [
 
 const comparisons = comparisonStates
   .map((state) => {
-    const p = path.join(
-      process.cwd(),
-      "data",
-      "pages",
-      year,
-      `${amount}_${state.code}_single_${year}.json`
-    );
-
-    if (!fs.existsSync(p)) return null;
+    const data = getSalaryData(amount, state.code, year);
+    if (!data) return null;
 
     return {
-      ...JSON.parse(fs.readFileSync(p, "utf8")),
+      ...data,
       display_state: state.name,
     };
   })
