@@ -26,9 +26,10 @@ const states = [
 
 export async function GET(
   request: Request,
-  { params }: { params: { page: string } }
+  { params }: { params: Promise<{ page: string }> }
 ) {
-  const page = Number(params.page) || 1;
+  const { page: pageParam } = await params;
+  const page = Number(pageParam) || 1;
 
   const allUrls: string[] = [];
   const salaries = generateSalaries();
