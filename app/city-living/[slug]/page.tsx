@@ -4,8 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS, CityCost } from "@/data/city-costs";
 
-// export const dynamic = "force-static"; // ✅ REQUIRED
-export const dynamic = "force-dynamic";
+export const revalidate = 86400; // 24 hours ISR
 export const runtime = "nodejs";
 
 
@@ -48,16 +47,7 @@ function slugifyCity(city: string) {
   return city.toLowerCase().replace(/\s+/g, "-");
 }
 
-// export async function generateStaticParams() {
-//   const params: { slug: string }[] = [];
-//   const YEAR = "2026";
 
-//   Object.values(CITY_COSTS).forEach((cities) => {
-//     cities.forEach((city) => {
-//       const citySlug = city.city.toLowerCase().replace(/\s+/g, "-");
-
-//       const dataDir = path.join(
-//         process.cwd(),
 //         "data",
 //         "pages",
 //         YEAR
@@ -112,7 +102,7 @@ export async function generateMetadata(
   if (!matchedCity) return {};
 
   return {
-    title: `Is $${salary.toLocaleString()} Enough to Live in ${matchedCity.city}? (2026)`,
+    title: `Is $${salary.toLocaleString()} Enough to Live/good salary in ${matchedCity.city}? (2026)`,
     description: `See if a $${salary.toLocaleString()} salary is enough to live in ${matchedCity.city}, ${matchedCity.state}. Includes take-home pay, rent, cost of living, and lifestyle verdict.`,
     alternates: {
       canonical: `/city-living/is-${salary}-enough-in-${citySlug}`, // 🔧 CHANGED

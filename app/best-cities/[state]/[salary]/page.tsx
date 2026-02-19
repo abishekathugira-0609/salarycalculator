@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS } from "@/data/city-costs";
 
-export const dynamic = "force-static";
+export const revalidate = 86400; // 24 hours ISR
 
 type PageProps = {
   params: Promise<{

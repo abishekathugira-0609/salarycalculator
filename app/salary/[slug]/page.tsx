@@ -3,12 +3,12 @@ import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import WhatIfToggle from "./WhatIfToggle";
+import { getNearbySalaries, getOtherStates, getSalaryLadder } from "@/lib/links-gen";
+import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
 
-export const dynamic = "force-dynamic";
+
+export const revalidate = 86400; // 24 hours ISR
 export const runtime = "nodejs";
-
-
-// export const dynamic = "force-static";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -55,18 +55,7 @@ function getMeterPercent(salary: number) {
 /* -----------------------------
    STATIC PARAMS
 ------------------------------ */
-// export async function generateStaticParams() {
-//   const years = ["2025", "2026"];
-//   const params: { slug: string }[] = [];
-//   const seen = new Set<string>();
 
-//   for (const year of years) {
-//     const dir = path.join(process.cwd(), "data", "pages", year);
-//     if (!fs.existsSync(dir)) continue;
-
-//     const files = fs.readdirSync(dir);
-//     for (const file of files) {
-//       const [amount, stateCode] = file.split("_");
 
 //       const stateSlug = Object.keys(STATE_SLUG_TO_CODE).find(
 //         (k) => STATE_SLUG_TO_CODE[k] === stateCode
@@ -151,7 +140,13 @@ export default async function SalaryPage({ params }: PageProps) {
     `${amount}_${stateCode}_single_${year}.json`
   );
 
-  
+const salaryNumber = Number(amount);
+const nearbySalaries = getNearbySalaries(salaryNumber);
+const otherStates = getOtherStates(stateSlug);
+
+
+const ladder = getSalaryLadder(salaryNumber);
+
 
 /**
  * Accuracy badge
@@ -217,12 +212,68 @@ const comparisons = comparisonStates
   })
   .filter(Boolean);
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.know-your-pay.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Salary",
+      item: "https://www.know-your-pay.com/salary",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: `${data.salary} Salary in ${data.state}`,
+      item: `https://www.know-your-pay.com/salary/${slug}`,
+    },
+  ],
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: `Is $${data.salary.toLocaleString()} a good salary in ${data.state}?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `It depends on cost of living and lifestyle. In higher-cost cities, disposable income may be lower after housing and taxes.`,
+      },
+    },
+    {
+      "@type": "Question",
+      name: `How much tax do you pay on $${data.salary.toLocaleString()} in ${data.state}?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Total tax includes federal income tax, state income tax, Social Security, and Medicare based on the ${data.tax_year} tax year.`,
+      },
+    },
+  ],
+};
 
 
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-6">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+/>
+
+      <main className="min-h-screen bg-gray-50 py-12">
+        <div className="max-w-4xl mx-auto px-6">
 
         {/* Header with CTA + Accuracy badge */}
         <header className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -454,6 +505,37 @@ const comparisons = comparisonStates
             This is an estimate for informational purposes only.
           </p>
         </section>
+
+        {/* Salary Ladder Navigation */}
+<section className="mt-12 bg-white rounded-xl shadow-sm p-6">
+  <h2 className="text-lg font-semibold text-gray-900 mb-4">
+    Explore other salary levels in {data.state}
+  </h2>
+
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+
+    {ladder.all.map((salary) => {
+      const isCurrent = salary === salaryNumber;
+
+      return (
+        <a
+          key={salary}
+          href={salaryLink(salary, stateSlug)}
+          className={`text-sm px-3 py-2 rounded-lg text-center ${
+            isCurrent
+              ? "bg-blue-600 text-white font-medium"
+              : "bg-gray-100 hover:bg-gray-200"
+          }`}
+        >
+          ${salary.toLocaleString()}
+        </a>
+      );
+    })}
+
+  </div>
+</section>
+
+        
         {/* People Also Searched For */}
 <section className="mt-10">
   <h2 className="text-lg font-semibold text-gray-900 mb-4">
@@ -482,9 +564,60 @@ const comparisons = comparisonStates
     </li>
   </ul>
 </section>
+{/* Related Salary Insights */}
+<section className="mt-12 bg-white rounded-xl shadow-sm p-6">
+  <h2 className="text-lg font-semibold text-gray-900 mb-4">
+    Related salary insights
+  </h2>
+
+  <ul className="space-y-2 text-blue-600 text-sm">
+
+    {/* 1️⃣ Nearby Salaries */}
+    {nearbySalaries.map((s) => (
+      <li key={s}>
+        <a href={salaryLink(s, stateSlug)}>
+          ${s.toLocaleString()} salary in {data.state}
+        </a>
+      </li>
+    ))}
+
+    {/* 2️⃣ Same Salary in Other States */}
+    {otherStates.map((s) => (
+      <li key={s}>
+        <a href={salaryLink(salaryNumber, s)}>
+          ${salaryNumber.toLocaleString()} salary in{" "}
+          {s.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+        </a>
+      </li>
+    ))}
+
+    {/* 3️⃣ Is It Enough Page */}
+    <li>
+      <a href={livingStateLink(salaryNumber, stateSlug)}>
+        Is ${salaryNumber.toLocaleString()} enough to live in {data.state}?
+      </a>
+    </li>
+
+    {/* 4️⃣ Best Cities Page */}
+    <li>
+      <a href={bestCitiesLink(stateSlug, salaryNumber)}>
+        Best cities in {data.state} for a ${salaryNumber.toLocaleString()} salary
+      </a>
+    </li>
+
+  </ul>
+</section>
+
+
+{/* Last Updated */}
+<section className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-600">
+  <p><strong>Last Updated:</strong> February 2026</p>
+  <p>Based on IRS and state tax tables.</p>
+</section>
 
 
       </div>
     </main>
+    </>
   );
 }

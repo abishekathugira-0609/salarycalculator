@@ -2,6 +2,18 @@ import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import {
+  salaryLink,
+  bestCitiesLink,
+  livingStateLink,
+} from "@/lib/internal-links";
+
+import {
+  getNearbySalaries,
+  getOtherStates,
+  getSalaryLadder,
+} from "@/lib/links-gen";
+
 
 /* -----------------------------
    STATE MAP
@@ -148,6 +160,9 @@ const lifestyle: Lifestyle =
     : monthly < baselineMax * 1.4
     ? "comfortable"
     : "sophisticated";
+const salaryNumber = Number(amount);
+const nearbySalaries = getNearbySalaries(salaryNumber);
+const otherStates = getOtherStates(stateSlug);
 
 const LIFESTYLE_META: Record<
   Lifestyle,
@@ -331,6 +346,58 @@ const LIFESTYLE_META: Record<
   </p>
 </section>
 
+{/* Related Living Insights */}
+<section className="mt-12 bg-white rounded-xl shadow-sm p-6">
+  <h2 className="text-lg font-semibold text-gray-900 mb-4">
+    Related insights for {data.state}
+  </h2>
+
+  <ul className="space-y-2 text-blue-600 text-sm">
+
+    {/* Salary Breakdown Page */}
+    <li>
+      <a href={salaryLink(salaryNumber, stateSlug)}>
+        Full tax breakdown for ${salaryNumber.toLocaleString()} in {data.state}
+      </a>
+    </li>
+
+    {/* Nearby Salaries */}
+    {nearbySalaries.map((s) => (
+      <li key={s}>
+        <a href={livingStateLink(s, stateSlug)}>
+          Is ${s.toLocaleString()} enough in {data.state}?
+        </a>
+      </li>
+    ))}
+
+    {/* Best Cities */}
+    <li>
+      <a href={bestCitiesLink(stateSlug, salaryNumber)}>
+        Best cities in {data.state} for ${salaryNumber.toLocaleString()}
+      </a>
+    </li>
+
+    {/* Same Salary Other States */}
+    {otherStates.map((s) => (
+      <li key={s}>
+        <a href={livingStateLink(salaryNumber, s)}>
+          Is ${salaryNumber.toLocaleString()} enough in{" "}
+          {s.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())}?
+        </a>
+      </li>
+    ))}
+
+    {/* State Hub */}
+    <li>
+      <a href={`/states/${stateSlug}`}>
+        Explore complete {data.state} salary guide
+      </a>
+    </li>
+
+  </ul>
+</section>
+
+
         {/* Internal links */}
         <section className="pt-8 border-t">
   <h3 className="text-lg font-semibold mb-4">
@@ -361,6 +428,24 @@ const LIFESTYLE_META: Record<
         Where ${Number(amount).toLocaleString()} goes the furthest
       </p>
     </a>
+  </div>
+</section>
+
+<section className="border-t pt-8 text-sm">
+  <h3 className="font-semibold mb-3">
+    Explore other salary levels
+  </h3>
+
+  <div className="flex flex-wrap gap-3">
+    {[60000, 80000, 100000, 120000, 150000].map((s) => (
+      <a
+        key={s}
+        href={`/living/is-${s}-enough-in-${stateSlug}`}
+        className="px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
+      >
+        ${s.toLocaleString()}
+      </a>
+    ))}
   </div>
 </section>
 

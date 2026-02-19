@@ -224,7 +224,7 @@ export function calculateSalary(
   income: number,
   state: string,
   includeNYC: boolean = false,
-  taxYear: 2025 | 2026 = 2025
+  taxYear: number
 ) {
   const federalTax =
     taxYear === 2026

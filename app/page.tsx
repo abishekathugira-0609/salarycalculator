@@ -159,6 +159,7 @@ export default function HomePage() {
             View example salary →
           </Link>
         </section>
+        
 
         {/* Footer */}
         <footer className="border-t pt-6 text-sm text-gray-600 flex flex-col sm:flex-row justify-between gap-4">
