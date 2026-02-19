@@ -15,8 +15,9 @@ export function getSalaryData(
       `${amount}_${stateCode}_single_${year}.json`
     );
 
-    return JSON.parse(readFileSync(filePath, "utf8"));
-  } catch {
+    const content = readFileSync(filePath, "utf8");
+    return JSON.parse(content);
+  } catch (error) {
     return null;
   }
 }

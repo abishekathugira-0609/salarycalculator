@@ -2,7 +2,7 @@ import Link from "next/link";
 import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
 
 type PageProps = {
-  params: { state: string };
+  params: Promise<{ state: string }>;
 };
 
 const SALARY_BUCKETS = [
@@ -23,7 +23,8 @@ function formatStateName(state: string) {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const stateName = formatStateName(params.state);
+  const { state } = await params;
+  const stateName = formatStateName(state);
 
   return {
     title: `${stateName} Salary Guide (2026) – Take Home Pay & Cost of Living`,
@@ -31,8 +32,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function StateHubPage({ params }: PageProps) {
-  const stateSlug = params.state;
+export default async function StateHubPage({ params }: PageProps) {
+  const { state } = await params;
+  const stateSlug = state;
   const stateName = formatStateName(stateSlug);
 
   return (

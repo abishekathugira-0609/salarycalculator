@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const revalidate = 86400; // ISR
 
 type PageProps = {
-  params: { state: string };
+  params: Promise<{ state: string }>;
 };
 
 /* -----------------------------
@@ -428,7 +428,8 @@ const STATE_DATA: Record<
 export async function generateMetadata(
   { params }: PageProps
 ): Promise<Metadata> {
-  const stateSlug = params.state.replace("-salary-guide", "");
+  const { state: stateParam } = await params;
+  const stateSlug = stateParam.replace("-salary-guide", "");
   const state = STATE_DATA[stateSlug];
 
   if (!state) return {};
@@ -446,8 +447,9 @@ export async function generateMetadata(
    PAGE
 ------------------------------ */
 
-export default function StateSalaryGuide({ params }: PageProps) {
-  const stateSlug = params.state.replace("-salary-guide", "");
+export default async function StateSalaryGuide({ params }: PageProps) {
+  const { state: stateParam } = await params;
+  const stateSlug = stateParam.replace("-salary-guide", "");
   const state = STATE_DATA[stateSlug];
 
   if (!state) return notFound();
