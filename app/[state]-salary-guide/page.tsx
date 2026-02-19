@@ -428,7 +428,11 @@ const STATE_DATA: Record<
 export async function generateMetadata(
   { params }: PageProps
 ): Promise<Metadata> {
-  const { state: stateParam } = await params;
+  const resolvedParams = await params;
+  const stateParam = resolvedParams.state;
+  
+  if (!stateParam) return {};
+  
   const stateSlug = stateParam.replace("-salary-guide", "");
   const state = STATE_DATA[stateSlug];
 
@@ -448,7 +452,11 @@ export async function generateMetadata(
 ------------------------------ */
 
 export default async function StateSalaryGuide({ params }: PageProps) {
-  const { state: stateParam } = await params;
+  const resolvedParams = await params;
+  const stateParam = resolvedParams.state;
+  
+  if (!stateParam) return notFound();
+  
   const stateSlug = stateParam.replace("-salary-guide", "");
   const state = STATE_DATA[stateSlug];
 

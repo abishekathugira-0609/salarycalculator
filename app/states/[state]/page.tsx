@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
 
 type PageProps = {
@@ -23,7 +24,11 @@ function formatStateName(state: string) {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { state } = await params;
+  const resolvedParams = await params;
+  const state = resolvedParams.state;
+  
+  if (!state) return {};
+  
   const stateName = formatStateName(state);
 
   return {
@@ -33,7 +38,13 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function StateHubPage({ params }: PageProps) {
-  const { state } = await params;
+  const resolvedParams = await params;
+  const state = resolvedParams.state;
+  
+  if (!state) {
+    return notFound();
+  }
+  
   const stateSlug = state;
   const stateName = formatStateName(stateSlug);
 
