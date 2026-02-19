@@ -514,20 +514,20 @@ const faqSchema = {
 
   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
 
-    {ladder.all.map((salary) => {
-      const isCurrent = salary === salaryNumber;
+    {ladder.all.map((amount) => {
+      const isCurrent = amount === salaryNumber;
 
       return (
         <a
-          key={salary}
-          href={salaryLink(salary, stateSlug)}
+          key={amount}
+          href={salaryLink(amount, stateSlug)}
           className={`text-sm px-3 py-2 rounded-lg text-center ${
             isCurrent
               ? "bg-blue-600 text-white font-medium"
               : "bg-gray-100 hover:bg-gray-200"
           }`}
         >
-          ${salary.toLocaleString()}
+          ${amount.toLocaleString()}
         </a>
       );
     })}

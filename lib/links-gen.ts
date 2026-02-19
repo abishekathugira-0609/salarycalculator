@@ -54,10 +54,8 @@ export function getOtherStates(currentState: string) {
 export function getSalaryLadder(currentSalary: number) {
   const index = SALARY_BUCKETS.findIndex((s) => s === currentSalary);
 
-  if (index === -1) return SALARY_BUCKETS;
-
-  const lower = SALARY_BUCKETS.slice(0, index);
-  const higher = SALARY_BUCKETS.slice(index + 1);
+  const lower = index === -1 ? [] : SALARY_BUCKETS.slice(0, index);
+  const higher = index === -1 ? [] : SALARY_BUCKETS.slice(index + 1);
 
   return {
     lower,
