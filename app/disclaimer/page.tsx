@@ -1,10 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { buildPageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "Disclaimer – Salary After Tax Calculator",
+export const revalidate = 86400;
+
+export const metadata: Metadata = buildPageMeta({
+  title: "Disclaimer – 2026 Salary After Tax Calculator | Know Your Pay",
   description:
-    "Read the disclaimer and understand the assumptions and limitations of the Salary After Tax Calculator.",
-};
+    "Read the disclaimer and understand the assumptions and limitations of Know Your Pay's 2026 salary after-tax calculator.",
+  canonical: "/disclaimer",
+});
 
 export default function DisclaimerPage() {
   return (

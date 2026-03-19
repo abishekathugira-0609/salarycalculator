@@ -1,0 +1,60 @@
+name: Update Datasets
+
+on:
+  # Run every Sunday at 00:00 UTC
+  schedule:
+    - cron: "0 0 * * 0"
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force update even if no changes"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  update:
+    name: Download & normalize salary/rent/COL data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # needed to commit updated JSON files
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run dataset updater
+        env:
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          HUD_API_TOKEN: ${{ secrets.HUD_API_TOKEN }}
+        run: node scripts/update-datasets.js
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/ || echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit updated data files
+        if: steps.changes.outputs.changed == 'true' || inputs.force == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/bls-salary.json data/rent-by-city.json data/cost-of-living.json data/jobs.json data/.update-log.json
+          git commit -m "chore: weekly dataset update $(date -u +'%Y-%m-%d')"
+          git push
+
+      - name: No changes detected
+        if: steps.changes.outputs.changed != 'true' && inputs.force != 'true'
+        run: echo "Data files are already up to date — nothing to commit."

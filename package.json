@@ -6,7 +6,8 @@
     "dev": "set NEXT_DISABLE_TURBOPACK=1 && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "update-data": "node scripts/update-datasets.js"
   },
   "dependencies": {
     "next": "16.1.1",

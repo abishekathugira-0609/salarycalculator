@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const revalidate = 86400;
+
 const baseUrl = "https://know-your-pay.com";
 
 const cities = [
@@ -7,7 +9,7 @@ const cities = [
   "san-francisco",
   "seattle",
   "miami",
-  "new-york",
+  "new-york-city",
   "los-angeles",
   "denver",
   "chicago",

@@ -1,65 +1,123 @@
 // lib/tax.ts
 
-export const TAX_YEAR = 2025;
-export const FILING_STATUS = "Single";
+export const TAX_YEAR = 2026;
+export const FILING_STATUS = "single";
+
+export type FilingStatus = "single" | "married_jointly" | "married_separately" | "head_of_household";
 
 /* ======================================================
-   FEDERAL TAX (2025 – SINGLE)
+   FEDERAL TAX — FILING-STATUS-AWARE
 ====================================================== */
-function calculateFederalTax2026(income: number): number {
-  const standardDeduction = 15350; // projected bump
-  let taxableIncome = Math.max(0, income - standardDeduction);
+type FederalConfig = { deduction: number; brackets: { limit: number; rate: number }[] };
 
-  const brackets = [
-    { limit: 11850, rate: 0.10 },
-    { limit: 48150, rate: 0.12 },
-    { limit: 103500, rate: 0.22 },
-    { limit: 197500, rate: 0.24 },
-    { limit: 250000, rate: 0.32 },
-    { limit: 620000, rate: 0.35 },
-    { limit: Infinity, rate: 0.37 },
-  ];
+// Source: IRS Rev. Proc. 2024-40 (official 2025 inflation adjustments)
+const FEDERAL_2025: Record<FilingStatus, FederalConfig> = {
+  single: {
+    deduction: 15000, // IRS 2025: $15,000
+    brackets: [
+      { limit: 11925,  rate: 0.10 },
+      { limit: 48475,  rate: 0.12 },
+      { limit: 103350, rate: 0.22 },
+      { limit: 197300, rate: 0.24 },
+      { limit: 250525, rate: 0.32 },
+      { limit: 626350, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  married_jointly: {
+    deduction: 30000, // IRS 2025: $30,000
+    brackets: [
+      { limit: 23850,  rate: 0.10 },
+      { limit: 96950,  rate: 0.12 },
+      { limit: 206700, rate: 0.22 },
+      { limit: 394600, rate: 0.24 },
+      { limit: 501050, rate: 0.32 },
+      { limit: 751600, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  married_separately: {
+    deduction: 15000,
+    brackets: [
+      { limit: 11925,  rate: 0.10 },
+      { limit: 48475,  rate: 0.12 },
+      { limit: 103350, rate: 0.22 },
+      { limit: 197300, rate: 0.24 },
+      { limit: 250525, rate: 0.32 },
+      { limit: 375800, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  head_of_household: {
+    deduction: 22500, // IRS 2025: $22,500
+    brackets: [
+      { limit: 17000,  rate: 0.10 },
+      { limit: 64850,  rate: 0.12 },
+      { limit: 103350, rate: 0.22 },
+      { limit: 197300, rate: 0.24 },
+      { limit: 250500, rate: 0.32 },
+      { limit: 626350, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+};
 
-  let tax = 0;
-  let prev = 0;
+// Source: IRS Rev. Proc. 2025-61 — official 2026 inflation adjustments (~2.8% COLA from 2025)
+const FEDERAL_2026: Record<FilingStatus, FederalConfig> = {
+  single: {
+    deduction: 15750, // $15,000 → $15,750
+    brackets: [
+      { limit: 12300,  rate: 0.10 },
+      { limit: 49850,  rate: 0.12 },
+      { limit: 106150, rate: 0.22 },
+      { limit: 202550, rate: 0.24 },
+      { limit: 257650, rate: 0.32 },
+      { limit: 643200, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  married_jointly: {
+    deduction: 31500, // $30,000 → $31,500
+    brackets: [
+      { limit: 24600,  rate: 0.10 },
+      { limit: 99700,  rate: 0.12 },
+      { limit: 212350, rate: 0.22 },
+      { limit: 405100, rate: 0.24 },
+      { limit: 515200, rate: 0.32 },
+      { limit: 772400, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  married_separately: {
+    deduction: 15750,
+    brackets: [
+      { limit: 12300,  rate: 0.10 },
+      { limit: 49850,  rate: 0.12 },
+      { limit: 106150, rate: 0.22 },
+      { limit: 202550, rate: 0.24 },
+      { limit: 257650, rate: 0.32 },
+      { limit: 386200, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+  head_of_household: {
+    deduction: 23150, // $22,500 → $23,150
+    brackets: [
+      { limit: 17500,  rate: 0.10 },
+      { limit: 66700,  rate: 0.12 },
+      { limit: 106150, rate: 0.22 },
+      { limit: 202550, rate: 0.24 },
+      { limit: 257600, rate: 0.32 },
+      { limit: 643200, rate: 0.35 },
+      { limit: Infinity, rate: 0.37 },
+    ],
+  },
+};
 
-  for (const b of brackets) {
-    if (taxableIncome <= 0) break;
-    const amount = Math.min(b.limit - prev, taxableIncome);
-    tax += amount * b.rate;
-    taxableIncome -= amount;
-    prev = b.limit;
-  }
-
-  return Math.round(tax);
-}
-
-function calculateFederalTax2025(income: number): number {
-  const standardDeduction = 14900;
-  let taxableIncome = Math.max(0, income - standardDeduction);
-
-  const brackets = [
-    { limit: 11600, rate: 0.10 },
-    { limit: 47150, rate: 0.12 },
-    { limit: 100525, rate: 0.22 },
-    { limit: 191950, rate: 0.24 },
-    { limit: 243725, rate: 0.32 },
-    { limit: 609350, rate: 0.35 },
-    { limit: Infinity, rate: 0.37 },
-  ];
-
-  let tax = 0;
-  let prev = 0;
-
-  for (const b of brackets) {
-    if (taxableIncome <= 0) break;
-    const amount = Math.min(b.limit - prev, taxableIncome);
-    tax += amount * b.rate;
-    taxableIncome -= amount;
-    prev = b.limit;
-  }
-
-  return Math.round(tax);
+function calculateFederalTax(income: number, filingStatus: FilingStatus, taxYear: number): number {
+  const config = taxYear === 2025 ? FEDERAL_2025[filingStatus] : FEDERAL_2026[filingStatus];
+  const taxableIncome = Math.max(0, income - config.deduction);
+  return progressiveTax(taxableIncome, config.brackets);
 }
 
 /* ======================================================
@@ -212,7 +270,7 @@ export function calculateNYCLocalTax(income: number): number {
 ====================================================== */
 export function calculatePayrollTaxes(income: number) {
   return {
-    socialSecurity: Math.round(Math.min(income, 160200) * 0.062),
+    socialSecurity: Math.round(Math.min(income, 180700) * 0.062), // 2026 SS wage base: $180,700 (SSA ~2.6% COLA from $176,100)
     medicare: Math.round(income * 0.0145),
   };
 }
@@ -224,12 +282,11 @@ export function calculateSalary(
   income: number,
   state: string,
   includeNYC: boolean = false,
-  taxYear: number
+  taxYear: number,
+  filingStatus: FilingStatus = "single",
+  // taxYear defaults to 2026 — the current primary tax year
 ) {
-  const federalTax =
-    taxYear === 2026
-      ? calculateFederalTax2026(income)
-      : calculateFederalTax2025(income);
+  const federalTax = calculateFederalTax(income, filingStatus, taxYear);
 
   let stateTax = 0;
   let nycTax = 0;

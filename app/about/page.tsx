@@ -1,10 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { buildPageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: "About Know Your Pay – Salary After Tax Calculator",
+export const revalidate = 86400;
+
+export const metadata: Metadata = buildPageMeta({
+  title: "About Know Your Pay – 2026 Salary After Tax Calculator",
   description:
-    "Learn how Know Your Pay calculates take-home salary after tax, our data sources, and the methodology behind our U.S. salary and tax tools.",
-};
+    "Learn how Know Your Pay calculates 2026 take-home salary after tax, our data sources, and the methodology behind our U.S. salary and tax tools.",
+  canonical: "/about",
+});
 
 export default function AboutPage() {
   return (

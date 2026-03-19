@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(cd:*)",
+      "Bash(find:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(python:*)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(node:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(sleep:*)",
+      "Bash(curl:*)",
+      "Bash(npm run:*)",
+      "Bash(netstat:*)",
+      "Bash(cmd.exe /c \"netstat -an | findstr 3000\" 2>&1)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npx next dev 2>&1)",
+      "Bash(timeout:*)",
+      "Bash(cmd.exe /c \"cd /d C:\\\\Users\\\\abish\\\\salary-after-tax && node_modules\\\\.bin\\\\next dev 2>&1\" | head -40)",
+      "Bash(python3:*)",
+      "Bash(/tmp/sitemap_analysis.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(rm:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(pkill:*)",
+      "Bash(head:*)"
+    ]
+  }
+}

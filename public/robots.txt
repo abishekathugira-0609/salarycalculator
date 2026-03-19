@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block API routes from crawlers
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap index
+Sitemap: https://know-your-pay.com/sitemap.xml

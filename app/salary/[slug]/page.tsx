@@ -1,620 +1,511 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import WhatIfToggle from "./WhatIfToggle";
+import { calculateNetSalary } from "@/lib/salary/netSalary";
+import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
+import { getTaxSavingsSuggestions } from "@/lib/tax/taxSavings";
+import DataSourceBadges from "@/components/DataSourceBadges";
+import ReviewedBy from "@/components/ReviewedBy";
+import BudgetPlanner from "@/components/BudgetPlanner";
 import { getNearbySalaries, getOtherStates, getSalaryLadder } from "@/lib/links-gen";
 import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
-import { getSalaryData } from "@/lib/getSalaryData";
+import stateMediansJson from "@/data/state-medians.json";
 
+export const revalidate = 86400;
+export const dynamic = "force-static";
 
+type PageProps = { params: Promise<{ slug: string }> };
+type StateMedian = { name: string; medianHousehold: number; medianIndividual: number };
 
-export const revalidate = 86400; // 24 hours ISR
-export const runtime = "nodejs";
+const stateMedians = stateMediansJson as Record<string, StateMedian>;
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
+const COMPARISON_STATE_SLUGS = [
+  "california", "texas", "new-york", "florida", "new-jersey",
+  "pennsylvania", "illinois", "washington", "massachusetts", "minnesota",
+];
 
-/* -----------------------------
-   STATE MAP
------------------------------- */
-const STATE_SLUG_TO_CODE: Record<string, string> = {
-  california: "CA",
-  "new-york": "NY",
-  "new-jersey": "NJ",
-  minnesota: "MN",
-  hawaii: "HI",
-  "district-of-columbia": "DC",
-
-  pennsylvania: "PA",
-  illinois: "IL",
-  massachusetts: "MA",
-
-  texas: "TX",
-  florida: "FL",
-  washington: "WA",
-  nevada: "NV",
-
-  georgia: "GA",
-  virginia: "VA",
-  colorado: "CO",
-  arizona: "AZ",
-  "north-carolina": "NC",
-};
-const US_MEDIAN = 75000;
-
-function getSalaryLevel(salary: number) {
-  if (salary < US_MEDIAN * 0.8) return "Low";
-  if (salary < US_MEDIAN * 1.2) return "Average";
-  return "High";
+function fmtUSD(n: number) {
+  return "$" + n.toLocaleString("en-US");
 }
 
-function getMeterPercent(salary: number) {
-  return Math.min(100, Math.round((salary / (US_MEDIAN * 1.5)) * 100));
-}
-
-/* -----------------------------
-   STATIC PARAMS
------------------------------- */
-
-
-//       const stateSlug = Object.keys(STATE_SLUG_TO_CODE).find(
-//         (k) => STATE_SLUG_TO_CODE[k] === stateCode
-//       );
-//       if (!stateSlug) continue;
-
-//       // year-specific
-//       params.push({
-//         slug: `${amount}-${stateSlug}-${year}`,
-//       });
-
-//       // yearless (latest)
-//       const yearless = `${amount}-${stateSlug}`;
-//       if (!seen.has(yearless)) {
-//         params.push({ slug: yearless });
-//         seen.add(yearless);
-//       }
-//     }
-//   }
-
-//   return params;
-// }
-
-/* -----------------------------
-   METADATA
------------------------------- */
-export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
-): Promise<Metadata> {
-  const { slug } = await params;
+function parseSlug(slug: string): { amount: number; stateSlug: string; taxYear: 2025 | 2026 } | null {
   const parts = slug.split("-");
-  const year = parts.pop()!;
-  const amount = parts.shift()!;
-  const stateName = parts
-    .join(" ")
-    .replace(/\b\w/g, (l) => l.toUpperCase());
+  const lastPart = parts[parts.length - 1];
+  let taxYear: 2025 | 2026 = 2026;
+  if (/^\d{4}$/.test(lastPart)) {
+    const y = parseInt(lastPart);
+    if (y === 2025 || y === 2026) taxYear = y;
+    parts.pop();
+  }
+  const amount = parseInt(parts[0]);
+  if (isNaN(amount) || amount <= 0) return null;
+  const stateSlug = parts.slice(1).join("-");
+  if (!stateSlug) return null;
+  return { amount, stateSlug, taxYear };
+}
 
+export function generateStaticParams() {
+  const SEED_SALARIES = [40000, 50000, 60000, 75000, 100000, 125000, 150000, 200000, 250000, 300000];
+  return Object.keys(STATE_CODE_MAP).flatMap((state) =>
+    SEED_SALARIES.map((salary) => ({ slug: `${salary}-${state}-2026` }))
+  );
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const parsed = parseSlug(slug);
+  if (!parsed) return {};
+  const { amount, stateSlug, taxYear } = parsed;
+  const stateCode = STATE_CODE_MAP[stateSlug];
+  if (!stateCode) return {};
+  const stateName =
+    stateMedians[stateCode]?.name ??
+    stateSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `$${Number(amount).toLocaleString()} Salary After Tax in ${stateName} (${year})`,
-    description: `See take-home pay, tax breakdown, and effective tax rate for a $${Number(
-      amount
-    ).toLocaleString()} salary in ${stateName} (${year}).`,
-    alternates: {
-      canonical: `/salary/${slug}`,
-    },
+    title: `${fmtUSD(amount)} Salary After Tax in ${stateName} (${taxYear})`,
+    description: `Take-home pay, tax breakdown, and effective tax rate for a ${fmtUSD(amount)} salary in ${stateName} (${taxYear}). Calculated using IRS ${taxYear} federal brackets and state tax rules.`,
+    alternates: { canonical: `/salary/${slug}` },
   };
 }
 
-
-
-/* -----------------------------
-   PAGE
------------------------------- */
 export default async function SalaryPage({ params }: PageProps) {
   const { slug } = await params;
+  const parsed = parseSlug(slug);
+  if (!parsed) return notFound();
+  const { amount, stateSlug, taxYear } = parsed;
 
-  // slug = 350000-california-2025
-  const parts = slug.split("-");
-
-  let year = "2026"; // default year
-  const amount = parts.shift();
-  let stateSlugParts = parts;
-
-  // Detect year safely
-  const last = parts[parts.length - 1];
-  if (last && /^\d{4}$/.test(last)) {
-    year = parts.pop()!;
-    stateSlugParts = parts;
-  }
-
-  const stateSlug = stateSlugParts.join("-");
-
-  if (!amount || !stateSlug) return notFound();
-  
-  const stateCode = STATE_SLUG_TO_CODE[stateSlug];
+  const stateCode = STATE_CODE_MAP[stateSlug];
   if (!stateCode) return notFound();
 
-  const data = getSalaryData(amount, stateCode, year);
+  // ── Live tax calculation ──────────────────────────────────────────────────
+  const taxResult = calculateNetSalary({
+    salary: amount,
+    state: stateCode,
+    filingStatus: "single",
+    taxYear,
+  });
 
-   if (!data) return notFound();
+  const stateInfo = stateMedians[stateCode];
+  const stateName =
+    stateInfo?.name ?? stateSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
+  // vs. state medians
+  const vsIndPct = stateInfo
+    ? Math.round(((amount - stateInfo.medianIndividual) / stateInfo.medianIndividual) * 100)
+    : null;
+  const vsHhPct = stateInfo
+    ? Math.round(((amount - stateInfo.medianHousehold) / stateInfo.medianHousehold) * 100)
+    : null;
 
-  // const dataDir = path.join(process.cwd(), "data", "pages", year);
-  // const filePath = path.join(
-  //   dataDir,
-  //   `${amount}_${stateCode}_single_${year}.json`
-  // );
+  // Tax savings tips
+  const tips = getTaxSavingsSuggestions(amount, "single").slice(0, 3);
 
-const salaryNumber = Number(amount);
-const nearbySalaries = getNearbySalaries(salaryNumber);
-const otherStates = getOtherStates(stateSlug);
-
-
-const ladder = getSalaryLadder(salaryNumber);
-
-
-/**
- * Accuracy badge
- */
-const accuracyMap: Record<string, { label: string; className: string }> = {
-  CA: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-  NY: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-  NJ: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-  MN: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-  HI: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-  DC: { label: "Fully modeled (progressive)", className: "bg-green-100 text-green-800" },
-
-  TX: { label: "No state income tax", className: "bg-blue-100 text-blue-800" },
-  FL: { label: "No state income tax", className: "bg-blue-100 text-blue-800" },
-  WA: { label: "No state income tax", className: "bg-blue-100 text-blue-800" },
-  NV: { label: "No state income tax", className: "bg-blue-100 text-blue-800" },
-
-  PA: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  IL: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  MA: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  GA: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  VA: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  AZ: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  CO: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-  NC: { label: "Flat-rate state tax", className: "bg-yellow-100 text-yellow-800" },
-};
-
-const accuracy = accuracyMap[stateCode];
-  // if (!fs.existsSync(filePath)) return notFound();
-  // const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
-/**
- * Comparison states
- */
-const comparisonStates = [
-  { code: "CA", name: "California" },
-  { code: "NY", name: "New York" },
-  { code: "TX", name: "Texas" },
-  { code: "FL", name: "Florida" },
-  { code: "NJ", name: "New Jersey" },
-  { code: "PA", name: "Pennsylvania" },
-  { code: "IL", name: "Illinois" },
-  { code: "WA", name: "Washington" },
-  { code: "MA", name: "Massachusetts" },
-  { code: "MN", name: "Minnesota" },
-];
-
-const comparisons = comparisonStates
-  .map((state) => {
-    const data = getSalaryData(amount, state.code, year);
-    if (!data) return null;
-
+  // State comparison (live, no file reads)
+  const comparisons = COMPARISON_STATE_SLUGS.map((s) => {
+    const code = STATE_CODE_MAP[s];
+    if (!code) return null;
+    const r = calculateNetSalary({ salary: amount, state: code, filingStatus: "single", taxYear });
+    const m = stateMedians[code];
     return {
-      ...data,
-      display_state: state.name,
+      stateSlug: s,
+      stateName: m?.name ?? s,
+      stateCode: code,
+      netSalary: r.netSalary,
+      totalTax: r.totalTax,
+      effectiveTaxRate: r.effectiveTaxRate,
+      isCurrent: code === stateCode,
     };
-  })
-  .filter(Boolean);
+  }).filter((c): c is NonNullable<typeof c> => c !== null);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.know-your-pay.com",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Salary",
-      item: "https://www.know-your-pay.com/salary",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: `${data.salary} Salary in ${data.state}`,
-      item: `https://www.know-your-pay.com/salary/${slug}`,
-    },
-  ],
-};
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: `Is $${data.salary.toLocaleString()} a good salary in ${data.state}?`,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `It depends on cost of living and lifestyle. In higher-cost cities, disposable income may be lower after housing and taxes.`,
+  // Ensure current state appears in the table
+  if (!comparisons.some((c) => c.isCurrent)) {
+    comparisons.push({
+      stateSlug,
+      stateName,
+      stateCode,
+      netSalary: taxResult.netSalary,
+      totalTax: taxResult.totalTax,
+      effectiveTaxRate: taxResult.effectiveTaxRate,
+      isCurrent: true,
+    });
+  }
+  comparisons.sort((a, b) => b.netSalary - a.netSalary);
+
+  // Navigation helpers
+  const nearbySalaries = getNearbySalaries(amount);
+  const otherStates = getOtherStates(stateSlug);
+  const ladder = getSalaryLadder(amount);
+
+  // Tax breakdown bar items
+  const taxItems = [
+    { label: "Federal income tax", value: taxResult.federalTax, color: "bg-blue-500" },
+    { label: "State income tax", value: taxResult.stateTax, color: "bg-orange-500" },
+    { label: "Social Security", value: taxResult.fica.socialSecurity, color: "bg-purple-500" },
+    { label: "Medicare", value: taxResult.fica.medicare + taxResult.fica.additionalMedicare, color: "bg-violet-400" },
+    { label: "Annual take-home", value: taxResult.netSalary, color: "bg-green-500" },
+  ];
+
+  const allocationItems = [
+    { label: "Take-home", pct: (taxResult.netSalary / amount) * 100, color: "bg-green-500" },
+    { label: "Federal tax", pct: (taxResult.federalTax / amount) * 100, color: "bg-blue-500" },
+    { label: "State tax", pct: (taxResult.stateTax / amount) * 100, color: "bg-orange-500" },
+    { label: "FICA", pct: (taxResult.fica.total / amount) * 100, color: "bg-purple-500" },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is the take-home pay for ${fmtUSD(amount)} in ${stateName}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A ${fmtUSD(amount)} salary in ${stateName} results in approximately ${fmtUSD(taxResult.netSalary)} per year (${fmtUSD(taxResult.monthlyTakeHome)}/month) after federal taxes, state taxes, and FICA. The effective total tax rate is ${taxResult.effectiveTaxRate}%.`,
+        },
       },
-    },
-    {
-      "@type": "Question",
-      name: `How much tax do you pay on $${data.salary.toLocaleString()} in ${data.state}?`,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Total tax includes federal income tax, state income tax, Social Security, and Medicare based on the ${data.tax_year} tax year.`,
+      {
+        "@type": "Question",
+        name: `How much state income tax is paid on ${fmtUSD(amount)} in ${stateName}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The estimated state income tax on ${fmtUSD(amount)} in ${stateName} is ${fmtUSD(taxResult.stateTax)} for ${taxYear}, calculated for a single filer using the standard deduction.`,
+        },
       },
-    },
-  ],
-};
+      {
+        "@type": "Question",
+        name: `Is ${fmtUSD(amount)} a good salary in ${stateName}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${fmtUSD(amount)} is ${vsIndPct !== null ? (vsIndPct >= 0 ? `${vsIndPct}% above` : `${Math.abs(vsIndPct)}% below`) : "compared to"} the ${stateName} individual median income of ${fmtUSD(stateInfo?.medianIndividual ?? 0)}. Whether it supports a comfortable lifestyle depends on your city and expenses.`,
+        },
+      },
+    ],
+  };
 
-
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://know-your-pay.com" },
+      { "@type": "ListItem", position: 2, name: `${stateName} Salary Guide`, item: `https://know-your-pay.com/${stateSlug}-salary-guide` },
+      { "@type": "ListItem", position: 3, name: `${fmtUSD(amount)} in ${stateName}`, item: `https://know-your-pay.com/salary/${slug}` },
+    ],
+  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-/>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main className="min-h-screen bg-gray-50 py-12">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6 space-y-8">
 
-        {/* Header with CTA + Accuracy badge */}
-        <header className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              ${Number(data.salary).toLocaleString("en-US")} Salary in {data.state}
-            </h1>
-            <p className="text-gray-600 mt-2">
-              Estimated take-home pay after taxes (Single filer, {data.tax_year})
+          {/* ── Header ────────────────────────────────────────────────────── */}
+          <header className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <p className="text-sm font-medium text-blue-600 mb-1">Salary After Tax · {taxYear}</p>
+              <h1 className="text-3xl font-bold text-gray-900">
+                {fmtUSD(amount)} Salary in {stateName}
+              </h1>
+              <p className="mt-2 text-gray-500 text-sm">
+                Single filer · Standard deduction · {taxYear} IRS tax brackets
+              </p>
+              {taxResult.stateTax === 0 && (
+                <span className="inline-block mt-2 px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  No state income tax
+                </span>
+              )}
+            </div>
+            <a
+              href="/calculator"
+              className="shrink-0 inline-block bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition text-sm"
+            >
+              Try salary calculator →
+            </a>
+          </header>
+
+          {/* ── Take-home hero ────────────────────────────────────────────── */}
+          <section className="bg-green-50 border border-green-200 rounded-2xl p-6">
+            <p className="text-sm text-gray-600 mb-1">Annual take-home pay</p>
+            <p className="text-4xl font-bold text-green-700">{fmtUSD(taxResult.netSalary)}</p>
+            <p className="text-sm text-gray-500 mt-1">
+              Effective tax rate: <strong className="text-gray-700">{taxResult.effectiveTaxRate}%</strong>
             </p>
 
-            {accuracy && (
-              <span
-                className={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-medium ${accuracy.className}`}
-              >
-                {accuracy.label}
-              </span>
-            )}
-          </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5">
+              {[
+                { label: "Monthly take-home", value: fmtUSD(taxResult.monthlyTakeHome) },
+                { label: "Bi-weekly take-home", value: fmtUSD(taxResult.biWeeklyTakeHome) },
+                { label: "Total annual tax", value: fmtUSD(taxResult.totalTax) },
+                { label: "Marginal federal rate", value: `${taxResult.marginalFederalRate}%` },
+              ].map(({ label, value }) => (
+                <div key={label} className="bg-white rounded-xl border border-gray-200 p-3">
+                  <p className="text-xs text-gray-500 mb-0.5">{label}</p>
+                  <p className="font-bold text-gray-800">{value}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-          <a
-            href="/calculator"
-            className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition whitespace-nowrap"
-          >
-            Calculate a different salary →
-          </a>
-        </header>
-
-        {/* Take-home Highlight */}
-        <section className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
-          <p className="text-sm text-gray-700">Annual take-home pay</p>
-          <p className="text-3xl font-semibold text-green-700">
-            ${Number(data.net_salary).toLocaleString("en-US")}
-          </p>
-
-          <p className="text-sm text-gray-600 mt-1">
-            Effective tax rate: <strong>{data.effective_tax_rate}%</strong>
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            <div className="bg-white rounded-lg p-4">
-              <p className="text-xs text-gray-500">Monthly take-home</p>
-              <p className="font-medium">
-                ${data.monthly_take_home.toLocaleString("en-US")}
-              </p>
+          {/* ── Tax breakdown with bars ────────────────────────────────────── */}
+          <section className="bg-white rounded-2xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Tax breakdown</h2>
+            <div className="space-y-3">
+              {taxItems.map(({ label, value, color }) => {
+                const pct = (value / amount) * 100;
+                return (
+                  <div key={label}>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-gray-700">{label}</span>
+                      <span className="font-medium text-gray-900">
+                        {fmtUSD(value)}{" "}
+                        <span className="text-gray-400 font-normal">({pct.toFixed(1)}%)</span>
+                      </span>
+                    </div>
+                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full ${color} rounded-full`}
+                        style={{ width: `${Math.min(pct, 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="bg-white rounded-lg p-4">
-              <p className="text-xs text-gray-500">Bi-weekly take-home</p>
-              <p className="font-medium">
-                ${data.biweekly_take_home.toLocaleString("en-US")}
-              </p>
+            <div className="mt-5 pt-4 border-t grid grid-cols-2 gap-3 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Gross salary</span>
+                <span className="font-medium text-gray-900">{fmtUSD(amount)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Net salary</span>
+                <span className="font-semibold text-green-700">{fmtUSD(taxResult.netSalary)}</span>
+              </div>
             </div>
-          </div>
-        </section>
-        {/* Real-Feel Purchasing Power */}
-<section className="bg-white rounded-xl shadow-sm p-6 mb-8">
-  <h2 className="text-xl font-semibold text-gray-900 mb-2">
-    Real-Feel Purchasing Power
-  </h2>
+          </section>
 
-  <p className="text-sm text-gray-600 mb-4">
-    Compared to the U.S. median income (~$75,000), this salary in{" "}
-    <strong>{data.state}</strong> is considered{" "}
-    <strong>{getSalaryLevel(data.salary)}</strong>.
-  </p>
+          {/* ── Income allocation stacked bar ─────────────────────────────── */}
+          <section className="bg-white rounded-2xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-3">Income allocation</h2>
+            <div className="flex h-8 rounded-xl overflow-hidden">
+              {allocationItems.map(({ label, pct, color }) => (
+                <div
+                  key={label}
+                  className={`${color}`}
+                  style={{ width: `${pct}%` }}
+                  title={`${label}: ${pct.toFixed(1)}%`}
+                />
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-4 mt-3">
+              {allocationItems.map(({ label, pct, color }) => (
+                <span key={label} className="flex items-center gap-1.5 text-xs text-gray-600">
+                  <span className={`w-2.5 h-2.5 rounded-sm ${color}`} />
+                  {label} — {pct.toFixed(1)}%
+                </span>
+              ))}
+            </div>
+          </section>
 
-  <div
-    className="w-full bg-gray-200 rounded-full h-3"
-    role="progressbar"
-    aria-valuenow={getMeterPercent(data.salary)}
-    aria-valuemin={0}
-    aria-valuemax={100}
-  >
-    <div
-      className={`h-3 rounded-full transition-all ${
-        getSalaryLevel(data.salary) === "High"
-          ? "bg-green-500"
-          : getSalaryLevel(data.salary) === "Average"
-          ? "bg-yellow-500"
-          : "bg-red-500"
-      }`}
-      style={{ width: `${getMeterPercent(data.salary)}%` }}
-    />
-  </div>
+          {/* ── vs. State median ──────────────────────────────────────────── */}
+          {stateInfo && (
+            <section className="bg-white rounded-2xl shadow-sm p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                How {fmtUSD(amount)} compares in {stateName}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-gray-50 rounded-xl border border-gray-100 p-4">
+                  <p className="text-xs text-gray-500 mb-1">State individual median (Census ACS 2023)</p>
+                  <p className="text-2xl font-bold text-gray-900">{fmtUSD(stateInfo.medianIndividual)}</p>
+                  <div className="mt-2 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full ${vsIndPct! >= 0 ? "bg-green-400" : "bg-red-400"}`}
+                      style={{ width: `${Math.min(100, Math.abs(vsIndPct! / 2) + 50)}%` }}
+                    />
+                  </div>
+                  <p className={`text-sm font-medium mt-2 ${vsIndPct! >= 0 ? "text-green-600" : "text-red-600"}`}>
+                    {vsIndPct! >= 0 ? "+" : ""}{vsIndPct}% {vsIndPct! >= 0 ? "above" : "below"} individual median
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-xl border border-gray-100 p-4">
+                  <p className="text-xs text-gray-500 mb-1">State household median (Census ACS 2023)</p>
+                  <p className="text-2xl font-bold text-gray-900">{fmtUSD(stateInfo.medianHousehold)}</p>
+                  <div className="mt-2 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full ${vsHhPct! >= 0 ? "bg-green-400" : "bg-red-400"}`}
+                      style={{ width: `${Math.min(100, Math.abs(vsHhPct! / 2) + 50)}%` }}
+                    />
+                  </div>
+                  <p className={`text-sm font-medium mt-2 ${vsHhPct! >= 0 ? "text-green-600" : "text-red-600"}`}>
+                    {vsHhPct! >= 0 ? "+" : ""}{vsHhPct}% {vsHhPct! >= 0 ? "above" : "below"} household median
+                  </p>
+                </div>
+              </div>
+            </section>
+          )}
 
-  <div className="flex justify-between text-xs text-gray-500 mt-2">
-    <span>Low</span>
-    <span>Average</span>
-    <span>High</span>
-  </div>
-</section>
+          {/* ── 50/30/20 Budget Planner ───────────────────────────────────── */}
+          <BudgetPlanner netMonthly={taxResult.monthlyTakeHome} />
 
-
-        {/* Tax Breakdown */}
-        <section className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Tax breakdown
-          </h2>
-
-          <ul className="space-y-3 text-gray-700">
-            <li className="flex justify-between">
-              <span>Federal income tax</span>
-              <span>${data.federal_tax.toLocaleString("en-US")}</span>
-            </li>
-            <li className="flex justify-between">
-              <span>State income tax</span>
-              <span>${data.state_tax.toLocaleString("en-US")}</span>
-            </li>
-            <li className="flex justify-between">
-              <span>Social Security</span>
-              <span>${data.social_security.toLocaleString("en-US")}</span>
-            </li>
-            <li className="flex justify-between">
-              <span>Medicare</span>
-              <span>${data.medicare.toLocaleString("en-US")}</span>
-            </li>
-
-            <li className="flex justify-between font-semibold border-t pt-3 mt-3">
-              <span>Total tax</span>
-              <span>${data.total_tax.toLocaleString("en-US")}</span>
-            </li>
-          </ul>
-        </section>
-        {/* What-if scenarios (Client Component) */}
-<WhatIfToggle
-  salary={data.salary}
-  netSalary={data.net_salary}
-  federalTax={data.federal_tax}
-/>
-
-
-        {/* Compensation */}
-        <section className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Total compensation
-          </h2>
-
-          <ul className="space-y-2 text-gray-700">
-            <li className="flex justify-between">
-              <span>Base salary</span>
-              <span>${data.salary.toLocaleString("en-US")}</span>
-            </li>
-            <li className="flex justify-between">
-              <span>Employer 401(k) match</span>
-              <span>
-  ${(data.benefits?.employer_401k_match ?? 0).toLocaleString("en-US")}
-</span>
-            </li>
-            <li className="flex justify-between">
-              <span>Health insurance</span>
-              <span>
-  ${(data.benefits?.health_insurance_value ?? 0).toLocaleString("en-US")}
-</span>
-            </li>
-
-            <li className="flex justify-between font-semibold border-t pt-3 mt-3">
-              <span>Total compensation</span>
-              <span>${data.total_compensation.toLocaleString("en-US")}</span>
-            </li>
-          </ul>
-        </section>
-
-        {/* Comparison Block */}
-        <section className="bg-white rounded-xl shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Compare the same salary across states
-          </h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="border-b text-gray-600">
-                <tr>
-                  <th className="py-2 text-left">State</th>
-                  <th className="py-2 text-left">Take-home</th>
-                  <th className="py-2 text-left">Total tax</th>
-                  <th className="py-2 text-left">Effective rate</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                comparisons.map((c: any) => (
-                  <tr
-                    key={c.state_code}
-                    className={`border-b ${
-                      c.state_code === stateCode
-                        ? "bg-blue-50 font-medium"
-                        : ""
-                    }`}
-                  >
-                    <td className="py-2">{c.display_state}</td>
-                    <td className="py-2">
-                      ${c.net_salary.toLocaleString("en-US")}
-                    </td>
-                    <td className="py-2">
-                      ${c.total_tax.toLocaleString("en-US")}
-                    </td>
-                    <td className="py-2">
-                      {c.effective_tax_rate}%
-                    </td>
+          {/* ── State comparison table ────────────────────────────────────── */}
+          <section className="bg-white rounded-2xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              {fmtUSD(amount)} salary compared across states
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="border-b border-gray-200">
+                  <tr className="text-gray-500 text-xs uppercase tracking-wide">
+                    <th className="pb-2 text-left font-medium">State</th>
+                    <th className="pb-2 text-right font-medium">Take-home</th>
+                    <th className="pb-2 text-right font-medium">Total tax</th>
+                    <th className="pb-2 text-right font-medium">Eff. rate</th>
                   </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {comparisons.map((c) => (
+                    <tr
+                      key={c.stateCode}
+                      className={c.isCurrent ? "bg-blue-50 font-medium" : "hover:bg-gray-50"}
+                    >
+                      <td className="py-2.5">
+                        <a
+                          href={salaryLink(amount, c.stateSlug, taxYear)}
+                          className="text-gray-900 hover:text-blue-600 hover:underline"
+                        >
+                          {c.stateName}
+                        </a>
+                        {c.isCurrent && (
+                          <span className="ml-1.5 text-xs text-blue-600 font-normal">← current</span>
+                        )}
+                      </td>
+                      <td className="py-2.5 text-right text-green-700 font-medium">
+                        {fmtUSD(c.netSalary)}
+                      </td>
+                      <td className="py-2.5 text-right text-gray-600">{fmtUSD(c.totalTax)}</td>
+                      <td className="py-2.5 text-right text-gray-600">{c.effectiveTaxRate}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs text-gray-400">
+              All figures: single filer, standard deduction, {taxYear} tax year. Sorted by highest take-home.
+            </p>
+          </section>
+
+          {/* ── Tax savings tips ──────────────────────────────────────────── */}
+          {tips.length > 0 && (
+            <section className="bg-white rounded-2xl shadow-sm p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-1">
+                Tax-reduction strategies for {fmtUSD(amount)} earners
+              </h2>
+              <p className="text-xs text-gray-400 mb-4">
+                Based on IRS rules and 2025/2026 contribution limits
+              </p>
+              <div className="space-y-4">
+                {tips.map((tip) => (
+                  <div key={tip.title} className="border border-gray-100 rounded-xl p-4 bg-gray-50">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h3 className="font-medium text-gray-900 text-sm">{tip.title}</h3>
+                      <span className="shrink-0 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
+                        {tip.estimatedSaving}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-600 leading-relaxed">{tip.description}</p>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+              <a href="/calculator" className="mt-4 block text-xs text-blue-600 hover:underline font-medium">
+                Model pre-tax contributions in the calculator →
+              </a>
+            </section>
+          )}
+
+          {/* ── Salary ladder ─────────────────────────────────────────────── */}
+          <section className="bg-white rounded-2xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Explore other salaries in {stateName}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              {ladder.all.map((s) => (
+                <a
+                  key={s}
+                  href={salaryLink(s, stateSlug, taxYear)}
+                  className={`text-sm px-3 py-2 rounded-lg text-center transition ${
+                    s === amount
+                      ? "bg-blue-600 text-white font-medium"
+                      : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {fmtUSD(s)}
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* ── How it's calculated ───────────────────────────────────────── */}
+          <section className="bg-white rounded-2xl shadow-sm p-6 text-sm text-gray-600 space-y-3">
+            <h2 className="text-base font-semibold text-gray-800">How this is calculated</h2>
+            <p>
+              Based on IRS {taxYear} federal tax brackets, {stateName} state income tax rules, and{" "}
+              {taxYear} Social Security Administration payroll tax rates. Assumes a single filer using
+              the standard deduction with no itemized deductions or additional credits.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-xs text-gray-500">
+              <li>Federal standard deduction ({taxYear}): $15,750 (single filer)</li>
+              <li>Social Security wage base ({taxYear}): $180,700 at 6.2%</li>
+              <li>Medicare: 1.45% on all wages; +0.9% on earnings above $200,000</li>
+              <li>Local taxes (e.g. NYC) not included unless specified</li>
+            </ul>
+          </section>
+
+          {/* ── Related links ─────────────────────────────────────────────── */}
+          <section className="text-sm">
+            <h3 className="font-semibold text-gray-900 mb-3">Related salary insights</h3>
+            <ul className="space-y-2 text-blue-600">
+              {nearbySalaries.map((s) => (
+                <li key={s}>
+                  <a href={salaryLink(s, stateSlug)} className="hover:underline">
+                    {fmtUSD(s)} salary after tax in {stateName} →
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href={livingStateLink(amount, stateSlug)} className="hover:underline">
+                  Is {fmtUSD(amount)} enough to live in {stateName}? →
+                </a>
+              </li>
+              <li>
+                <a href={bestCitiesLink(stateSlug, amount)} className="hover:underline">
+                  Best cities in {stateName} for a {fmtUSD(amount)} salary →
+                </a>
+              </li>
+              <li>
+                <a href={`/${stateSlug}-salary-guide`} className="hover:underline">
+                  {stateName} full salary guide →
+                </a>
+              </li>
+              {otherStates.slice(0, 3).map((s) => (
+                <li key={s}>
+                  <a href={salaryLink(amount, s)} className="hover:underline">
+                    {fmtUSD(amount)} salary in{" "}
+                    {s.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())} →
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* ── Trust signals ─────────────────────────────────────────────── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ReviewedBy />
+            <DataSourceBadges sources={["irs", "ssa", "bls"]} />
           </div>
-        </section>
 
-        {/* Explainer */}
-        <section className="text-sm text-gray-600 space-y-3">
-          <h2 className="text-lg font-semibold text-gray-800">
-            How this salary is calculated
-          </h2>
-
-          <p>
-            This estimate is based on U.S. federal and state tax rules for the
-            <strong> {data.tax_year}</strong> tax year, assuming a
-            <strong> single filer</strong> using the standard deduction.
-          </p>
-
-          <ul className="list-disc list-inside space-y-1">
-            <li>Federal income tax uses progressive IRS brackets</li>
-            <li>State income tax varies by state (CA & NY included)</li>
-            <li>Payroll taxes include Social Security and Medicare</li>
-            <li>No dependents, credits, or itemized deductions included</li>
-            <li>Local taxes (e.g. NYC) are not included</li>
-          </ul>
-
-          <p className="italic">
-            This is an estimate for informational purposes only.
-          </p>
-        </section>
-
-        {/* Salary Ladder Navigation */}
-<section className="mt-12 bg-white rounded-xl shadow-sm p-6">
-  <h2 className="text-lg font-semibold text-gray-900 mb-4">
-    Explore other salary levels in {data.state}
-  </h2>
-
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-
-    {ladder.all.map((amount) => {
-      const isCurrent = amount === salaryNumber;
-
-      return (
-        <a
-          key={amount}
-          href={salaryLink(amount, stateSlug)}
-          className={`text-sm px-3 py-2 rounded-lg text-center ${
-            isCurrent
-              ? "bg-blue-600 text-white font-medium"
-              : "bg-gray-100 hover:bg-gray-200"
-          }`}
-        >
-          ${amount.toLocaleString()}
-        </a>
-      );
-    })}
-
-  </div>
-</section>
-
-        
-        {/* People Also Searched For */}
-<section className="mt-10">
-  <h2 className="text-lg font-semibold text-gray-900 mb-4">
-    People also searched for
-  </h2>
-
-  <ul className="space-y-2 text-blue-600 text-sm">
-    <li>
-      <a href={`/salary/${amount}-${stateSlug}-vs-neighbor`}>
-        {data.state} vs neighboring state tax comparison
-      </a>
-    </li>
-
-    <li>
-      <a href={`/living/is-${amount}-enough-in-${stateSlug}`}>
-        Is ${Number(amount).toLocaleString()} enough to live in{" "}
-        {data.state}?
-      </a>
-    </li>
-
-    <li>
-      <a href={`/best-cities/${stateSlug}/${amount}`}>
-        Best cities in {data.state} for a $
-        {Number(amount).toLocaleString()} salary
-      </a>
-    </li>
-  </ul>
-</section>
-{/* Related Salary Insights */}
-<section className="mt-12 bg-white rounded-xl shadow-sm p-6">
-  <h2 className="text-lg font-semibold text-gray-900 mb-4">
-    Related salary insights
-  </h2>
-
-  <ul className="space-y-2 text-blue-600 text-sm">
-
-    {/* 1️⃣ Nearby Salaries */}
-    {nearbySalaries.map((s) => (
-      <li key={s}>
-        <a href={salaryLink(s, stateSlug)}>
-          ${s.toLocaleString()} salary in {data.state}
-        </a>
-      </li>
-    ))}
-
-    {/* 2️⃣ Same Salary in Other States */}
-    {otherStates.map((s) => (
-      <li key={s}>
-        <a href={salaryLink(salaryNumber, s)}>
-          ${salaryNumber.toLocaleString()} salary in{" "}
-          {s.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
-        </a>
-      </li>
-    ))}
-
-    {/* 3️⃣ Is It Enough Page */}
-    <li>
-      <a href={livingStateLink(salaryNumber, stateSlug)}>
-        Is ${salaryNumber.toLocaleString()} enough to live in {data.state}?
-      </a>
-    </li>
-
-    {/* 4️⃣ Best Cities Page */}
-    <li>
-      <a href={bestCitiesLink(stateSlug, salaryNumber)}>
-        Best cities in {data.state} for a ${salaryNumber.toLocaleString()} salary
-      </a>
-    </li>
-
-  </ul>
-</section>
-
-
-{/* Last Updated */}
-<section className="mt-12 pt-6 border-t border-gray-200 text-sm text-gray-600">
-  <p><strong>Last Updated:</strong> February 2026</p>
-  <p>Based on IRS and state tax tables.</p>
-</section>
-
-
-      </div>
-    </main>
+        </div>
+      </main>
     </>
   );
 }

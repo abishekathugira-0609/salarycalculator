@@ -4,9 +4,9 @@ import CalculatorClient from "./CalculatorClient";
 export const revalidate = 86400; // 24 hours ISR
 
 export const metadata: Metadata = {
-  title: "Salary After Tax Calculator (US)",
+  title: "Free Salary Tax Calculator — Know Your Pay (2026)",
   description:
-    "Calculate take-home pay after federal and state taxes. Compare salaries instantly.",
+    "Calculate your exact 2026 take-home pay after federal and state taxes. Enter any salary and see instant results for all 50 states.",
 };
 const appSchema = {
   "@context": "https://schema.org",

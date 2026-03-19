@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Contact – Salary After Tax Calculator",
+  title: "Contact – Know Your Pay | 2026 Salary After Tax Calculator",
   description:
-    "Get in touch with feedback or questions about the Salary After Tax Calculator.",
+    "Get in touch with feedback or questions about Know Your Pay's 2026 salary after-tax calculator.",
 };
 
 export default function ContactPage() {

@@ -1,0 +1,1694 @@
+{
+  "birmingham": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "huntsville": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "mobile": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "montgomery": {
+    "single": 374,
+    "couple": 672,
+    "family3": 893,
+    "family4": 1080
+  },
+  "tuscaloosa": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "auburn": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "anchorage": {
+    "single": 537,
+    "couple": 964,
+    "family3": 1281,
+    "family4": 1549
+  },
+  "fairbanks": {
+    "single": 563,
+    "couple": 1011,
+    "family3": 1344,
+    "family4": 1626
+  },
+  "juneau": {
+    "single": 594,
+    "couple": 1067,
+    "family3": 1418,
+    "family4": 1715
+  },
+  "sitka": {
+    "single": 572,
+    "couple": 1027,
+    "family3": 1365,
+    "family4": 1651
+  },
+  "ketchikan": {
+    "single": 550,
+    "couple": 988,
+    "family3": 1313,
+    "family4": 1588
+  },
+  "wasilla": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "phoenix": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "tucson": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "mesa": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "chandler": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "scottsdale": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "tempe": {
+    "single": 458,
+    "couple": 822,
+    "family3": 1092,
+    "family4": 1321
+  },
+  "little-rock": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "fort-smith": {
+    "single": 370,
+    "couple": 664,
+    "family3": 882,
+    "family4": 1067
+  },
+  "fayetteville": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "springdale": {
+    "single": 392,
+    "couple": 703,
+    "family3": 935,
+    "family4": 1130
+  },
+  "jonesboro": {
+    "single": 374,
+    "couple": 672,
+    "family3": 893,
+    "family4": 1080
+  },
+  "conway": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "los-angeles": {
+    "single": 682,
+    "couple": 1225,
+    "family3": 1628,
+    "family4": 1969
+  },
+  "san-diego": {
+    "single": 625,
+    "couple": 1122,
+    "family3": 1491,
+    "family4": 1803
+  },
+  "san-jose": {
+    "single": 713,
+    "couple": 1280,
+    "family3": 1701,
+    "family4": 2057
+  },
+  "san-francisco": {
+    "single": 814,
+    "couple": 1462,
+    "family3": 1943,
+    "family4": 2350
+  },
+  "sacramento": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "fresno": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "denver": {
+    "single": 528,
+    "couple": 948,
+    "family3": 1260,
+    "family4": 1524
+  },
+  "colorado-springs": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "aurora": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "fort-collins": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "lakewood": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "boulder": {
+    "single": 572,
+    "couple": 1027,
+    "family3": 1365,
+    "family4": 1651
+  },
+  "bridgeport": {
+    "single": 537,
+    "couple": 964,
+    "family3": 1281,
+    "family4": 1549
+  },
+  "new-haven": {
+    "single": 528,
+    "couple": 948,
+    "family3": 1260,
+    "family4": 1524
+  },
+  "hartford": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "stamford": {
+    "single": 638,
+    "couple": 1146,
+    "family3": 1523,
+    "family4": 1842
+  },
+  "waterbury": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "norwalk": {
+    "single": 607,
+    "couple": 1090,
+    "family3": 1449,
+    "family4": 1753
+  },
+  "wilmington": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "dover": {
+    "single": 471,
+    "couple": 845,
+    "family3": 1124,
+    "family4": 1359
+  },
+  "newark": {
+    "single": 594,
+    "couple": 1067,
+    "family3": 1418,
+    "family4": 1715
+  },
+  "middletown": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "smyrna": {
+    "single": 427,
+    "couple": 766,
+    "family3": 1019,
+    "family4": 1232
+  },
+  "milford": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "miami": {
+    "single": 607,
+    "couple": 1090,
+    "family3": 1449,
+    "family4": 1753
+  },
+  "orlando": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "tampa": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "jacksonville": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "st-petersburg": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "fort-lauderdale": {
+    "single": 550,
+    "couple": 988,
+    "family3": 1313,
+    "family4": 1588
+  },
+  "atlanta": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "savannah": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "augusta": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "columbus": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "macon": {
+    "single": 374,
+    "couple": 672,
+    "family3": 893,
+    "family4": 1080
+  },
+  "athens": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "honolulu": {
+    "single": 801,
+    "couple": 1438,
+    "family3": 1911,
+    "family4": 2311
+  },
+  "hilo": {
+    "single": 682,
+    "couple": 1225,
+    "family3": 1628,
+    "family4": 1969
+  },
+  "kailua": {
+    "single": 770,
+    "couple": 1383,
+    "family3": 1838,
+    "family4": 2223
+  },
+  "pearl-city": {
+    "single": 726,
+    "couple": 1304,
+    "family3": 1733,
+    "family4": 2096
+  },
+  "waipahu": {
+    "single": 704,
+    "couple": 1264,
+    "family3": 1680,
+    "family4": 2032
+  },
+  "kaneohe": {
+    "single": 748,
+    "couple": 1343,
+    "family3": 1785,
+    "family4": 2159
+  },
+  "boise": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "meridian": {
+    "single": 466,
+    "couple": 837,
+    "family3": 1113,
+    "family4": 1346
+  },
+  "nampa": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "idaho-falls": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "pocatello": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "caldwell": {
+    "single": 422,
+    "couple": 758,
+    "family3": 1008,
+    "family4": 1219
+  },
+  "chicago": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "naperville": {
+    "single": 528,
+    "couple": 948,
+    "family3": 1260,
+    "family4": 1524
+  },
+  "joliet": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "rockford": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "springfield": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "indianapolis": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "fort-wayne": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "evansville": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "south-bend": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "carmel": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "bloomington": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "des-moines": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "cedar-rapids": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "davenport": {
+    "single": 392,
+    "couple": 703,
+    "family3": 935,
+    "family4": 1130
+  },
+  "sioux-city": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "waterloo": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "iowa-city": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "wichita": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "overland-park": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "kansas-city": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "topeka": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "olathe": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "lawrence": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "louisville": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "lexington": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "bowling-green": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "owensboro": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "covington": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "richmond": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "new-orleans": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "baton-rouge": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "shreveport": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "metairie": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "lafayette": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "lake-charles": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "portland": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "lewiston": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "bangor": {
+    "single": 427,
+    "couple": 766,
+    "family3": 1019,
+    "family4": 1232
+  },
+  "south-portland": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "biddeford": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "baltimore": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "rockville": {
+    "single": 625,
+    "couple": 1122,
+    "family3": 1491,
+    "family4": 1803
+  },
+  "gaithersburg": {
+    "single": 607,
+    "couple": 1090,
+    "family3": 1449,
+    "family4": 1753
+  },
+  "bowie": {
+    "single": 563,
+    "couple": 1011,
+    "family3": 1344,
+    "family4": 1626
+  },
+  "frederick": {
+    "single": 537,
+    "couple": 964,
+    "family3": 1281,
+    "family4": 1549
+  },
+  "annapolis": {
+    "single": 581,
+    "couple": 1043,
+    "family3": 1386,
+    "family4": 1676
+  },
+  "boston": {
+    "single": 682,
+    "couple": 1225,
+    "family3": 1628,
+    "family4": 1969
+  },
+  "worcester": {
+    "single": 550,
+    "couple": 988,
+    "family3": 1313,
+    "family4": 1588
+  },
+  "cambridge": {
+    "single": 726,
+    "couple": 1304,
+    "family3": 1733,
+    "family4": 2096
+  },
+  "lowell": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "brockton": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "detroit": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "grand-rapids": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "warren": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "sterling-heights": {
+    "single": 427,
+    "couple": 766,
+    "family3": 1019,
+    "family4": 1232
+  },
+  "lansing": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "ann-arbor": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "minneapolis": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "st-paul": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "rochester": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "duluth": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "brooklyn-park": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "jackson": {
+    "single": 365,
+    "couple": 656,
+    "family3": 872,
+    "family4": 1054
+  },
+  "gulfport": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "southaven": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "hattiesburg": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "biloxi": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "st-louis": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "columbia": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "independence": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "lee-summit": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "billings": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "missoula": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "great-falls": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "bozeman": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "butte": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "helena": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "omaha": {
+    "single": 409,
+    "couple": 735,
+    "family3": 977,
+    "family4": 1181
+  },
+  "lincoln": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "bellevue": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "grand-island": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "kearney": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "fremont": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "las-vegas": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "henderson": {
+    "single": 466,
+    "couple": 837,
+    "family3": 1113,
+    "family4": 1346
+  },
+  "reno": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "north-las-vegas": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "sparks": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "carson-city": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "manchester": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "nashua": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "concord": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "derry": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "jersey-city": {
+    "single": 638,
+    "couple": 1146,
+    "family3": 1523,
+    "family4": 1842
+  },
+  "paterson": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "elizabeth": {
+    "single": 563,
+    "couple": 1011,
+    "family3": 1344,
+    "family4": 1626
+  },
+  "trenton": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "camden": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "albuquerque": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "las-cruces": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "rio-rancho": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "santa-fe": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "roswell": {
+    "single": 374,
+    "couple": 672,
+    "family3": 893,
+    "family4": 1080
+  },
+  "farmington": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "new-york-city": {
+    "single": 858,
+    "couple": 1541,
+    "family3": 2048,
+    "family4": 2477
+  },
+  "buffalo": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "yonkers": {
+    "single": 625,
+    "couple": 1122,
+    "family3": 1491,
+    "family4": 1803
+  },
+  "syracuse": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "albany": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "charlotte": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "raleigh": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "greensboro": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "durham": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "winston-salem": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "fargo": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "bismarck": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "grand-forks": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "minot": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "west-fargo": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "williston": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "cleveland": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "cincinnati": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "toledo": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "akron": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "dayton": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "oklahoma-city": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "tulsa": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "norman": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "broken-arrow": {
+    "single": 392,
+    "couple": 703,
+    "family3": 935,
+    "family4": 1130
+  },
+  "lawton": {
+    "single": 374,
+    "couple": 672,
+    "family3": 893,
+    "family4": 1080
+  },
+  "edmond": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "eugene": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "salem": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "gresham": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "hillsboro": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "beaverton": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "philadelphia": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "pittsburgh": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "allentown": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "erie": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "reading": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "scranton": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "providence": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "cranston": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "warwick": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "pawtucket": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "east-providence": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "woonsocket": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "charleston": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "north-charleston": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "mount-pleasant": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "rock-hill": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "greenville": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "sioux-falls": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "rapid-city": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "aberdeen": {
+    "single": 383,
+    "couple": 687,
+    "family3": 914,
+    "family4": 1105
+  },
+  "brookings": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "watertown": {
+    "single": 378,
+    "couple": 679,
+    "family3": 903,
+    "family4": 1092
+  },
+  "mitchell": {
+    "single": 370,
+    "couple": 664,
+    "family3": 882,
+    "family4": 1067
+  },
+  "nashville": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "memphis": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "knoxville": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "chattanooga": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "clarksville": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "murfreesboro": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "houston": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "dallas": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "austin": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "san-antonio": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "fort-worth": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "el-paso": {
+    "single": 387,
+    "couple": 695,
+    "family3": 924,
+    "family4": 1118
+  },
+  "salt-lake-city": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "west-valley-city": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "provo": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "west-jordan": {
+    "single": 449,
+    "couple": 806,
+    "family3": 1071,
+    "family4": 1295
+  },
+  "orem": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "ogden": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "burlington": {
+    "single": 537,
+    "couple": 964,
+    "family3": 1281,
+    "family4": 1549
+  },
+  "south-burlington": {
+    "single": 528,
+    "couple": 948,
+    "family3": 1260,
+    "family4": 1524
+  },
+  "rutland": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "barre": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "montpelier": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "winooski": {
+    "single": 519,
+    "couple": 932,
+    "family3": 1239,
+    "family4": 1499
+  },
+  "virginia-beach": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "norfolk": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "chesapeake": {
+    "single": 462,
+    "couple": 830,
+    "family3": 1103,
+    "family4": 1334
+  },
+  "arlington": {
+    "single": 682,
+    "couple": 1225,
+    "family3": 1628,
+    "family4": 1969
+  },
+  "alexandria": {
+    "single": 638,
+    "couple": 1146,
+    "family3": 1523,
+    "family4": 1842
+  },
+  "seattle": {
+    "single": 669,
+    "couple": 1201,
+    "family3": 1596,
+    "family4": 1930
+  },
+  "spokane": {
+    "single": 440,
+    "couple": 790,
+    "family3": 1050,
+    "family4": 1270
+  },
+  "tacoma": {
+    "single": 493,
+    "couple": 885,
+    "family3": 1176,
+    "family4": 1422
+  },
+  "vancouver": {
+    "single": 484,
+    "couple": 869,
+    "family3": 1155,
+    "family4": 1397
+  },
+  "kent": {
+    "single": 506,
+    "couple": 908,
+    "family3": 1208,
+    "family4": 1461
+  },
+  "huntington": {
+    "single": 361,
+    "couple": 648,
+    "family3": 861,
+    "family4": 1041
+  },
+  "parkersburg": {
+    "single": 361,
+    "couple": 648,
+    "family3": 861,
+    "family4": 1041
+  },
+  "morgantown": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "wheeling": {
+    "single": 370,
+    "couple": 664,
+    "family3": 882,
+    "family4": 1067
+  },
+  "weirton": {
+    "single": 361,
+    "couple": 648,
+    "family3": 861,
+    "family4": 1041
+  },
+  "milwaukee": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "madison": {
+    "single": 475,
+    "couple": 853,
+    "family3": 1134,
+    "family4": 1372
+  },
+  "green-bay": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "kenosha": {
+    "single": 431,
+    "couple": 774,
+    "family3": 1029,
+    "family4": 1245
+  },
+  "racine": {
+    "single": 418,
+    "couple": 751,
+    "family3": 998,
+    "family4": 1207
+  },
+  "appleton": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "cheyenne": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "casper": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "laramie": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "gillette": {
+    "single": 405,
+    "couple": 727,
+    "family3": 966,
+    "family4": 1168
+  },
+  "rock-springs": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  },
+  "sheridan": {
+    "single": 396,
+    "couple": 711,
+    "family3": 945,
+    "family4": 1143
+  }
+}

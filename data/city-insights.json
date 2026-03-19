@@ -1,0 +1,30 @@
+[
+  {
+    "city": "Austin",
+    "state": "Texas",
+    "industries": ["Technology", "Education", "Government"],
+    "medianHomePrice": 450000,
+    "economicGrowth": "Austin has seen rapid economic growth driven by the tech sector and a steady influx of new residents."
+  },
+  {
+    "city": "San Francisco",
+    "state": "California",
+    "industries": ["Technology", "Finance", "Tourism"],
+    "medianHomePrice": 1200000,
+    "economicGrowth": "San Francisco remains a global tech hub, but faces challenges with housing affordability and population shifts."
+  },
+  {
+    "city": "Miami",
+    "state": "Florida",
+    "industries": ["Tourism", "Finance", "Healthcare"],
+    "medianHomePrice": 600000,
+    "economicGrowth": "Miami's economy is bolstered by tourism and finance, with strong growth in real estate and healthcare."
+  },
+  {
+    "city": "Seattle",
+    "state": "Washington",
+    "industries": ["Technology", "Aerospace", "Retail"],
+    "medianHomePrice": 800000,
+    "economicGrowth": "Seattle's tech and aerospace sectors continue to drive economic expansion, though housing costs remain high."
+  }
+]
