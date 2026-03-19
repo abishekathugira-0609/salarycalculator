@@ -24,7 +24,7 @@ type StateMedian = { name: string; medianHousehold: number; medianIndividual: nu
 const stateMedians = stateMediansJson as Record<string, StateMedian>;
 const cityCostsRecord = CITY_COSTS as Record<string, CityCost[]>;
 
-const SEED_SALARIES = [40000, 50000, 60000, 75000, 100000, 125000, 150000, 200000, 250000, 300000];
+const SEED_SALARIES = [40000, 60000, 100000, 150000, 200000, 300000];
 
 function fmtUSD(n: number) {
   return "$" + n.toLocaleString("en-US");

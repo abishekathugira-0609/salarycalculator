@@ -19,15 +19,11 @@ export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ salary: string; state: string }> };
 
+// Top 15 states by search volume — remaining states served via ISR
 const STATE_SLUGS = [
-  "alabama","alaska","arizona","arkansas","california","colorado","connecticut",
-  "delaware","florida","georgia","hawaii","idaho","illinois","indiana","iowa",
-  "kansas","kentucky","louisiana","maine","maryland","massachusetts","michigan",
-  "minnesota","mississippi","missouri","montana","nebraska","nevada",
-  "new-hampshire","new-jersey","new-mexico","new-york","north-carolina",
-  "north-dakota","ohio","oklahoma","oregon","pennsylvania","rhode-island",
-  "south-carolina","south-dakota","tennessee","texas","utah","vermont",
-  "virginia","washington","west-virginia","wisconsin","wyoming",
+  "california","texas","florida","new-york","washington",
+  "illinois","pennsylvania","georgia","arizona","colorado",
+  "massachusetts","north-carolina","nevada","virginia","ohio",
 ];
 
 export function generateStaticParams() {

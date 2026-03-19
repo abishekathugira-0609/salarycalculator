@@ -1,12 +1,9 @@
-export function getSalaryData(
-  amount: string,
-  stateCode: string,
-  year: string
-) {
+import { readFileSync } from "fs";
+import { join } from "path";
+import { unstable_cache } from "next/cache";
+
+function loadFromDisk(amount: string, stateCode: string, year: string) {
   try {
-    const { readFileSync } = require("fs");
-    const { join } = require("path");
-    
     const filePath = join(
       process.cwd(),
       "data",
@@ -21,3 +18,11 @@ export function getSalaryData(
     return null;
   }
 }
+
+export const getSalaryData = unstable_cache(
+  async (amount: string, stateCode: string, year: string) => {
+    return loadFromDisk(amount, stateCode, year);
+  },
+  ["salary-data"],
+  { revalidate: 86400 }
+);

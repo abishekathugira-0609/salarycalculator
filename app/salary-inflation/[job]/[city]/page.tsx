@@ -13,11 +13,11 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 export const dynamicParams = true;
 
-// ── Seed: top 10 jobs × top 20 cities = 200 pages ────────────────────────────
+// ── Seed: top 10 jobs × top 10 cities = 100 pages ────────────────────────────
 export async function generateStaticParams() {
   const params: Array<{ job: string; city: string }> = [];
-  for (const job of SEED_JOBS) {
-    for (const city of SEED_CITIES.slice(0, 20)) {
+  for (const job of SEED_JOBS.slice(0, 10)) {
+    for (const city of SEED_CITIES.slice(0, 10)) {
       params.push({ job, city });
     }
   }

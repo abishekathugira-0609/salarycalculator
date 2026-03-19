@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 export const dynamicParams = true;
 
-const MIGRATION_CITIES = SEED_CITIES.slice(0, 20);
+const MIGRATION_CITIES = SEED_CITIES.slice(0, 10);
 
 export async function generateStaticParams() {
   const params = [];

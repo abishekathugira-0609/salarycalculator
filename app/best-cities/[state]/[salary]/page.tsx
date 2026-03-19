@@ -71,7 +71,7 @@ if (!stateCities) return notFound();
   const stateCode = stateCities[0]?.stateCode;
   if (!stateCode) return notFound();
 
-  const data = getSalaryData(salary, stateCode, YEAR);
+  const data = await getSalaryData(salary, stateCode, YEAR);
   if (!data) return notFound();
   const monthlyTakeHome = Math.round(data.net_salary / 12);
 

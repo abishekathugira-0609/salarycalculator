@@ -33,12 +33,15 @@ function fmtUSD(n: number) {
 // ── generateStaticParams ─────────────────────────────────────────────────────
 export function generateStaticParams() {
   const params: { slug: string }[] = [];
-  for (const cities of Object.values(CITY_COSTS)) {
-    for (const city of cities) {
-      const citySlug = slugifyCity(city.city);
-      for (const salary of SEED_SALARIES) {
-        params.push({ slug: `is-${salary}-enough-in-${citySlug}` });
-      }
+  const topCities = Object.values(CITY_COSTS)
+    .flat()
+    .sort((a, b) => b.seoWeight - a.seoWeight)
+    .slice(0, 20);
+  const topSalaries = SEED_SALARIES.slice(0, 8);
+  for (const city of topCities) {
+    const citySlug = slugifyCity(city.city);
+    for (const salary of topSalaries) {
+      params.push({ slug: `is-${salary}-enough-in-${citySlug}` });
     }
   }
   return params;

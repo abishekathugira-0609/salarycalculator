@@ -12,13 +12,13 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 export const dynamicParams = true;
 
-// ── Seed: 3 salaries × 3 prices × 20 cities = 180 pages at build time ────────
+// ── Seed: 6 salaries × 3 prices × 10 cities = 180 pages at build time ────────
 const SEED_HOUSE_PRICES = [300000, 500000, 700000];
-const SEED_AFFORD_CITIES = SEED_CITIES.slice(0, 20);
+const SEED_AFFORD_CITIES = SEED_CITIES.slice(0, 10);
 
 export async function generateStaticParams() {
   const params = [];
-  for (const salary of SEED_SALARIES) {
+  for (const salary of SEED_SALARIES.slice(0, 6)) {
     for (const housePrice of SEED_HOUSE_PRICES) {
       for (const city of SEED_AFFORD_CITIES) {
         params.push({

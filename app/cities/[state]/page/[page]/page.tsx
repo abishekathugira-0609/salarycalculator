@@ -22,14 +22,11 @@ function buildCitySalaryPairs(cities: string[]) {
   return pairs;
 }
 
+// Only pre-build page 1 per state — remaining pages served via ISR
 export async function generateStaticParams() {
   const params: Array<{ state: string; page: string }> = [];
-  for (const [state, cities] of Object.entries(stateData)) {
-    const total = cities.length * ALL_SALARY_BUCKETS.length;
-    const pages = Math.ceil(total / PER_PAGE);
-    for (let p = 1; p <= pages; p++) {
-      params.push({ state, page: String(p) });
-    }
+  for (const state of Object.keys(stateData)) {
+    params.push({ state, page: "1" });
   }
   return params;
 }
