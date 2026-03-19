@@ -1,7 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS } from "@/data/city-costs";
 import { getSalaryData } from "@/lib/getSalaryData";
+import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
 
 export const revalidate = 86400; // 24 hours ISR
 
@@ -59,12 +60,17 @@ export async function generateMetadata(
    PAGE
 ------------------------------ */
 export default async function BestCitiesPage({ params }: PageProps) {
-  const { state, salary } = await params;
+  const { state: rawState, salary } = await params;
 
-const typedState = state as keyof typeof CITY_COSTS;
-const stateCities = CITY_COSTS[typedState];
-if (!stateCities) return notFound();
+  // Redirect 2-letter state codes (e.g. "CA") to full slug (e.g. "california")
+  let state = rawState;
+  if (/^[A-Z]{2}$/.test(state)) {
+    const slug = Object.entries(STATE_CODE_MAP).find(([, code]) => code === state)?.[0];
+    if (slug) permanentRedirect(`/best-cities/${slug}/${salary}`);
+  }
 
+  const typedState = state as keyof typeof CITY_COSTS;
+  const stateCities = CITY_COSTS[typedState];
   if (!stateCities) return notFound();
 
   // Derive state code safely from dataset

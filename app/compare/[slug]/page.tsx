@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { CITY_COSTS } from "@/data/city-costs";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
@@ -6,8 +6,8 @@ import { getRent } from "@/lib/data/rentData";
 import { getCostOfLivingIndex } from "@/lib/data/costOfLiving";
 import { compareSalaryAcrossCities } from "@/lib/relativeSalary";
 import { getInternalLinks } from "@/lib/internalLinks";
-import { getStateCodeForCity, toTitle, fmtUSD, cityToSlug } from "@/lib/stateCodeMap";
-import { buildPageMeta, SEED_CITIES } from "@/lib/seo";
+import { getStateCodeForCity, getStatePrimaryCity, toTitle, fmtUSD, STATE_CODE_MAP } from "@/lib/stateCodeMap";
+import { buildPageMeta } from "@/lib/seo";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -20,17 +20,40 @@ function parseSlug(slug: string): { cityA: string; cityB: string } | null {
   return { cityA: slug.slice(0, idx), cityB: slug.slice(idx + 4) };
 }
 
-// ── Seed: top 15 cities × 14 = 210 pairs at build time ───────────────────────
-const SEED_COMPARE_CITIES = SEED_CITIES.slice(0, 15);
+// ── 25 high-traffic comparison pairs pre-built at build time ─────────────────
+const POPULAR_PAIRS: [string, string][] = [
+  ["new-york-city", "los-angeles"],
+  ["new-york-city", "chicago"],
+  ["new-york-city", "san-francisco"],
+  ["new-york-city", "miami"],
+  ["new-york-city", "boston"],
+  ["new-york-city", "seattle"],
+  ["new-york-city", "austin"],
+  ["los-angeles", "san-francisco"],
+  ["los-angeles", "chicago"],
+  ["los-angeles", "miami"],
+  ["los-angeles", "seattle"],
+  ["los-angeles", "austin"],
+  ["san-francisco", "seattle"],
+  ["san-francisco", "chicago"],
+  ["san-francisco", "austin"],
+  ["chicago", "miami"],
+  ["chicago", "seattle"],
+  ["chicago", "austin"],
+  ["seattle", "austin"],
+  ["seattle", "denver"],
+  ["austin", "denver"],
+  ["austin", "dallas"],
+  ["miami", "los-angeles"],
+  ["boston", "san-francisco"],
+  ["denver", "chicago"],
+];
 
 export async function generateStaticParams() {
-  const params = [];
-  for (const cityA of SEED_COMPARE_CITIES) {
-    for (const cityB of SEED_COMPARE_CITIES) {
-      if (cityA !== cityB) params.push({ slug: `${cityA}-vs-${cityB}` });
-    }
-  }
-  return params;
+  return POPULAR_PAIRS.flatMap(([a, b]) => [
+    { slug: `${a}-vs-${b}` },
+    { slug: `${b}-vs-${a}` },
+  ]);
 }
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -42,7 +65,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const parsed = parseSlug(slug);
   if (!parsed) return { title: "City Comparison" };
-  const { cityA, cityB } = parsed;
+  const cityA = parsed.cityA in STATE_CODE_MAP ? (getStatePrimaryCity(parsed.cityA) ?? parsed.cityA) : parsed.cityA;
+  const cityB = parsed.cityB in STATE_CODE_MAP ? (getStatePrimaryCity(parsed.cityB) ?? parsed.cityB) : parsed.cityB;
   return buildPageMeta({
     title: `${toTitle(cityA)} vs ${toTitle(cityB)}: Salary, Rent & Cost of Living (2026)`,
     description: `Compare salaries, rent, taxes, and purchasing power between ${toTitle(cityA)} and ${toTitle(cityB)}. See which city gives your money more value in 2026.`,
@@ -67,7 +91,18 @@ export default async function CompareCitiesPage({
   const parsed = parseSlug(slug);
   if (!parsed) return notFound();
 
-  const { cityA, cityB } = parsed;
+  // Resolve state slugs (e.g. "new-york") to their primary city ("new-york-city")
+  function resolveCity(s: string): string {
+    return s in STATE_CODE_MAP ? (getStatePrimaryCity(s) ?? s) : s;
+  }
+  const cityA = resolveCity(parsed.cityA);
+  const cityB = resolveCity(parsed.cityB);
+
+  // Redirect to canonical URL if slugs were resolved
+  if (cityA !== parsed.cityA || cityB !== parsed.cityB) {
+    permanentRedirect(`/compare/${cityA}-vs-${cityB}`);
+  }
+
   if (cityA === cityB) return notFound();
 
   const scA = getStateCodeForCity(cityA);
