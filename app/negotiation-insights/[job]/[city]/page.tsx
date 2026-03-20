@@ -8,7 +8,7 @@ import { buildPageMeta } from "@/lib/seo";
 import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 export async function generateMetadata({

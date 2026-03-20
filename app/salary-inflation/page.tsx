@@ -5,7 +5,7 @@ import { getSalaryEstimate } from "@/lib/data/salaryData";
 import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "Salary vs Inflation — Has Your Pay Kept Up? (2020–2026)",

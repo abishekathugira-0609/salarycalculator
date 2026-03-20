@@ -13,7 +13,7 @@ import { buildPageMeta, SEED_CITIES, SEED_JOBS } from "@/lib/seo";
 import BudgetPlanner from "@/components/BudgetPlanner";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 // ── Seed: 10 jobs × 20 cities = 200 pages at build time ──────────────────────

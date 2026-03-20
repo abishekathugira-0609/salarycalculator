@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildPageMeta } from "@/lib/seo";
 import LastUpdated from "@/components/LastUpdated";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "Methodology – How We Calculate Salary After Tax | Know Your Pay",

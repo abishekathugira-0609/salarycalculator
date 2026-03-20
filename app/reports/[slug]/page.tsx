@@ -5,7 +5,7 @@ import DataSourceBadges from "@/components/DataSourceBadges";
 import ReviewedBy from "@/components/ReviewedBy";
 import LastUpdated from "@/components/LastUpdated";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 type Report = {
   title: string;

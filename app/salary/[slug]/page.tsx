@@ -10,7 +10,7 @@ import { getNearbySalaries, getOtherStates, getSalaryLadder } from "@/lib/links-
 import { salaryLink, livingStateLink, bestCitiesLink } from "@/lib/internal-links";
 import stateMediansJson from "@/data/state-medians.json";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamic = "force-static";
 
 type PageProps = { params: Promise<{ slug: string }> };

@@ -3,7 +3,7 @@ import { buildPageMeta } from "@/lib/seo";
 import RemoteTaxForm from "./RemoteTaxForm";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "Remote Work Tax Calculator — Live in One State, Work in Another (2026)",

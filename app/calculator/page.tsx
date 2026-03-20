@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import CalculatorClient from "./CalculatorClient";
 
-export const revalidate = 86400; // 24 hours ISR
+export const revalidate = 604800; // 24 hours ISR
 
 export const metadata: Metadata = {
   title: "Free Salary Tax Calculator — Know Your Pay (2026)",

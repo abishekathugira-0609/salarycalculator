@@ -9,7 +9,7 @@ import { stateSlugToCode, toTitle, fmtUSD } from "@/lib/stateCodeMap";
 import { buildPageMeta } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 // ── Seed: top 10 states × 9 = 90 pairs at build time ─────────────────────────

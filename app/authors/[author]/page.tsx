@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { buildPageMeta, BASE_URL } from "@/lib/seo";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 type AuthorProfile = {
   name: string;

@@ -6,7 +6,7 @@ import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
 import statesCitiesData from "@/data/states-cities.json";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 const stateData = statesCitiesData as Record<string, string[]>;

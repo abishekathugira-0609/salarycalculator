@@ -9,7 +9,7 @@ import { getCOLData } from "@/lib/data/costOfLiving";
 import { getFoodCostBySize } from "@/lib/data/foodData";
 import { generateSalaryIntelligence } from "@/lib/intelligence/salaryIntelligence";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 type PageProps = {
@@ -28,6 +28,15 @@ function slugifyCity(city: string) {
 
 function fmtUSD(n: number) {
   return "$" + n.toLocaleString("en-US");
+}
+
+function fmtK(n: number): string {
+  return `$${Math.round(n / 1000)}K`;
+}
+
+function pickVariant(salary: number, city: string, count: number): number {
+  const hash = city.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  return (Math.floor(salary / 1000) + hash) % count;
 }
 
 // ── generateStaticParams ─────────────────────────────────────────────────────
@@ -92,9 +101,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = findCity(citySlug);
   if (!city) return {};
 
+  const net = calculateNetSalary({ salary, state: city.stateCode, filingStatus: "single", taxYear: 2026 });
+  const rent = getRentByType(citySlug, "1br") ?? city.rent;
+  const k = fmtK(salary);
+  const v = pickVariant(salary, citySlug, 6);
+
+  const titles = [
+    `Is ${k} Enough in ${city.city}? Take-Home & Living Costs`,
+    `${k} in ${city.city}: Take-Home, Rent & Reality Check`,
+    `Living on ${k} in ${city.city} — Is It Enough? (2026)`,
+    `${k} in ${city.city}: What You Really Take Home (2026)`,
+    `Is ${k} a Good Salary in ${city.city}? Rent & Verdict`,
+    `${k} Salary in ${city.city}: Take-Home & Cost of Living`,
+  ];
+
+  const descs = [
+    `Take home ${fmtUSD(net.monthlyTakeHome)}/mo on ${k} in ${city.city}. With rent at ${fmtUSD(rent)}/mo, see your full budget breakdown, lifestyle verdict, and monthly savings potential.`,
+    `${k} nets ${fmtUSD(net.monthlyTakeHome)}/month in ${city.city} after taxes. Rent runs ${fmtUSD(rent)}/mo — find out if this salary covers your lifestyle comfortably in 2026.`,
+    `After taxes, ${k} in ${city.city} leaves ${fmtUSD(net.monthlyTakeHome)}/mo. Average rent is ${fmtUSD(rent)}/mo. Get the full cost breakdown and decide if it works for you.`,
+    `${fmtUSD(net.monthlyTakeHome)}/mo take-home. ${fmtUSD(rent)}/mo rent in ${city.city}. See what's left after all expenses — and get a clear lifestyle verdict for 2026.`,
+    `Wondering if ${k} works in ${city.city}? You'd take home ${fmtUSD(net.monthlyTakeHome)}/mo. Rent averages ${fmtUSD(rent)}/mo. Full breakdown: taxes, budget, savings, and verdict.`,
+    `${k} in ${city.city} puts ${fmtUSD(net.monthlyTakeHome)} in your pocket each month. Rent is ${fmtUSD(rent)}/mo — see if it's enough to live comfortably and what you can save.`,
+  ];
+
   return {
-    title: `Is ${fmtUSD(salary)} Enough to Live in ${city.city}? (2026)`,
-    description: `See if a ${fmtUSD(salary)} salary is enough to live in ${city.city}, ${city.state}. After-tax take-home, rent, food, utilities, and lifestyle verdict.`,
+    title: titles[v],
+    description: descs[v],
     alternates: { canonical: `/city-living/${slug}` },
   };
 }
@@ -160,6 +192,83 @@ export default async function CityLivingPage({ params }: PageProps) {
     ficaTotal:          taxResult.fica.socialSecurity + taxResult.fica.medicare,
     totalTax:           taxResult.federalTax + taxResult.stateTax + taxResult.fica.socialSecurity + taxResult.fica.medicare,
   });
+
+  // ── Enhancement sections data ─────────────────────────────────────────────
+  const nonRentExpenses = totalExpenses - rentAmt;
+
+  // What-if scenarios
+  const roommateRent = Math.round(rentAmt * 0.6);
+  const roommateGain = rentAmt - roommateRent;
+  const premiumRent = Math.round(rentAmt * 1.35);
+  const premiumLoss = premiumRent - rentAmt;
+  const premiumRentRatioPct = Math.round((premiumRent / monthlyTakeHome) * 100);
+
+  // Salary comparison (-20%, current, +20%)
+  const salary20Up = Math.round(salary * 1.2);
+  const salary20Down = Math.round(salary * 0.8);
+  const net20Up = calculateNetSalary({ salary: salary20Up, state: city.stateCode, filingStatus: "single", taxYear: 2026 });
+  const net20Down = calculateNetSalary({ salary: salary20Down, state: city.stateCode, filingStatus: "single", taxYear: 2026 });
+  const disposable20Up = net20Up.monthlyTakeHome - totalExpenses;
+  const disposable20Down = net20Down.monthlyTakeHome - totalExpenses;
+  const gain20Up = net20Up.monthlyTakeHome - monthlyTakeHome;
+
+  // City comparison
+  const allCityList = Object.values(CITY_COSTS).flat().filter((c) => c.city !== city.city && c.seoWeight >= 3);
+  const cheapComp = [...allCityList].filter((c) => c.rent < rentAmt).sort((a, b) => b.rent - a.rent)[0];
+  const expComp   = [...allCityList].filter((c) => c.rent > rentAmt).sort((a, b) => a.rent - b.rent)[0];
+  const cheapCompNet = cheapComp ? calculateNetSalary({ salary, state: cheapComp.stateCode, filingStatus: "single", taxYear: 2026 }) : null;
+  const expCompNet   = expComp   ? calculateNetSalary({ salary, state: expComp.stateCode,   filingStatus: "single", taxYear: 2026 }) : null;
+  const cheapDelta = cheapCompNet ? (cheapCompNet.monthlyTakeHome - cheapComp.rent - nonRentExpenses) - disposable : 0;
+  const expDelta   = expCompNet   ? (expCompNet.monthlyTakeHome   - expComp.rent   - nonRentExpenses) - disposable : 0;
+
+  // Decision guide
+  const comfortSalary  = Math.round((rentAmt / 0.25) * 12 / (1 - taxResult.effectiveTaxRate / 100));
+  const idealSalaryHigh = Math.round(comfortSalary * 1.3);
+  const annualRentRatioPct = Math.round(rentRatio * 100);
+
+  // Expanded FAQ
+  const expandedFaqs = [
+    {
+      q: `Can I live comfortably on ${fmtK(salary)} in ${city.city}?`,
+      a: `Your monthly surplus after all expenses is ${fmtUSD(disposable)} — verdict: ${verdict}. ${disposable >= 1000 ? `You have solid breathing room for savings and discretionary spending.` : disposable >= 0 ? `It's workable, but there's little margin for unexpected costs.` : `Expenses exceed take-home; a higher salary or lower rent is needed.`}`,
+    },
+    {
+      q: `How much is ${fmtK(salary)} after taxes in ${city.state}?`,
+      a: `In ${city.state}, ${fmtK(salary)} yields ${fmtUSD(taxResult.netSalary)}/year after federal and state taxes plus FICA — that's ${fmtUSD(monthlyTakeHome)}/month at a ${taxResult.effectiveTaxRate}% effective rate.`,
+    },
+    {
+      q: `What rent can I afford on ${fmtK(salary)} in ${city.city}?`,
+      a: `Using the 25%-of-take-home rule, your comfortable rent ceiling is ${fmtUSD(Math.round(monthlyTakeHome * 0.25))}/mo. ${city.city}'s average 1BR is ${fmtUSD(rentAmt)}/mo, consuming ${annualRentRatioPct}% of your annual take-home.`,
+    },
+    {
+      q: `How much can I save per month on ${fmtK(salary)} in ${city.city}?`,
+      a: `After rent and core expenses, your monthly surplus is ${fmtUSD(Math.max(0, disposable))}. A realistic savings target is ${fmtUSD(Math.max(0, Math.round(disposable * 0.6)))}–${fmtUSD(Math.max(0, Math.round(disposable * 0.85)))}/mo, keeping a buffer for irregular costs.`,
+    },
+    {
+      q: `Is ${city.city} expensive to live in?`,
+      a: `${city.city} has a cost-of-living index of ${colIndex.toFixed(2)} — ${colIndex > 1 ? `${Math.round((colIndex - 1) * 100)}% above the national average` : `${Math.round((1 - colIndex) * 100)}% below the national average`}. Total monthly expenses for a single adult run ~${fmtUSD(totalExpenses)}, driven primarily by rent at ${fmtUSD(rentAmt)}/mo.`,
+    },
+    {
+      q: `What salary do you need to live comfortably in ${city.city}?`,
+      a: `To keep rent under 25% of take-home in ${city.city}, you need at least ${fmtUSD(comfortSalary)} gross. At ${fmtK(salary)}, your rent-to-income ratio is ${annualRentRatioPct}%, which is ${rentRatio <= 0.25 ? "within" : "above"} the comfort threshold.`,
+    },
+    {
+      q: `How does ${fmtK(salary)} go further in other cities vs ${city.city}?`,
+      a: `${cheapComp ? `In ${cheapComp.city}, the same salary yields ~${fmtUSD(Math.abs(cheapDelta))} ${cheapDelta >= 0 ? "more" : "less"} in monthly surplus due to ${cheapDelta >= 0 ? "lower rent and comparable taxes" : "higher state taxes offsetting cheaper rent"}.` : `${city.city} is already below average in rent for its tier.`} Location arbitrage can meaningfully shift take-home purchasing power.`,
+    },
+    {
+      q: `What happens to my budget if rent goes up in ${city.city}?`,
+      a: `If rent rises 35% to ${fmtUSD(premiumRent)}/mo, it would consume ${premiumRentRatioPct}% of your take-home — ${premiumRentRatioPct > 35 ? "pushing you into financial pressure territory" : "still within manageable range"}. That would cut your monthly surplus by ${fmtUSD(premiumLoss)}.`,
+    },
+    {
+      q: `Is ${fmtK(salary)} above or below the ${city.state} median?`,
+      a: `${intelligence.stateBenchmark ? `The ${city.state} individual median is ~$${intelligence.stateBenchmark.stateMedianIndividual.toLocaleString()}. ${fmtK(salary)} is ${intelligence.stateBenchmark.vsIndividualPct >= 0 ? `${intelligence.stateBenchmark.vsIndividualPct}% above` : `${Math.abs(intelligence.stateBenchmark.vsIndividualPct)}% below`} that benchmark.` : `${fmtK(salary)} sits ${salary > 80000 ? "above" : "below"} the US median household income of ~$80,000.`} In ${city.city}'s cost environment, that translates to a "${verdict}" lifestyle.`,
+    },
+    {
+      q: `What are the best tax strategies for a ${fmtK(salary)} salary?`,
+      a: `At ${fmtK(salary)}, the highest-impact moves are: 401(k) contributions up to $23,500 (2026 limit), HSA at $4,300 single/$8,550 family, and — if applicable — mortgage interest or student loan deductions. Maxing a 401(k) alone can reduce your tax bill by $4,000–$8,000.`,
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-gray-50 py-12">
@@ -339,6 +448,183 @@ export default async function CityLivingPage({ params }: PageProps) {
             <a href={`/comfortable-salary/${citySlug}`} className="text-xs text-blue-600 hover:underline font-medium">
               See all scenarios →
             </a>
+          </div>
+        </section>
+
+        {/* What-If Scenarios */}
+        <section className="bg-white rounded-2xl shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">What-If Scenarios</h2>
+          <p className="text-sm text-gray-500 mb-5">How small changes shift your monthly surplus</p>
+          <div className="space-y-4">
+            {[
+              {
+                label: "Shared Housing / Roommate",
+                change: `Rent drops to ${fmtUSD(roommateRent)}/mo`,
+                impact: `+${fmtUSD(roommateGain)}/mo freed up`,
+                insight: `Splitting rent saves ${fmtUSD(roommateGain * 12)}/yr — enough to fund a full Roth IRA contribution.`,
+                positive: true,
+              },
+              {
+                label: "20% Salary Increase",
+                change: `Take-home rises to ${fmtUSD(net20Up.monthlyTakeHome)}/mo`,
+                impact: `+${fmtUSD(gain20Up)}/mo net gain`,
+                insight: `A raise to ${fmtUSD(salary20Up)} adds ${fmtUSD(gain20Up)}/mo after taxes — less than the gross increase due to higher bracket.`,
+                positive: true,
+              },
+              {
+                label: "Premium / Downtown Apartment",
+                change: `Rent rises to ${fmtUSD(premiumRent)}/mo`,
+                impact: `-${fmtUSD(premiumLoss)}/mo less available`,
+                insight: `Upgrading pushes rent-to-income to ${premiumRentRatioPct}% — ${premiumRentRatioPct > 35 ? "above the financial pressure threshold" : "still within manageable range"}.`,
+                positive: false,
+              },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col sm:flex-row sm:items-start gap-3 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-gray-900">{s.label}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{s.change}</p>
+                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">{s.insight}</p>
+                </div>
+                <span className={`shrink-0 self-start text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap ${s.positive ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
+                  {s.impact}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Inline City Comparison */}
+        {cheapComp && expComp && (
+          <section className="bg-white rounded-2xl shadow-sm p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-1">How {city.city} Stacks Up</h2>
+            <p className="text-sm text-gray-500 mb-5">Monthly surplus on {fmtK(salary)} vs. comparable cities</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="rounded-xl border border-green-100 bg-green-50 p-4">
+                <p className="text-xs font-medium text-green-600 mb-1">More Affordable</p>
+                <p className="text-base font-bold text-gray-900">{cheapComp.city}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{cheapComp.state} · Rent {fmtUSD(cheapComp.rent)}/mo</p>
+                <p className={`text-sm font-semibold mt-2 ${cheapDelta >= 0 ? "text-green-700" : "text-red-700"}`}>
+                  {cheapDelta >= 0 ? `+${fmtUSD(cheapDelta)}` : `-${fmtUSD(Math.abs(cheapDelta))}`}/mo vs {city.city}
+                </p>
+                <p className="text-xs text-gray-600 mt-1">
+                  {cheapDelta >= 0 ? "Lower rent more than offsets any take-home difference." : "State taxes reduce take-home enough to negate the rent savings."}
+                </p>
+              </div>
+              <div className="rounded-xl border border-red-100 bg-red-50 p-4">
+                <p className="text-xs font-medium text-red-600 mb-1">More Expensive</p>
+                <p className="text-base font-bold text-gray-900">{expComp.city}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{expComp.state} · Rent {fmtUSD(expComp.rent)}/mo</p>
+                <p className={`text-sm font-semibold mt-2 ${expDelta >= 0 ? "text-green-700" : "text-red-700"}`}>
+                  {expDelta >= 0 ? `+${fmtUSD(expDelta)}` : `-${fmtUSD(Math.abs(expDelta))}`}/mo vs {city.city}
+                </p>
+                <p className="text-xs text-gray-600 mt-1">
+                  {expDelta < 0 ? `Higher rent erodes your surplus by ${fmtUSD(Math.abs(expDelta))}/mo.` : "Higher take-home from lower taxes outpaces the rent increase."}
+                </p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-600 mt-4 pt-4 border-t border-gray-100">
+              <span className="font-medium">Takeaway: </span>
+              {cheapDelta > 0
+                ? `Moving to ${cheapComp.city} would free up ${fmtUSD(cheapDelta)}/mo — ${fmtUSD(cheapDelta * 12)}/yr — at the same salary.`
+                : `${city.city} holds its own; tax differences offset most of the rent advantage elsewhere.`}
+            </p>
+          </section>
+        )}
+
+        {/* Decision Guide */}
+        <section className="bg-white rounded-2xl shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-5">Should You Take {fmtK(salary)} in {city.city}?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <p className="text-sm font-semibold text-green-700 mb-3">Good fit if...</p>
+              <ul className="space-y-2">
+                {[
+                  rentRatio <= 0.28 ? `Rent at ${annualRentRatioPct}% of take-home stays under the 28% threshold` : `You can secure shared housing to bring rent under ${fmtUSD(Math.round(monthlyTakeHome * 0.25))}/mo`,
+                  disposable >= 800 ? `${fmtUSD(disposable)}/mo surplus supports steady savings and emergencies` : `Cutting discretionary spend can push monthly savings positive`,
+                  colIndex <= 1.1 ? `COL index of ${colIndex.toFixed(2)} means your dollar goes further than in most premium markets` : `Your industry pays a ${city.city} premium that justifies the higher cost`,
+                ].map((pt) => (
+                  <li key={pt} className="flex gap-2 text-sm text-gray-700">
+                    <span className="text-green-500 font-bold shrink-0">✓</span>{pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-red-700 mb-3">Risky if...</p>
+              <ul className="space-y-2">
+                {[
+                  rentRatio > 0.35 ? `Rent at ${annualRentRatioPct}% of take-home leaves thin margin for emergencies` : `Any rent hike above ${fmtUSD(Math.round(monthlyTakeHome * 0.3))}/mo will create financial strain`,
+                  disposable < 500 ? `Surplus under ${fmtUSD(Math.max(0, disposable))} makes it hard to build a 3-month emergency fund` : `Job loss would deplete savings within ${Math.max(1, Math.round((monthlyTakeHome * 3) / Math.max(1, disposable)))} months without income`,
+                  colIndex > 1.15 ? `COL of ${colIndex.toFixed(2)} means inflation erodes purchasing power faster here` : `Rising rents in ${city.city} may outpace salary growth over time`,
+                ].map((pt) => (
+                  <li key={pt} className="flex gap-2 text-sm text-gray-700">
+                    <span className="text-red-500 font-bold shrink-0">✗</span>{pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-5 pt-4 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-blue-50 rounded-xl p-4">
+              <p className="text-xs text-blue-600 font-medium mb-1">Ideal Salary Range for {city.city}</p>
+              <p className="text-lg font-bold text-gray-900">{fmtUSD(comfortSalary)} – {fmtUSD(idealSalaryHigh)}</p>
+              <p className="text-xs text-gray-500 mt-0.5">Keeps rent under 25% with meaningful savings headroom</p>
+            </div>
+            <div className={`rounded-xl p-4 ${verdict === "Excellent" || verdict === "Very Comfortable" ? "bg-green-50" : verdict === "Comfortable" || verdict === "Manageable" ? "bg-yellow-50" : "bg-red-50"}`}>
+              <p className={`text-xs font-medium mb-1 ${verdict === "Excellent" || verdict === "Very Comfortable" ? "text-green-700" : verdict === "Comfortable" || verdict === "Manageable" ? "text-yellow-700" : "text-red-700"}`}>Final Verdict</p>
+              <p className="text-sm text-gray-800 font-medium leading-snug">
+                {disposable >= 1500 ? `${fmtK(salary)} is a strong salary for ${city.city} — prioritize maxing tax-advantaged accounts before lifestyle upgrades.` : disposable >= 0 ? `${fmtK(salary)} covers the basics in ${city.city} — a 15–20% raise would meaningfully improve financial flexibility.` : `${fmtK(salary)} falls short in ${city.city} — consider a roommate, remote work in a cheaper city, or income growth.`}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Salary Comparison */}
+        <section className="bg-white rounded-2xl shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-5">Salary Comparison in {city.city}</h2>
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { label: fmtUSD(salary20Down), tag: "−20%", takeHome: net20Down.monthlyTakeHome, surplus: disposable20Down, rate: net20Down.effectiveTaxRate, dim: true },
+              { label: fmtUSD(salary),       tag: "Current", takeHome: monthlyTakeHome, surplus: disposable, rate: taxResult.effectiveTaxRate, dim: false },
+              { label: fmtUSD(salary20Up),   tag: "+20%", takeHome: net20Up.monthlyTakeHome, surplus: disposable20Up, rate: net20Up.effectiveTaxRate, dim: true },
+            ].map((col) => (
+              <div key={col.tag} className={`rounded-xl p-4 border text-center ${col.dim ? "bg-gray-50 border-gray-100" : "bg-blue-50 border-blue-200 ring-2 ring-blue-100"}`}>
+                <p className={`text-xs font-semibold mb-1 ${col.dim ? "text-gray-500" : "text-blue-600"}`}>{col.tag}</p>
+                <p className="text-sm font-bold text-gray-900">{col.label}</p>
+                <div className="mt-3 space-y-1.5 text-xs text-left">
+                  <div className="flex justify-between gap-2">
+                    <span className="text-gray-500">Take-home</span>
+                    <span className="font-medium text-gray-800">{fmtUSD(col.takeHome)}/mo</span>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <span className="text-gray-500">Surplus</span>
+                    <span className={`font-semibold ${col.surplus >= 0 ? "text-green-700" : "text-red-700"}`}>{col.surplus >= 0 ? fmtUSD(col.surplus) : `-${fmtUSD(Math.abs(col.surplus))}`}</span>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <span className="text-gray-500">Tax rate</span>
+                    <span className="font-medium text-gray-800">{col.rate}%</span>
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-gray-200">
+                    <span className={`text-xs font-medium ${col.surplus >= 1500 ? "text-green-700" : col.surplus >= 0 ? "text-yellow-700" : "text-red-700"}`}>
+                      {col.surplus >= 1500 ? "Very Comfortable" : col.surplus >= 500 ? "Comfortable" : col.surplus >= 0 ? "Manageable" : "Tight"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Expanded FAQ */}
+        <section className="bg-white rounded-2xl shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-5">More Questions Answered</h2>
+          <div className="space-y-5">
+            {expandedFaqs.map((f) => (
+              <div key={f.q} className="border-b border-gray-50 pb-5 last:border-0 last:pb-0">
+                <h3 className="font-semibold text-gray-900 mb-2 text-sm">{f.q}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{f.a}</p>
+              </div>
+            ))}
           </div>
         </section>
 

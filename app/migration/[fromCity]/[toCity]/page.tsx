@@ -9,7 +9,7 @@ import { getStateCodeForCity, toTitle, fmtUSD } from "@/lib/stateCodeMap";
 import { buildPageMeta, SEED_CITIES } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 const MIGRATION_CITIES = SEED_CITIES.slice(0, 10);

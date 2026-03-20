@@ -33,7 +33,8 @@ export const CITY_COSTS = {
     { city: "Mesa",        state: "Arizona", stateCode: "AZ", rent: 2000, other: 1050, lifestyle: "balanced", seoWeight: 3 },
     { city: "Chandler",    state: "Arizona", stateCode: "AZ", rent: 2100, other: 1100, lifestyle: "balanced", seoWeight: 3 },
     { city: "Scottsdale",  state: "Arizona", stateCode: "AZ", rent: 2600, other: 1200, lifestyle: "premium",  seoWeight: 3 },
-    { city: "Tempe",       state: "Arizona", stateCode: "AZ", rent: 2000, other: 1050, lifestyle: "balanced", seoWeight: 3 },
+    { city: "Tempe",      state: "Arizona", stateCode: "AZ", rent: 2000, other: 1050, lifestyle: "balanced", seoWeight: 3 },
+    { city: "Glendale",   state: "Arizona", stateCode: "AZ", rent: 1900, other: 1050, lifestyle: "balanced", seoWeight: 3 },
   ],
 
   arkansas: [
@@ -53,7 +54,10 @@ export const CITY_COSTS = {
     { city: "Sacramento",    state: "California", stateCode: "CA", rent: 2200, other: 1100, lifestyle: "balanced", seoWeight: 3 },
     { city: "Fresno",        state: "California", stateCode: "CA", rent: 1700, other: 1000, lifestyle: "balanced", seoWeight: 2 },
     { city: "Oakland",       state: "California", stateCode: "CA", rent: 2900, other: 1300, lifestyle: "premium",  seoWeight: 3 },
-    { city: "Irvine",        state: "California", stateCode: "CA", rent: 3100, other: 1200, lifestyle: "premium",  seoWeight: 3 },
+    { city: "Irvine",       state: "California", stateCode: "CA", rent: 3100, other: 1200, lifestyle: "premium",  seoWeight: 3 },
+    { city: "Santa Clara",  state: "California", stateCode: "CA", rent: 3200, other: 1400, lifestyle: "premium",  seoWeight: 4 },
+    { city: "Fremont",      state: "California", stateCode: "CA", rent: 3000, other: 1350, lifestyle: "premium",  seoWeight: 3 },
+    { city: "Long Beach",   state: "California", stateCode: "CA", rent: 2500, other: 1200, lifestyle: "premium",  seoWeight: 3 },
   ],
 
   colorado: [
@@ -83,13 +87,18 @@ export const CITY_COSTS = {
     { city: "Milford",     state: "Delaware", stateCode: "DE", rent: 1550, other: 1010, lifestyle: "balanced", seoWeight: 1 },
   ],
 
+  "district-of-columbia": [
+    { city: "Washington DC", state: "District of Columbia", stateCode: "DC", rent: 2500, other: 1450, lifestyle: "premium", seoWeight: 5 },
+  ],
+
   florida: [
     { city: "Miami",          state: "Florida", stateCode: "FL", rent: 2900, other: 1200, lifestyle: "premium",  seoWeight: 5 },
     { city: "Orlando",        state: "Florida", stateCode: "FL", rent: 2200, other: 1050, lifestyle: "balanced", seoWeight: 4 },
     { city: "Tampa",          state: "Florida", stateCode: "FL", rent: 2100, other: 1050, lifestyle: "balanced", seoWeight: 4 },
     { city: "Jacksonville",   state: "Florida", stateCode: "FL", rent: 1800, other: 1000, lifestyle: "balanced", seoWeight: 3 },
     { city: "St Petersburg",  state: "Florida", stateCode: "FL", rent: 2300, other: 1100, lifestyle: "balanced", seoWeight: 3 },
-    { city: "Fort Lauderdale",state: "Florida", stateCode: "FL", rent: 2600, other: 1150, lifestyle: "premium",  seoWeight: 3 },
+    { city: "Fort Lauderdale", state: "Florida", stateCode: "FL", rent: 2600, other: 1150, lifestyle: "premium",  seoWeight: 3 },
+    { city: "West Palm Beach", state: "Florida", stateCode: "FL", rent: 2700, other: 1150, lifestyle: "premium",  seoWeight: 3 },
   ],
 
   georgia: [
@@ -98,7 +107,9 @@ export const CITY_COSTS = {
     { city: "Augusta",   state: "Georgia", stateCode: "GA", rent: 1200, other: 920,  lifestyle: "budget",   seoWeight: 2 },
     { city: "Columbus",  state: "Georgia", stateCode: "GA", rent: 1050, other: 900,  lifestyle: "budget",   seoWeight: 2 },
     { city: "Macon",     state: "Georgia", stateCode: "GA", rent: 1050, other: 900,  lifestyle: "budget",   seoWeight: 1 },
-    { city: "Athens",    state: "Georgia", stateCode: "GA", rent: 1350, other: 950,  lifestyle: "budget",   seoWeight: 2 },
+    { city: "Athens",        state: "Georgia", stateCode: "GA", rent: 1350, other: 950,  lifestyle: "budget",   seoWeight: 2 },
+    { city: "Alpharetta",    state: "Georgia", stateCode: "GA", rent: 2200, other: 1150, lifestyle: "balanced", seoWeight: 3 },
+    { city: "Sandy Springs", state: "Georgia", stateCode: "GA", rent: 2000, other: 1100, lifestyle: "balanced", seoWeight: 3 },
   ],
 
   hawaii: [
@@ -126,6 +137,7 @@ export const CITY_COSTS = {
     { city: "Joliet",      state: "Illinois", stateCode: "IL", rent: 1700, other: 1020, lifestyle: "balanced", seoWeight: 2 },
     { city: "Rockford",    state: "Illinois", stateCode: "IL", rent: 1400, other: 960,  lifestyle: "budget",   seoWeight: 2 },
     { city: "Springfield", state: "Illinois", stateCode: "IL", rent: 1500, other: 970,  lifestyle: "balanced", seoWeight: 2 },
+    { city: "Schaumburg",  state: "Illinois", stateCode: "IL", rent: 1900, other: 1080, lifestyle: "balanced", seoWeight: 2 },
   ],
 
   indiana: [
@@ -188,7 +200,9 @@ export const CITY_COSTS = {
     { city: "Gaithersburg", state: "Maryland", stateCode: "MD", rent: 2200, other: 1150, lifestyle: "balanced", seoWeight: 2 },
     { city: "Bowie",        state: "Maryland", stateCode: "MD", rent: 2100, other: 1100, lifestyle: "balanced", seoWeight: 2 },
     { city: "Frederick",    state: "Maryland", stateCode: "MD", rent: 2000, other: 1080, lifestyle: "balanced", seoWeight: 2 },
-    { city: "Annapolis",    state: "Maryland", stateCode: "MD", rent: 2200, other: 1150, lifestyle: "balanced", seoWeight: 2 },
+    { city: "Annapolis",  state: "Maryland", stateCode: "MD", rent: 2200, other: 1150, lifestyle: "balanced", seoWeight: 2 },
+    { city: "Bethesda",   state: "Maryland", stateCode: "MD", rent: 2800, other: 1350, lifestyle: "premium",  seoWeight: 3 },
+    { city: "Columbia",   state: "Maryland", stateCode: "MD", rent: 2200, other: 1150, lifestyle: "balanced", seoWeight: 2 },
   ],
 
   massachusetts: [
@@ -278,7 +292,8 @@ export const CITY_COSTS = {
     { city: "Paterson",    state: "New Jersey", stateCode: "NJ", rent: 1900, other: 1100, lifestyle: "balanced", seoWeight: 2 },
     { city: "Elizabeth",   state: "New Jersey", stateCode: "NJ", rent: 2100, other: 1150, lifestyle: "balanced", seoWeight: 2 },
     { city: "Trenton",     state: "New Jersey", stateCode: "NJ", rent: 1600, other: 1000, lifestyle: "balanced", seoWeight: 2 },
-    { city: "Camden",      state: "New Jersey", stateCode: "NJ", rent: 1400, other: 970,  lifestyle: "budget",   seoWeight: 1 },
+    { city: "Camden",   state: "New Jersey", stateCode: "NJ", rent: 1400, other: 970,  lifestyle: "budget",   seoWeight: 1 },
+    { city: "Hoboken",  state: "New Jersey", stateCode: "NJ", rent: 3600, other: 1450, lifestyle: "premium",  seoWeight: 4 },
   ],
 
   "new-mexico": [
@@ -350,7 +365,8 @@ export const CITY_COSTS = {
     { city: "Allentown",    state: "Pennsylvania", stateCode: "PA", rent: 1600, other: 1020, lifestyle: "balanced", seoWeight: 2 },
     { city: "Erie",         state: "Pennsylvania", stateCode: "PA", rent: 1100, other: 920,  lifestyle: "budget",   seoWeight: 2 },
     { city: "Reading",      state: "Pennsylvania", stateCode: "PA", rent: 1300, other: 950,  lifestyle: "budget",   seoWeight: 1 },
-    { city: "Scranton",     state: "Pennsylvania", stateCode: "PA", rent: 1200, other: 940,  lifestyle: "budget",   seoWeight: 2 },
+    { city: "Scranton",    state: "Pennsylvania", stateCode: "PA", rent: 1200, other: 940,  lifestyle: "budget",   seoWeight: 2 },
+    { city: "Harrisburg",  state: "Pennsylvania", stateCode: "PA", rent: 1300, other: 950,  lifestyle: "budget",   seoWeight: 2 },
   ],
 
   "rhode-island": [
@@ -397,7 +413,9 @@ export const CITY_COSTS = {
     { city: "Fort Worth",  state: "Texas", stateCode: "TX", rent: 1900, other: 1050, lifestyle: "balanced", seoWeight: 3 },
     { city: "El Paso",     state: "Texas", stateCode: "TX", rent: 1400, other: 900,  lifestyle: "budget",   seoWeight: 2 },
     { city: "Plano",       state: "Texas", stateCode: "TX", rent: 2000, other: 1100, lifestyle: "balanced", seoWeight: 2 },
-    { city: "Frisco",      state: "Texas", stateCode: "TX", rent: 2100, other: 1100, lifestyle: "balanced", seoWeight: 2 },
+    { city: "Frisco",    state: "Texas", stateCode: "TX", rent: 2100, other: 1100, lifestyle: "balanced", seoWeight: 2 },
+    { city: "Arlington", state: "Texas", stateCode: "TX", rent: 1800, other: 1050, lifestyle: "balanced", seoWeight: 3 },
+    { city: "Irving",    state: "Texas", stateCode: "TX", rent: 1900, other: 1070, lifestyle: "balanced", seoWeight: 2 },
   ],
 
   utah: [

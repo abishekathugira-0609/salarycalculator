@@ -10,7 +10,7 @@ import { getStateCodeForCity, getStatePrimaryCity, toTitle, fmtUSD, STATE_CODE_M
 import { buildPageMeta } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 function parseSlug(slug: string): { cityA: string; cityB: string } | null {

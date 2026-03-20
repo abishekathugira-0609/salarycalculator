@@ -3,7 +3,7 @@ import { buildPageMeta, ALL_SALARY_BUCKETS } from "@/lib/seo";
 import { fmtUSD } from "@/lib/stateCodeMap";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "Best Cities for Your Salary — City Rankings by Income (2026)",

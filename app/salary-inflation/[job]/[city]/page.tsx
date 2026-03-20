@@ -10,7 +10,7 @@ import { getInternalLinks } from "@/lib/internalLinks";
 import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 // ── Seed: top 10 jobs × top 10 cities = 100 pages ────────────────────────────

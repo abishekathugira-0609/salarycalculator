@@ -7,7 +7,7 @@ import { toTitle, fmtUSD, cityToSlug } from "@/lib/stateCodeMap";
 import { buildPageMeta, ALL_SALARY_BUCKETS } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 // ── Seed: all salary buckets = 12 pages at build time ────────────────────────

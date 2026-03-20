@@ -14,7 +14,7 @@ import ReviewedBy from "@/components/ReviewedBy";
 import BudgetPlanner from "@/components/BudgetPlanner";
 import stateMediansJson from "@/data/state-medians.json";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamic = "force-static";
 export const dynamicParams = true;
 

@@ -6,7 +6,7 @@ import { getCityCostEntry, getStateCodeForCity, getStatePrimaryCity, toTitle } f
 import { buildPageMeta } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 export const dynamicParams = true;
 
 export async function generateMetadata({

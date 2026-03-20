@@ -4,7 +4,7 @@ import { fmtUSD, fmtCompact } from "@/lib/stateCodeMap";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "US Salary Guides — After Tax Take-Home by City (2026)",

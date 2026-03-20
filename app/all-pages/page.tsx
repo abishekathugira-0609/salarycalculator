@@ -5,7 +5,7 @@ import statesCitiesData from "@/data/states-cities.json";
 import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "All Pages Directory — Know Your Pay (2026)",

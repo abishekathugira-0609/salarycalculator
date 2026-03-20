@@ -5,7 +5,7 @@ import jobsList from "@/data/jobs.json";
 import { getSalaryEstimate } from "@/lib/data/salaryData";
 
 export const dynamic = "force-static";
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "Job Salary Guide — After Tax Pay for Every Career (2026)",

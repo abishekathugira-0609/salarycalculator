@@ -4,7 +4,7 @@ import { CITY_COSTS } from "@/data/city-costs";
 import { getSalaryData } from "@/lib/getSalaryData";
 import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
 
-export const revalidate = 86400; // 24 hours ISR
+export const revalidate = 604800; // 24 hours ISR
 
 type PageProps = {
   params: Promise<{

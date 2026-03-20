@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildPageMeta, SEED_CITIES } from "@/lib/seo";
 import { toTitle } from "@/lib/stateCodeMap";
 
-export const revalidate = 86400;
+export const revalidate = 604800;
 
 export const metadata: Metadata = buildPageMeta({
   title: "City Relocation Salary Guide: How Much Do You Need? (2026)",
