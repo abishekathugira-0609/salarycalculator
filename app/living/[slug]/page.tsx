@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
 import { CITY_COSTS, type CityCost } from "@/data/city-costs";
-import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
+import { STATE_CODE_MAP, stateCodeToSlug } from "@/lib/stateCodeMap";
 import { getCOLData } from "@/lib/data/costOfLiving";
 import { getRentByType } from "@/lib/data/rentData";
 import { getFoodCostBySize } from "@/lib/data/foodData";
@@ -70,6 +70,12 @@ export default async function LivingPage({ params }: PageProps) {
   const parsed = parseSlug(slug);
   if (!parsed) return notFound();
   const { amount, stateSlug } = parsed;
+
+  // Redirect 2-letter state codes (e.g. "ca" → "california")
+  if (/^[a-z]{2}$/.test(stateSlug)) {
+    const fullSlug = stateCodeToSlug(stateSlug);
+    if (fullSlug) permanentRedirect(`/living/is-${amount}-enough-in-${fullSlug}`);
+  }
 
   const stateCode = STATE_CODE_MAP[stateSlug];
   if (!stateCode) return notFound();

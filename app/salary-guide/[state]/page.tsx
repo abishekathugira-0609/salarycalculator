@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
-import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
+import { STATE_CODE_MAP, stateCodeToSlug } from "@/lib/stateCodeMap";
 import { buildPageMeta } from "@/lib/seo";
 import { CITY_COSTS, type CityCost } from "@/data/city-costs";
 import { getCOLData } from "@/lib/data/costOfLiving";
@@ -374,6 +374,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function StateSalaryGuide({ params }: PageProps) {
   const { state: stateSlug } = await params;
   if (!stateSlug) return notFound();
+
+  // Redirect 2-letter state codes (e.g. "ca" → "california")
+  if (/^[a-z]{2}$/i.test(stateSlug)) {
+    const fullSlug = stateCodeToSlug(stateSlug);
+    if (fullSlug) permanentRedirect(`/salary-guide/${fullSlug}`);
+  }
 
   const stateConfig = STATE_DATA[stateSlug];
   if (!stateConfig) return notFound();

@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
-import { STATE_CODE_MAP } from "@/lib/stateCodeMap";
+import { STATE_CODE_MAP, stateCodeToSlug } from "@/lib/stateCodeMap";
 import { getTaxSavingsSuggestions } from "@/lib/tax/taxSavings";
 import DataSourceBadges from "@/components/DataSourceBadges";
 import ReviewedBy from "@/components/ReviewedBy";
@@ -72,6 +72,12 @@ export default async function SalaryPage({ params }: PageProps) {
   const parsed = parseSlug(slug);
   if (!parsed) return notFound();
   const { amount, stateSlug, taxYear } = parsed;
+
+  // Redirect 2-letter state codes (e.g. "ca" → "california")
+  if (/^[a-z]{2}$/.test(stateSlug)) {
+    const fullSlug = stateCodeToSlug(stateSlug);
+    if (fullSlug) permanentRedirect(`/salary/${amount}-${fullSlug}-${taxYear}`);
+  }
 
   const stateCode = STATE_CODE_MAP[stateSlug];
   if (!stateCode) return notFound();
