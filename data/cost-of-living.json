@@ -1,10 +1,46 @@
 {
-  "aberdeen": 0.8,
-  "akron": 0.87,
-  "albany": 1.03,
-  "albuquerque": 0.94,
-  "alexandria": 1.48,
-  "allentown": 1.03,
+  "aberdeen": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "akron": {
+    "index": 0.87,
+    "foodMonthly": 383,
+    "transportMonthly": 152,
+    "utilitiesMonthly": 144,
+    "healthcareMonthly": 174
+  },
+  "albany": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "albuquerque": {
+    "index": 0.94,
+    "foodMonthly": 414,
+    "transportMonthly": 165,
+    "utilitiesMonthly": 155,
+    "healthcareMonthly": 188
+  },
+  "alexandria": {
+    "index": 1.48,
+    "foodMonthly": 651,
+    "transportMonthly": 259,
+    "utilitiesMonthly": 244,
+    "healthcareMonthly": 296
+  },
+  "allentown": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
   "alpharetta": {
     "index": 1.18,
     "foodMonthly": 519,
@@ -12,23 +48,125 @@
     "utilitiesMonthly": 195,
     "healthcareMonthly": 236
   },
-  "anchorage": 1.08,
-  "ann-arbor": 1.21,
-  "annapolis": 1.31,
-  "appleton": 0.91,
-  "arlington": 1.58,
-  "athens": 0.95,
-  "atlanta": 1.29,
-  "auburn": 0.88,
-  "augusta": 0.91,
-  "aurora": 1.08,
-  "austin": 1.28,
-  "baltimore": 1.21,
-  "bangor": 0.93,
-  "barre": 0.93,
-  "baton-rouge": 0.96,
-  "beaverton": 1.21,
-  "bellevue": 1.68,
+  "anchorage": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "ann-arbor": {
+    "index": 1.21,
+    "foodMonthly": 532,
+    "transportMonthly": 212,
+    "utilitiesMonthly": 200,
+    "healthcareMonthly": 242
+  },
+  "annapolis": {
+    "index": 1.31,
+    "foodMonthly": 576,
+    "transportMonthly": 229,
+    "utilitiesMonthly": 216,
+    "healthcareMonthly": 262
+  },
+  "appleton": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "arlington": {
+    "index": 1.58,
+    "foodMonthly": 695,
+    "transportMonthly": 277,
+    "utilitiesMonthly": 261,
+    "healthcareMonthly": 316
+  },
+  "athens": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "atlanta": {
+    "index": 1.29,
+    "foodMonthly": 568,
+    "transportMonthly": 226,
+    "utilitiesMonthly": 213,
+    "healthcareMonthly": 258
+  },
+  "auburn": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "augusta": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "aurora": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "austin": {
+    "index": 1.28,
+    "foodMonthly": 563,
+    "transportMonthly": 224,
+    "utilitiesMonthly": 211,
+    "healthcareMonthly": 256
+  },
+  "baltimore": {
+    "index": 1.21,
+    "foodMonthly": 532,
+    "transportMonthly": 212,
+    "utilitiesMonthly": 200,
+    "healthcareMonthly": 242
+  },
+  "bangor": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "barre": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "baton-rouge": {
+    "index": 0.96,
+    "foodMonthly": 422,
+    "transportMonthly": 168,
+    "utilitiesMonthly": 158,
+    "healthcareMonthly": 192
+  },
+  "beaverton": {
+    "index": 1.21,
+    "foodMonthly": 532,
+    "transportMonthly": 212,
+    "utilitiesMonthly": 200,
+    "healthcareMonthly": 242
+  },
+  "bellevue": {
+    "index": 1.68,
+    "foodMonthly": 739,
+    "transportMonthly": 294,
+    "utilitiesMonthly": 277,
+    "healthcareMonthly": 336
+  },
   "bethesda": {
     "index": 1.58,
     "foodMonthly": 695,
@@ -36,81 +174,531 @@
     "utilitiesMonthly": 261,
     "healthcareMonthly": 316
   },
-  "biddeford": 1.03,
-  "billings": 0.93,
-  "biloxi": 0.91,
-  "birmingham": 0.89,
-  "bismarck": 0.88,
-  "bloomington": 1.08,
-  "boise": 1.08,
-  "boston": 1.93,
-  "boulder": 1.43,
-  "bowie": 1.25,
-  "bowling-green": 0.85,
-  "bozeman": 1.18,
-  "bridgeport": 1.18,
-  "brockton": 1.18,
-  "broken-arrow": 0.91,
-  "brookings": 0.85,
-  "brooklyn-park": 1.05,
-  "buffalo": 0.93,
-  "burlington": 1.28,
-  "butte": 0.8,
-  "caldwell": 0.95,
-  "cambridge": 1.93,
-  "camden": 1.03,
-  "carmel": 1.1,
-  "carson-city": 1.03,
-  "casper": 0.88,
-  "cedar-rapids": 0.88,
-  "chandler": 1.14,
-  "charleston": 1.21,
-  "charlotte": 1.17,
-  "chattanooga": 1,
-  "chesapeake": 1.13,
-  "cheyenne": 0.91,
-  "chicago": 1.38,
-  "cincinnati": 0.94,
-  "clarksville": 0.95,
-  "cleveland": 0.89,
-  "colorado-springs": 1.14,
-  "columbia": 1,
-  "columbus": 0.91,
-  "concord": 1.08,
-  "conway": 0.82,
-  "covington": 0.88,
-  "cranston": 1.1,
-  "dallas": 1.13,
-  "davenport": 0.87,
-  "dayton": 0.85,
-  "denver": 1.39,
-  "derry": 1.1,
-  "des-moines": 0.93,
-  "detroit": 0.93,
-  "dover": 1.08,
-  "duluth": 0.88,
-  "durham": 1.13,
-  "east-providence": 1.08,
-  "edmond": 0.98,
-  "el-paso": 0.85,
-  "elizabeth": 1.28,
-  "erie": 0.85,
-  "eugene": 1.13,
-  "evansville": 0.85,
-  "fairbanks": 0.98,
-  "fargo": 0.91,
-  "farmington": 0.83,
-  "fayetteville": 0.91,
-  "fort-collins": 1.18,
-  "fort-lauderdale": 1.38,
-  "fort-smith": 0.77,
-  "fort-wayne": 0.91,
-  "fort-worth": 1.08,
-  "frederick": 1.18,
-  "fremont": 0.83,
-  "fresno": 1.17,
-  "gaithersburg": 1.33,
-  "gillette": 0.91,
+  "biddeford": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "billings": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "biloxi": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "birmingham": {
+    "index": 0.89,
+    "foodMonthly": 392,
+    "transportMonthly": 156,
+    "utilitiesMonthly": 147,
+    "healthcareMonthly": 178
+  },
+  "bismarck": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "bloomington": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "boise": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "boston": {
+    "index": 1.93,
+    "foodMonthly": 849,
+    "transportMonthly": 338,
+    "utilitiesMonthly": 318,
+    "healthcareMonthly": 386
+  },
+  "boulder": {
+    "index": 1.43,
+    "foodMonthly": 629,
+    "transportMonthly": 250,
+    "utilitiesMonthly": 236,
+    "healthcareMonthly": 286
+  },
+  "bowie": {
+    "index": 1.25,
+    "foodMonthly": 550,
+    "transportMonthly": 219,
+    "utilitiesMonthly": 206,
+    "healthcareMonthly": 250
+  },
+  "bowling-green": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "bozeman": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "bridgeport": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "brockton": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "broken-arrow": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "brookings": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "brooklyn-park": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "buffalo": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "burlington": {
+    "index": 1.28,
+    "foodMonthly": 563,
+    "transportMonthly": 224,
+    "utilitiesMonthly": 211,
+    "healthcareMonthly": 256
+  },
+  "butte": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "caldwell": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "cambridge": {
+    "index": 1.93,
+    "foodMonthly": 849,
+    "transportMonthly": 338,
+    "utilitiesMonthly": 318,
+    "healthcareMonthly": 386
+  },
+  "camden": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "carmel": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "carson-city": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "casper": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "cedar-rapids": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "chandler": {
+    "index": 1.14,
+    "foodMonthly": 502,
+    "transportMonthly": 199,
+    "utilitiesMonthly": 188,
+    "healthcareMonthly": 228
+  },
+  "charleston": {
+    "index": 1.21,
+    "foodMonthly": 532,
+    "transportMonthly": 212,
+    "utilitiesMonthly": 200,
+    "healthcareMonthly": 242
+  },
+  "charlotte": {
+    "index": 1.17,
+    "foodMonthly": 515,
+    "transportMonthly": 205,
+    "utilitiesMonthly": 193,
+    "healthcareMonthly": 234
+  },
+  "chattanooga": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "chesapeake": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "cheyenne": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "chicago": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  },
+  "cincinnati": {
+    "index": 0.94,
+    "foodMonthly": 414,
+    "transportMonthly": 165,
+    "utilitiesMonthly": 155,
+    "healthcareMonthly": 188
+  },
+  "clarksville": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "cleveland": {
+    "index": 0.89,
+    "foodMonthly": 392,
+    "transportMonthly": 156,
+    "utilitiesMonthly": 147,
+    "healthcareMonthly": 178
+  },
+  "colorado-springs": {
+    "index": 1.14,
+    "foodMonthly": 502,
+    "transportMonthly": 199,
+    "utilitiesMonthly": 188,
+    "healthcareMonthly": 228
+  },
+  "columbia": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "columbus": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "concord": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "conway": {
+    "index": 0.82,
+    "foodMonthly": 361,
+    "transportMonthly": 144,
+    "utilitiesMonthly": 135,
+    "healthcareMonthly": 164
+  },
+  "covington": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "cranston": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "dallas": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "davenport": {
+    "index": 0.87,
+    "foodMonthly": 383,
+    "transportMonthly": 152,
+    "utilitiesMonthly": 144,
+    "healthcareMonthly": 174
+  },
+  "dayton": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "denver": {
+    "index": 1.39,
+    "foodMonthly": 612,
+    "transportMonthly": 243,
+    "utilitiesMonthly": 229,
+    "healthcareMonthly": 278
+  },
+  "derry": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "des-moines": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "detroit": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "dover": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "duluth": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "durham": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "east-providence": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "edmond": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "el-paso": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "elizabeth": {
+    "index": 1.28,
+    "foodMonthly": 563,
+    "transportMonthly": 224,
+    "utilitiesMonthly": 211,
+    "healthcareMonthly": 256
+  },
+  "erie": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "eugene": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "evansville": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "fairbanks": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "fargo": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "farmington": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "fayetteville": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "fort-collins": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "fort-lauderdale": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  },
+  "fort-smith": {
+    "index": 0.77,
+    "foodMonthly": 339,
+    "transportMonthly": 135,
+    "utilitiesMonthly": 127,
+    "healthcareMonthly": 154
+  },
+  "fort-wayne": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "fort-worth": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "frederick": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "fremont": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "fresno": {
+    "index": 1.17,
+    "foodMonthly": 515,
+    "transportMonthly": 205,
+    "utilitiesMonthly": 193,
+    "healthcareMonthly": 234
+  },
+  "gaithersburg": {
+    "index": 1.33,
+    "foodMonthly": 585,
+    "transportMonthly": 233,
+    "utilitiesMonthly": 219,
+    "healthcareMonthly": 266
+  },
+  "gillette": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
   "glendale": {
     "index": 1.4,
     "foodMonthly": 616,
@@ -118,21 +706,111 @@
     "utilitiesMonthly": 231,
     "healthcareMonthly": 280
   },
-  "grand-forks": 0.85,
-  "grand-island": 0.83,
-  "grand-rapids": 0.98,
-  "great-falls": 0.85,
-  "green-bay": 0.93,
-  "greensboro": 0.98,
-  "greenville": 1.03,
-  "gresham": 1.16,
-  "gulfport": 0.88,
-  "hartford": 1.08,
-  "hattiesburg": 0.85,
-  "helena": 0.91,
-  "henderson": 1.16,
-  "hillsboro": 1.23,
-  "hilo": 1.18,
+  "grand-forks": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "grand-island": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "grand-rapids": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "great-falls": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "green-bay": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "greensboro": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "greenville": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "gresham": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "gulfport": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "hartford": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "hattiesburg": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "helena": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "henderson": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "hillsboro": {
+    "index": 1.23,
+    "foodMonthly": 541,
+    "transportMonthly": 215,
+    "utilitiesMonthly": 203,
+    "healthcareMonthly": 246
+  },
+  "hilo": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
   "hoboken": {
     "index": 1.85,
     "foodMonthly": 814,
@@ -140,14 +818,62 @@
     "utilitiesMonthly": 305,
     "healthcareMonthly": 370
   },
-  "honolulu": 1.63,
-  "houston": 1.08,
-  "huntington": 0.78,
-  "huntsville": 0.95,
-  "idaho-falls": 0.93,
-  "independence": 0.91,
-  "indianapolis": 0.96,
-  "iowa-city": 0.95,
+  "honolulu": {
+    "index": 1.63,
+    "foodMonthly": 717,
+    "transportMonthly": 285,
+    "utilitiesMonthly": 269,
+    "healthcareMonthly": 326
+  },
+  "houston": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "huntington": {
+    "index": 0.78,
+    "foodMonthly": 343,
+    "transportMonthly": 137,
+    "utilitiesMonthly": 129,
+    "healthcareMonthly": 156
+  },
+  "huntsville": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "idaho-falls": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "independence": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "indianapolis": {
+    "index": 0.96,
+    "foodMonthly": 422,
+    "transportMonthly": 168,
+    "utilitiesMonthly": 158,
+    "healthcareMonthly": 192
+  },
+  "iowa-city": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
   "irvine": {
     "index": 1.68,
     "foodMonthly": 739,
@@ -155,34 +881,202 @@
     "utilitiesMonthly": 277,
     "healthcareMonthly": 336
   },
-  "jackson": 0.83,
-  "jacksonville": 1.13,
-  "jersey-city": 1.78,
-  "joliet": 1,
-  "jonesboro": 0.8,
-  "juneau": 1.05,
-  "kailua": 1.48,
-  "kaneohe": 1.43,
-  "kansas-city": 0.96,
-  "kearney": 0.82,
-  "kenosha": 0.98,
-  "kent": 1.25,
-  "ketchikan": 0.93,
-  "knoxville": 1.03,
-  "lafayette": 0.91,
-  "lake-charles": 0.85,
-  "lakewood": 1.28,
-  "lansing": 0.88,
-  "laramie": 0.85,
-  "las-cruces": 0.88,
-  "las-vegas": 1.16,
-  "lawrence": 0.93,
-  "lawton": 0.83,
-  "lee-summit": 0.98,
-  "lewiston": 0.91,
-  "lexington": 0.93,
-  "lincoln": 0.93,
-  "little-rock": 0.83,
+  "jackson": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "jacksonville": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "jersey-city": {
+    "index": 1.78,
+    "foodMonthly": 783,
+    "transportMonthly": 312,
+    "utilitiesMonthly": 294,
+    "healthcareMonthly": 356
+  },
+  "joliet": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "jonesboro": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "juneau": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "kailua": {
+    "index": 1.48,
+    "foodMonthly": 651,
+    "transportMonthly": 259,
+    "utilitiesMonthly": 244,
+    "healthcareMonthly": 296
+  },
+  "kaneohe": {
+    "index": 1.43,
+    "foodMonthly": 629,
+    "transportMonthly": 250,
+    "utilitiesMonthly": 236,
+    "healthcareMonthly": 286
+  },
+  "kansas-city": {
+    "index": 0.96,
+    "foodMonthly": 422,
+    "transportMonthly": 168,
+    "utilitiesMonthly": 158,
+    "healthcareMonthly": 192
+  },
+  "kearney": {
+    "index": 0.82,
+    "foodMonthly": 361,
+    "transportMonthly": 144,
+    "utilitiesMonthly": 135,
+    "healthcareMonthly": 164
+  },
+  "kenosha": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "kent": {
+    "index": 1.25,
+    "foodMonthly": 550,
+    "transportMonthly": 219,
+    "utilitiesMonthly": 206,
+    "healthcareMonthly": 250
+  },
+  "ketchikan": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "knoxville": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "lafayette": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "lake-charles": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "lakewood": {
+    "index": 1.28,
+    "foodMonthly": 563,
+    "transportMonthly": 224,
+    "utilitiesMonthly": 211,
+    "healthcareMonthly": 256
+  },
+  "lansing": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "laramie": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "las-cruces": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "las-vegas": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "lawrence": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "lawton": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "lee-summit": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "lewiston": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "lexington": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "lincoln": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "little-rock": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
   "long-beach": {
     "index": 1.52,
     "foodMonthly": 669,
@@ -190,43 +1084,265 @@
     "utilitiesMonthly": 251,
     "healthcareMonthly": 304
   },
-  "los-angeles": 1.76,
-  "louisville": 0.95,
-  "lowell": 1.23,
-  "macon": 0.85,
-  "madison": 1.16,
-  "manchester": 1.16,
-  "memphis": 0.91,
-  "meridian": 0.8,
-  "mesa": 1.09,
-  "metairie": 1.08,
-  "miami": 1.5,
-  "middletown": 1,
-  "milford": 0.99,
-  "milwaukee": 1,
-  "minneapolis": 1.17,
-  "minot": 0.85,
-  "missoula": 0.98,
-  "mitchell": 0.79,
-  "mobile": 0.83,
-  "montgomery": 0.85,
-  "montpelier": 1.05,
-  "morgantown": 0.91,
-  "mount-pleasant": 1.31,
-  "murfreesboro": 1.08,
-  "nampa": 0.98,
-  "naperville": 1.18,
-  "nashua": 1.18,
-  "nashville": 1.31,
-  "new-haven": 1.16,
-  "new-orleans": 1.1,
-  "new-york-city": 2.13,
-  "newark": 1.03,
-  "norfolk": 1.05,
-  "norman": 0.93,
-  "north-charleston": 1.13,
-  "north-las-vegas": 1.1,
-  "norwalk": 1.38,
+  "los-angeles": {
+    "index": 1.76,
+    "foodMonthly": 774,
+    "transportMonthly": 308,
+    "utilitiesMonthly": 290,
+    "healthcareMonthly": 352
+  },
+  "louisville": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "lowell": {
+    "index": 1.23,
+    "foodMonthly": 541,
+    "transportMonthly": 215,
+    "utilitiesMonthly": 203,
+    "healthcareMonthly": 246
+  },
+  "macon": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "madison": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "manchester": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "memphis": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "meridian": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "mesa": {
+    "index": 1.09,
+    "foodMonthly": 480,
+    "transportMonthly": 191,
+    "utilitiesMonthly": 180,
+    "healthcareMonthly": 218
+  },
+  "metairie": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "miami": {
+    "index": 1.5,
+    "foodMonthly": 660,
+    "transportMonthly": 263,
+    "utilitiesMonthly": 248,
+    "healthcareMonthly": 300
+  },
+  "middletown": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "milford": {
+    "index": 0.99,
+    "foodMonthly": 436,
+    "transportMonthly": 173,
+    "utilitiesMonthly": 163,
+    "healthcareMonthly": 198
+  },
+  "milwaukee": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "minneapolis": {
+    "index": 1.17,
+    "foodMonthly": 515,
+    "transportMonthly": 205,
+    "utilitiesMonthly": 193,
+    "healthcareMonthly": 234
+  },
+  "minot": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "missoula": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "mitchell": {
+    "index": 0.79,
+    "foodMonthly": 348,
+    "transportMonthly": 138,
+    "utilitiesMonthly": 130,
+    "healthcareMonthly": 158
+  },
+  "mobile": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "montgomery": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "montpelier": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "morgantown": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "mount-pleasant": {
+    "index": 1.31,
+    "foodMonthly": 576,
+    "transportMonthly": 229,
+    "utilitiesMonthly": 216,
+    "healthcareMonthly": 262
+  },
+  "murfreesboro": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "nampa": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "naperville": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "nashua": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "nashville": {
+    "index": 1.31,
+    "foodMonthly": 576,
+    "transportMonthly": 229,
+    "utilitiesMonthly": 216,
+    "healthcareMonthly": 262
+  },
+  "new-haven": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "new-orleans": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "new-york-city": {
+    "index": 2.13,
+    "foodMonthly": 937,
+    "transportMonthly": 373,
+    "utilitiesMonthly": 351,
+    "healthcareMonthly": 426
+  },
+  "newark": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "norfolk": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "norman": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "north-charleston": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "north-las-vegas": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "norwalk": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  },
   "oakland": {
     "index": 1.65,
     "foodMonthly": 726,
@@ -234,29 +1350,167 @@
     "utilitiesMonthly": 272,
     "healthcareMonthly": 330
   },
-  "ogden": 0.98,
-  "oklahoma-city": 0.9,
-  "olathe": 1.03,
-  "omaha": 0.95,
-  "orem": 1.08,
-  "orlando": 1.23,
-  "overland-park": 1.05,
-  "owensboro": 0.82,
-  "parkersburg": 0.77,
-  "paterson": 1.18,
-  "pawtucket": 1.05,
-  "pearl-city": 1.38,
-  "philadelphia": 1.33,
-  "phoenix": 1.12,
-  "pittsburgh": 1.08,
-  "pocatello": 0.88,
-  "portland": 1.21,
-  "providence": 1.18,
-  "provo": 1.08,
-  "racine": 0.95,
-  "raleigh": 1.19,
-  "rapid-city": 0.88,
-  "reading": 0.93,
+  "ogden": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "oklahoma-city": {
+    "index": 0.9,
+    "foodMonthly": 396,
+    "transportMonthly": 158,
+    "utilitiesMonthly": 149,
+    "healthcareMonthly": 180
+  },
+  "olathe": {
+    "index": 1.03,
+    "foodMonthly": 453,
+    "transportMonthly": 180,
+    "utilitiesMonthly": 170,
+    "healthcareMonthly": 206
+  },
+  "omaha": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "orem": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "orlando": {
+    "index": 1.23,
+    "foodMonthly": 541,
+    "transportMonthly": 215,
+    "utilitiesMonthly": 203,
+    "healthcareMonthly": 246
+  },
+  "overland-park": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "owensboro": {
+    "index": 0.82,
+    "foodMonthly": 361,
+    "transportMonthly": 144,
+    "utilitiesMonthly": 135,
+    "healthcareMonthly": 164
+  },
+  "parkersburg": {
+    "index": 0.77,
+    "foodMonthly": 339,
+    "transportMonthly": 135,
+    "utilitiesMonthly": 127,
+    "healthcareMonthly": 154
+  },
+  "paterson": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "pawtucket": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "pearl-city": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  },
+  "philadelphia": {
+    "index": 1.33,
+    "foodMonthly": 585,
+    "transportMonthly": 233,
+    "utilitiesMonthly": 219,
+    "healthcareMonthly": 266
+  },
+  "phoenix": {
+    "index": 1.12,
+    "foodMonthly": 493,
+    "transportMonthly": 196,
+    "utilitiesMonthly": 185,
+    "healthcareMonthly": 224
+  },
+  "pittsburgh": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "pocatello": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "portland": {
+    "index": 1.21,
+    "foodMonthly": 532,
+    "transportMonthly": 212,
+    "utilitiesMonthly": 200,
+    "healthcareMonthly": 242
+  },
+  "providence": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "provo": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "racine": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "raleigh": {
+    "index": 1.19,
+    "foodMonthly": 524,
+    "transportMonthly": 208,
+    "utilitiesMonthly": 196,
+    "healthcareMonthly": 238
+  },
+  "rapid-city": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "reading": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
   "redmond": {
     "index": 1.48,
     "foodMonthly": 651,
@@ -264,23 +1518,125 @@
     "utilitiesMonthly": 244,
     "healthcareMonthly": 296
   },
-  "reno": 1.18,
-  "richmond": 0.87,
-  "rio-rancho": 0.98,
-  "rochester": 0.95,
-  "rock-hill": 0.98,
-  "rock-springs": 0.88,
-  "rockford": 0.91,
-  "rockville": 1.38,
-  "roswell": 0.8,
-  "rutland": 0.98,
-  "sacramento": 1.39,
-  "salem": 1.05,
-  "salt-lake-city": 1.18,
-  "san-antonio": 1,
-  "san-diego": 1.67,
-  "san-francisco": 2.14,
-  "san-jose": 1.94,
+  "reno": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "richmond": {
+    "index": 0.87,
+    "foodMonthly": 383,
+    "transportMonthly": 152,
+    "utilitiesMonthly": 144,
+    "healthcareMonthly": 174
+  },
+  "rio-rancho": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "rochester": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "rock-hill": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "rock-springs": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "rockford": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "rockville": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  },
+  "roswell": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "rutland": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "sacramento": {
+    "index": 1.39,
+    "foodMonthly": 612,
+    "transportMonthly": 243,
+    "utilitiesMonthly": 229,
+    "healthcareMonthly": 278
+  },
+  "salem": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "salt-lake-city": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "san-antonio": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "san-diego": {
+    "index": 1.67,
+    "foodMonthly": 735,
+    "transportMonthly": 292,
+    "utilitiesMonthly": 276,
+    "healthcareMonthly": 334
+  },
+  "san-francisco": {
+    "index": 2.14,
+    "foodMonthly": 942,
+    "transportMonthly": 375,
+    "utilitiesMonthly": 353,
+    "healthcareMonthly": 428
+  },
+  "san-jose": {
+    "index": 1.94,
+    "foodMonthly": 854,
+    "transportMonthly": 340,
+    "utilitiesMonthly": 320,
+    "healthcareMonthly": 388
+  },
   "sandy-springs": {
     "index": 1.15,
     "foodMonthly": 506,
@@ -295,45 +1651,279 @@
     "utilitiesMonthly": 289,
     "healthcareMonthly": 350
   },
-  "santa-fe": 1.13,
-  "savannah": 1.05,
-  "scottsdale": 1.31,
-  "scranton": 0.85,
-  "seattle": 1.66,
-  "sheridan": 0.85,
-  "shreveport": 0.85,
-  "sioux-city": 0.83,
-  "sioux-falls": 0.91,
-  "sitka": 0.95,
-  "smyrna": 0.97,
-  "south-bend": 0.88,
-  "south-burlington": 1.25,
-  "south-portland": 1.1,
-  "southaven": 0.91,
-  "sparks": 1.16,
-  "spokane": 0.98,
-  "springdale": 0.89,
-  "springfield": 0.88,
-  "st-louis": 0.96,
-  "st-paul": 1.1,
-  "st-petersburg": 1.23,
-  "stamford": 1.48,
-  "sterling-heights": 0.98,
-  "syracuse": 0.93,
-  "tacoma": 1.18,
-  "tampa": 1.27,
-  "tempe": 1.12,
-  "toledo": 0.85,
-  "topeka": 0.83,
-  "trenton": 1.08,
-  "tucson": 0.94,
-  "tulsa": 0.91,
-  "tuscaloosa": 0.87,
-  "vancouver": 1.16,
-  "virginia-beach": 1.15,
-  "waipahu": 1.31,
-  "warren": 0.93,
-  "warwick": 1.08,
+  "santa-fe": {
+    "index": 1.13,
+    "foodMonthly": 497,
+    "transportMonthly": 198,
+    "utilitiesMonthly": 186,
+    "healthcareMonthly": 226
+  },
+  "savannah": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "scottsdale": {
+    "index": 1.31,
+    "foodMonthly": 576,
+    "transportMonthly": 229,
+    "utilitiesMonthly": 216,
+    "healthcareMonthly": 262
+  },
+  "scranton": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "seattle": {
+    "index": 1.66,
+    "foodMonthly": 730,
+    "transportMonthly": 291,
+    "utilitiesMonthly": 274,
+    "healthcareMonthly": 332
+  },
+  "sheridan": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "shreveport": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "sioux-city": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "sioux-falls": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "sitka": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "smyrna": {
+    "index": 0.97,
+    "foodMonthly": 427,
+    "transportMonthly": 170,
+    "utilitiesMonthly": 160,
+    "healthcareMonthly": 194
+  },
+  "south-bend": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "south-burlington": {
+    "index": 1.25,
+    "foodMonthly": 550,
+    "transportMonthly": 219,
+    "utilitiesMonthly": 206,
+    "healthcareMonthly": 250
+  },
+  "south-portland": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "southaven": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "sparks": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "spokane": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "springdale": {
+    "index": 0.89,
+    "foodMonthly": 392,
+    "transportMonthly": 156,
+    "utilitiesMonthly": 147,
+    "healthcareMonthly": 178
+  },
+  "springfield": {
+    "index": 0.88,
+    "foodMonthly": 387,
+    "transportMonthly": 154,
+    "utilitiesMonthly": 145,
+    "healthcareMonthly": 176
+  },
+  "st-louis": {
+    "index": 0.96,
+    "foodMonthly": 422,
+    "transportMonthly": 168,
+    "utilitiesMonthly": 158,
+    "healthcareMonthly": 192
+  },
+  "st-paul": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "st-petersburg": {
+    "index": 1.23,
+    "foodMonthly": 541,
+    "transportMonthly": 215,
+    "utilitiesMonthly": 203,
+    "healthcareMonthly": 246
+  },
+  "stamford": {
+    "index": 1.48,
+    "foodMonthly": 651,
+    "transportMonthly": 259,
+    "utilitiesMonthly": 244,
+    "healthcareMonthly": 296
+  },
+  "sterling-heights": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "syracuse": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "tacoma": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "tampa": {
+    "index": 1.27,
+    "foodMonthly": 559,
+    "transportMonthly": 222,
+    "utilitiesMonthly": 210,
+    "healthcareMonthly": 254
+  },
+  "tempe": {
+    "index": 1.12,
+    "foodMonthly": 493,
+    "transportMonthly": 196,
+    "utilitiesMonthly": 185,
+    "healthcareMonthly": 224
+  },
+  "toledo": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "topeka": {
+    "index": 0.83,
+    "foodMonthly": 365,
+    "transportMonthly": 145,
+    "utilitiesMonthly": 137,
+    "healthcareMonthly": 166
+  },
+  "trenton": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
+  "tucson": {
+    "index": 0.94,
+    "foodMonthly": 414,
+    "transportMonthly": 165,
+    "utilitiesMonthly": 155,
+    "healthcareMonthly": 188
+  },
+  "tulsa": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "tuscaloosa": {
+    "index": 0.87,
+    "foodMonthly": 383,
+    "transportMonthly": 152,
+    "utilitiesMonthly": 144,
+    "healthcareMonthly": 174
+  },
+  "vancouver": {
+    "index": 1.16,
+    "foodMonthly": 510,
+    "transportMonthly": 203,
+    "utilitiesMonthly": 191,
+    "healthcareMonthly": 232
+  },
+  "virginia-beach": {
+    "index": 1.15,
+    "foodMonthly": 506,
+    "transportMonthly": 201,
+    "utilitiesMonthly": 190,
+    "healthcareMonthly": 230
+  },
+  "waipahu": {
+    "index": 1.31,
+    "foodMonthly": 576,
+    "transportMonthly": 229,
+    "utilitiesMonthly": 216,
+    "healthcareMonthly": 262
+  },
+  "warren": {
+    "index": 0.93,
+    "foodMonthly": 409,
+    "transportMonthly": 163,
+    "utilitiesMonthly": 153,
+    "healthcareMonthly": 186
+  },
+  "warwick": {
+    "index": 1.08,
+    "foodMonthly": 475,
+    "transportMonthly": 189,
+    "utilitiesMonthly": 178,
+    "healthcareMonthly": 216
+  },
   "washington-dc": {
     "index": 1.55,
     "foodMonthly": 682,
@@ -341,13 +1931,55 @@
     "utilitiesMonthly": 256,
     "healthcareMonthly": 310
   },
-  "wasilla": 1,
-  "waterbury": 0.98,
-  "waterloo": 0.82,
-  "watertown": 0.82,
-  "weirton": 0.77,
-  "west-fargo": 0.91,
-  "west-jordan": 1.1,
+  "wasilla": {
+    "index": 1,
+    "foodMonthly": 440,
+    "transportMonthly": 175,
+    "utilitiesMonthly": 165,
+    "healthcareMonthly": 200
+  },
+  "waterbury": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "waterloo": {
+    "index": 0.82,
+    "foodMonthly": 361,
+    "transportMonthly": 144,
+    "utilitiesMonthly": 135,
+    "healthcareMonthly": 164
+  },
+  "watertown": {
+    "index": 0.82,
+    "foodMonthly": 361,
+    "transportMonthly": 144,
+    "utilitiesMonthly": 135,
+    "healthcareMonthly": 164
+  },
+  "weirton": {
+    "index": 0.77,
+    "foodMonthly": 339,
+    "transportMonthly": 135,
+    "utilitiesMonthly": 127,
+    "healthcareMonthly": 154
+  },
+  "west-fargo": {
+    "index": 0.91,
+    "foodMonthly": 400,
+    "transportMonthly": 159,
+    "utilitiesMonthly": 150,
+    "healthcareMonthly": 182
+  },
+  "west-jordan": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
   "west-palm-beach": {
     "index": 1.35,
     "foodMonthly": 594,
@@ -355,14 +1987,74 @@
     "utilitiesMonthly": 223,
     "healthcareMonthly": 270
   },
-  "west-valley-city": 1.1,
-  "wheeling": 0.8,
-  "wichita": 0.85,
-  "williston": 0.98,
-  "wilmington": 1.05,
-  "winooski": 1.18,
-  "winston-salem": 0.95,
-  "woonsocket": 0.98,
-  "worcester": 1.28,
-  "yonkers": 1.38
+  "west-valley-city": {
+    "index": 1.1,
+    "foodMonthly": 484,
+    "transportMonthly": 193,
+    "utilitiesMonthly": 182,
+    "healthcareMonthly": 220
+  },
+  "wheeling": {
+    "index": 0.8,
+    "foodMonthly": 352,
+    "transportMonthly": 140,
+    "utilitiesMonthly": 132,
+    "healthcareMonthly": 160
+  },
+  "wichita": {
+    "index": 0.85,
+    "foodMonthly": 374,
+    "transportMonthly": 149,
+    "utilitiesMonthly": 140,
+    "healthcareMonthly": 170
+  },
+  "williston": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "wilmington": {
+    "index": 1.05,
+    "foodMonthly": 462,
+    "transportMonthly": 184,
+    "utilitiesMonthly": 173,
+    "healthcareMonthly": 210
+  },
+  "winooski": {
+    "index": 1.18,
+    "foodMonthly": 519,
+    "transportMonthly": 207,
+    "utilitiesMonthly": 195,
+    "healthcareMonthly": 236
+  },
+  "winston-salem": {
+    "index": 0.95,
+    "foodMonthly": 418,
+    "transportMonthly": 166,
+    "utilitiesMonthly": 157,
+    "healthcareMonthly": 190
+  },
+  "woonsocket": {
+    "index": 0.98,
+    "foodMonthly": 431,
+    "transportMonthly": 172,
+    "utilitiesMonthly": 162,
+    "healthcareMonthly": 196
+  },
+  "worcester": {
+    "index": 1.28,
+    "foodMonthly": 563,
+    "transportMonthly": 224,
+    "utilitiesMonthly": 211,
+    "healthcareMonthly": 256
+  },
+  "yonkers": {
+    "index": 1.38,
+    "foodMonthly": 607,
+    "transportMonthly": 241,
+    "utilitiesMonthly": 228,
+    "healthcareMonthly": 276
+  }
 }

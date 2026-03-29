@@ -379,6 +379,10 @@ const CITY_STATE = {
   "san-bernardino":"CA","baton-rouge":"LA","oklahoma-city":"OK","tucson":"AZ",
   "fresno":"CA","albuquerque":"NM","mesa":"AZ","omaha":"NE","long-beach":"CA",
   "virginia-beach":"VA","colorado-springs":"CO",
+  // Additional cities (sitemap priority cities)
+  "washington-dc":"DC","santa-clara":"CA","hoboken":"NJ","glendale":"CA",
+  "oakland":"CA","irvine":"CA","west-palm-beach":"FL","alpharetta":"GA",
+  "sandy-springs":"GA","bethesda":"MD","redmond":"WA",
 };
 
 async function updateCOLData() {
@@ -398,7 +402,13 @@ async function updateCOLData() {
     const rentFactor   = rent1br / NATIONAL_MEDIAN_RENT;
     const col          = parseFloat((0.6 * rentFactor + 0.4 * regionFactor).toFixed(2));
 
-    updated[city] = col;
+    updated[city] = {
+      index            : col,
+      foodMonthly      : Math.round(440 * col),
+      transportMonthly : Math.round(175 * col),
+      utilitiesMonthly : Math.round(165 * col),
+      healthcareMonthly: Math.round(200 * col),
+    };
     count++;
   }
 
