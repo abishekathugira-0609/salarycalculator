@@ -60,9 +60,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const stateName =
     stateMedians[stateCode]?.name ??
     stateSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const { monthlyTakeHome } = calculateNetSalary({ salary: amount, state: stateCode, filingStatus: "single", taxYear });
   return {
-    title: `${fmtUSD(amount)} Salary After Tax in ${stateName} (${taxYear})`,
-    description: `Take-home pay, tax breakdown, and effective tax rate for a ${fmtUSD(amount)} salary in ${stateName} (${taxYear}). Calculated using IRS ${taxYear} federal brackets and state tax rules.`,
+    title: `${fmtUSD(amount)} After Tax in ${stateName} (${taxYear}): ${fmtUSD(monthlyTakeHome)}/mo Take-Home`,
+    description: `Take home ${fmtUSD(monthlyTakeHome)}/month in ${stateName} on ${fmtUSD(amount)} after federal + state taxes. See your full tax breakdown, effective rate, and monthly budget. Full breakdown →`,
     alternates: { canonical: `/salary/${slug}` },
   };
 }

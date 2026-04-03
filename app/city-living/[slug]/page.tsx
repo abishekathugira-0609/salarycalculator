@@ -107,21 +107,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const v = pickVariant(salary, citySlug, 6);
 
   const titles = [
-    `Is ${k} Enough in ${city.city}? Take-Home & Living Costs`,
-    `${k} in ${city.city}: Take-Home, Rent & Reality Check`,
-    `Living on ${k} in ${city.city} — Is It Enough? (2026)`,
-    `${k} in ${city.city}: What You Really Take Home (2026)`,
-    `Is ${k} a Good Salary in ${city.city}? Rent & Verdict`,
-    `${k} Salary in ${city.city}: Take-Home & Cost of Living`,
+    `${k} in ${city.city} (2026): ${fmtUSD(net.monthlyTakeHome)}/mo Take-Home — Rent Reality`,
+    `${k} After Tax in ${city.city}: ${fmtUSD(net.monthlyTakeHome)}/mo — Afford Rent? (2026)`,
+    `Living on ${k} in ${city.city}? ${fmtUSD(net.monthlyTakeHome)}/mo After Tax — Real Costs`,
+    `${k} in ${city.city} (2026): ${fmtUSD(net.monthlyTakeHome)}/mo — Full Cost Breakdown`,
+    `${fmtUSD(net.monthlyTakeHome)}/mo on ${k} in ${city.city} — Lifestyle Verdict (2026)`,
+    `${k} in ${city.city}: ${fmtUSD(net.monthlyTakeHome)}/mo After Tax — Savings Reality`,
   ];
 
   const descs = [
-    `Take home ${fmtUSD(net.monthlyTakeHome)}/mo on ${k} in ${city.city}. With rent at ${fmtUSD(rent)}/mo, see your full budget breakdown, lifestyle verdict, and monthly savings potential.`,
-    `${k} nets ${fmtUSD(net.monthlyTakeHome)}/month in ${city.city} after taxes. Rent runs ${fmtUSD(rent)}/mo — find out if this salary covers your lifestyle comfortably in 2026.`,
-    `After taxes, ${k} in ${city.city} leaves ${fmtUSD(net.monthlyTakeHome)}/mo. Average rent is ${fmtUSD(rent)}/mo. Get the full cost breakdown and decide if it works for you.`,
-    `${fmtUSD(net.monthlyTakeHome)}/mo take-home. ${fmtUSD(rent)}/mo rent in ${city.city}. See what's left after all expenses — and get a clear lifestyle verdict for 2026.`,
-    `Wondering if ${k} works in ${city.city}? You'd take home ${fmtUSD(net.monthlyTakeHome)}/mo. Rent averages ${fmtUSD(rent)}/mo. Full breakdown: taxes, budget, savings, and verdict.`,
-    `${k} in ${city.city} puts ${fmtUSD(net.monthlyTakeHome)} in your pocket each month. Rent is ${fmtUSD(rent)}/mo — see if it's enough to live comfortably and what you can save.`,
+    `Take home ${fmtUSD(net.monthlyTakeHome)}/month on ${k} in ${city.city}. Rent runs ~${fmtUSD(rent)}/mo — see what's left for food, transport & savings. See full breakdown.`,
+    `${k} in ${city.city} nets ${fmtUSD(net.monthlyTakeHome)}/month after tax. With ~${fmtUSD(rent)}/mo rent, can you actually save? Get the full cost breakdown and lifestyle verdict.`,
+    `After tax, ${k} in ${city.city} = ${fmtUSD(net.monthlyTakeHome)}/month. Pay ~${fmtUSD(rent)} rent — see exactly what's left for food, transport & savings. See full breakdown.`,
+    `${fmtUSD(net.monthlyTakeHome)}/month take-home on ${k} in ${city.city}. Rent is ~${fmtUSD(rent)}/mo. See the full budget breakdown and lifestyle verdict for 2026.`,
+    `Your ${k} in ${city.city} = ${fmtUSD(net.monthlyTakeHome)}/month after tax. With ~${fmtUSD(rent)} rent, here's your full budget and savings reality. See full breakdown.`,
+    `${fmtUSD(net.monthlyTakeHome)}/mo after tax on ${k} in ${city.city}. Rent averages ~${fmtUSD(rent)}/mo — find out if this salary covers your lifestyle. Full breakdown →`,
   ];
 
   return {

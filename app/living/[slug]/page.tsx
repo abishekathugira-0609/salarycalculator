@@ -58,9 +58,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const stateName =
     stateMedians[stateCode]?.name ??
     stateSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const { monthlyTakeHome } = calculateNetSalary({ salary: amount, state: stateCode, filingStatus: "single", taxYear: 2026 });
+  const v = (Math.floor(amount / 10000) + stateCode.charCodeAt(0)) % 3;
+  const titles = [
+    `${fmtUSD(amount)} in ${stateName} (2026): ${fmtUSD(monthlyTakeHome)}/mo — Can You Afford Rent?`,
+    `Living on ${fmtUSD(amount)} in ${stateName}: ${fmtUSD(monthlyTakeHome)}/mo After Tax (2026)`,
+    `${fmtUSD(amount)} in ${stateName} (2026): ${fmtUSD(monthlyTakeHome)}/mo Take-Home Reality`,
+  ];
+  const descs = [
+    `Take home ${fmtUSD(monthlyTakeHome)}/month on ${fmtUSD(amount)} in ${stateName} after taxes. See city-by-city rent costs, expenses breakdown, and whether you can actually save. See full breakdown.`,
+    `${fmtUSD(amount)} in ${stateName} nets ${fmtUSD(monthlyTakeHome)}/month after tax. Find out which cities are affordable, what rent costs, and your real lifestyle verdict. See full breakdown.`,
+    `After tax, ${fmtUSD(amount)} in ${stateName} leaves ${fmtUSD(monthlyTakeHome)}/month. See rent affordability by city, full cost breakdown, and savings potential. Full breakdown →`,
+  ];
   return {
-    title: `Is ${fmtUSD(amount)} Enough to Live in ${stateName}? (2026)`,
-    description: `Find out if ${fmtUSD(amount)} is enough to live in ${stateName} in 2026. After-tax take-home, city-by-city cost breakdown, rent affordability, and lifestyle verdict. Real HUD and BLS data.`,
+    title: titles[v],
+    description: descs[v],
     alternates: { canonical: `/living/${slug}` },
   };
 }

@@ -42,14 +42,12 @@ export async function generateMetadata(
   const { state, salary } = await params;
 
   const stateName = state.replace(/\b\w/g, (l) => l.toUpperCase());
+  const salaryNum = Number(salary);
+  const salaryK = `$${Math.round(salaryNum / 1000)}K`;
 
   return {
-    title: `Best Cities in ${stateName} for a $${Number(
-      salary
-    ).toLocaleString()} Salary (2026)`,
-    description: `Discover the best cities in ${stateName} where a $${Number(
-      salary
-    ).toLocaleString()} salary offers the most comfortable lifestyle based on real take-home pay and cost of living.`,
+    title: `Best Cities for ${salaryK} in ${stateName} — Rent vs Take-Home (2026)`,
+    description: `Which cities in ${stateName} give your $${salaryNum.toLocaleString()} the most value? Compare rent, take-home pay after tax, and lifestyle verdict for every major city. See full breakdown.`,
     alternates: {
       canonical: `/best-cities/${state}/${salary}`,
     },

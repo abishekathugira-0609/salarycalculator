@@ -42,9 +42,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const stateCode = stateSlugToCode(state);
   if (!stateCode) return {};
   const stateName = toTitle(state);
+  const { monthlyTakeHome } = calculateNetSalary({ salary: gross, state: stateCode, filingStatus: "single", taxYear: 2026 });
   return buildPageMeta({
-    title: `Is ${fmtUSD(gross)} a Good Salary in ${stateName}? (2026 Guide)`,
-    description: `Find out if ${fmtUSD(gross)} is a good salary in ${stateName}. See take-home pay after taxes, cost of living, rent affordability, savings potential, and how it compares to state and national medians.`,
+    title: `${fmtUSD(gross)} in ${stateName} (2026): ${fmtUSD(monthlyTakeHome)}/mo After Tax Breakdown`,
+    description: `Take home ${fmtUSD(monthlyTakeHome)}/month in ${stateName} on ${fmtUSD(gross)} after all taxes. See rent affordability, cost of living, savings potential, and state median comparison. Full breakdown →`,
     canonical: `/salary-guides/${salary}/${state}`,
   });
 }

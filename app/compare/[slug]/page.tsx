@@ -67,9 +67,25 @@ export async function generateMetadata({
   if (!parsed) return { title: "City Comparison" };
   const cityA = parsed.cityA in STATE_CODE_MAP ? (getStatePrimaryCity(parsed.cityA) ?? parsed.cityA) : parsed.cityA;
   const cityB = parsed.cityB in STATE_CODE_MAP ? (getStatePrimaryCity(parsed.cityB) ?? parsed.cityB) : parsed.cityB;
+  const v = (cityA.length + cityB.length) % 3;
+  const titles = [
+    `${toTitle(cityA)} vs ${toTitle(cityB)}: Rent, Tax & Real Take-Home (2026)`,
+    `${toTitle(cityA)} vs ${toTitle(cityB)} — Which City Costs Less? (2026)`,
+    `${toTitle(cityA)} vs ${toTitle(cityB)}: Cost of Living Reality (2026)`,
+  ];
+  const stateCodeA = getStateCodeForCity(cityA);
+  const stateCodeB = getStateCodeForCity(cityB);
+  let description = `Compare rent, take-home pay, taxes, and purchasing power between ${toTitle(cityA)} and ${toTitle(cityB)}. Find out which city keeps more of your paycheck in 2026. See full breakdown.`;
+  if (stateCodeA && stateCodeB) {
+    const netA = calculateNetSalary({ salary: 100000, state: stateCodeA, filingStatus: "single", taxYear: 2026 });
+    const netB = calculateNetSalary({ salary: 100000, state: stateCodeB, filingStatus: "single", taxYear: 2026 });
+    const diff = Math.abs(netA.monthlyTakeHome - netB.monthlyTakeHome);
+    const winner = netA.monthlyTakeHome >= netB.monthlyTakeHome ? toTitle(cityA) : toTitle(cityB);
+    description = `On $100K, ${winner} puts $${diff.toLocaleString()} more/mo in your pocket after tax. Compare rent, taxes & real take-home between ${toTitle(cityA)} and ${toTitle(cityB)}. See full breakdown.`;
+  }
   return buildPageMeta({
-    title: `${toTitle(cityA)} vs ${toTitle(cityB)}: Salary, Rent & Cost of Living (2026)`,
-    description: `Compare salaries, rent, taxes, and purchasing power between ${toTitle(cityA)} and ${toTitle(cityB)}. See which city gives your money more value in 2026.`,
+    title: titles[v],
+    description,
     canonical: `/compare/${cityA}-vs-${cityB}`,
   });
 }
