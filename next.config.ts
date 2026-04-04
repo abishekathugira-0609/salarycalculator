@@ -5,6 +5,18 @@ const nextConfig: NextConfig = {
     resolveAlias: {},
   },
 
+  async redirects() {
+    return [
+      {
+        // Canonicalise www → non-www (permanent 301)
+        source: "/:path*",
+        has: [{ type: "host", value: "www.know-your-pay.com" }],
+        destination: "https://know-your-pay.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [
       {

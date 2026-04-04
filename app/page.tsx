@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { buildPageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMeta({
-  title: "Salary After Tax Calculator (US) – 2026",
+  title: "What's Your Take-Home Pay? US Salary After Tax Calculator (2026)",
   description:
-    "Calculate your 2026 take-home pay after federal and state taxes. Updated for 2026 IRS brackets. Compare salaries, evaluate job offers, and explore cost of living across every US state.",
+    "Find out exactly how much you keep from your paycheck — free US salary calculator with 2026 IRS brackets. Instant results for all 50 states. No signup needed.",
   canonical: "/",
 });
 

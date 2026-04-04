@@ -45,9 +45,20 @@ export async function generateMetadata(
   const salaryNum = Number(salary);
   const salaryK = `$${Math.round(salaryNum / 1000)}K`;
 
+  const v = (salaryNum / 1000 + state.charCodeAt(0)) % 3;
+  const titles = [
+    `Where Does ${salaryK} Go Furthest in ${stateName}? Best Cities Ranked (2026)`,
+    `Best Cities for ${salaryK} in ${stateName} — Rent vs Take-Home (2026)`,
+    `${salaryK} in ${stateName}: Which City Gives You the Most? (2026)`,
+  ];
+  const descs = [
+    `Ranked by how far ${salaryK} actually goes after rent and taxes — see the best and worst cities in ${stateName} for your salary in 2026.`,
+    `Which cities in ${stateName} give your $${salaryNum.toLocaleString()} the most value? Compare rent, take-home pay after tax, and lifestyle verdict for every major city. See full breakdown.`,
+    `${salaryK} in ${stateName}: compare take-home pay, rent burden, and savings potential city by city. Find out where your salary goes furthest in 2026.`,
+  ];
   return {
-    title: `Best Cities for ${salaryK} in ${stateName} — Rent vs Take-Home (2026)`,
-    description: `Which cities in ${stateName} give your $${salaryNum.toLocaleString()} the most value? Compare rent, take-home pay after tax, and lifestyle verdict for every major city. See full breakdown.`,
+    title: titles[v],
+    description: descs[v],
     alternates: {
       canonical: `/best-cities/${state}/${salary}`,
     },

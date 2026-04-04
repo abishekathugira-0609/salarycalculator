@@ -27,6 +27,11 @@ function fmtUSD(n: number) {
   return "$" + n.toLocaleString("en-US");
 }
 
+function pickVariant(amount: number, stateSlug: string, count: number): number {
+  const hash = stateSlug.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  return (Math.floor(amount / 1000) + hash) % count;
+}
+
 function parseSlug(slug: string): { amount: number; stateSlug: string; taxYear: 2025 | 2026 } | null {
   const parts = slug.split("-");
   const lastPart = parts[parts.length - 1];
@@ -61,10 +66,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     stateMedians[stateCode]?.name ??
     stateSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   const { monthlyTakeHome } = calculateNetSalary({ salary: amount, state: stateCode, filingStatus: "single", taxYear });
+  const v = pickVariant(amount, stateSlug, 4);
+  const titles = [
+    `${fmtUSD(amount)} After Tax in ${stateName} (${taxYear}): ${fmtUSD(monthlyTakeHome)}/mo Take-Home`,
+    `How Much Is ${fmtUSD(amount)} After Tax in ${stateName}? ${fmtUSD(monthlyTakeHome)}/mo (${taxYear})`,
+    `What's ${fmtUSD(amount)} After Tax in ${stateName}? ${fmtUSD(monthlyTakeHome)}/mo Take-Home (${taxYear})`,
+    `${fmtUSD(amount)} in ${stateName} After Taxes: ${fmtUSD(monthlyTakeHome)}/mo — Full Breakdown (${taxYear})`,
+  ];
+  const descs = [
+    `Take home ${fmtUSD(monthlyTakeHome)}/month in ${stateName} on ${fmtUSD(amount)} after federal + state taxes. See your full tax breakdown, effective rate, and monthly budget. Full breakdown →`,
+    `${fmtUSD(amount)} in ${stateName} leaves you ${fmtUSD(monthlyTakeHome)}/month after all ${taxYear} taxes. See every dollar — federal, state, FICA — plus weekly and monthly net pay.`,
+    `Earning ${fmtUSD(amount)} in ${stateName}? Your real monthly take-home is ${fmtUSD(monthlyTakeHome)} after all taxes (${taxYear}). Full breakdown with effective rate and savings tips.`,
+    `${fmtUSD(monthlyTakeHome)}/month take-home on ${fmtUSD(amount)} in ${stateName}. See the full ${taxYear} tax breakdown — federal, state, FICA — and exactly what you keep.`,
+  ];
   return {
-    title: `${fmtUSD(amount)} After Tax in ${stateName} (${taxYear}): ${fmtUSD(monthlyTakeHome)}/mo Take-Home`,
-    description: `Take home ${fmtUSD(monthlyTakeHome)}/month in ${stateName} on ${fmtUSD(amount)} after federal + state taxes. See your full tax breakdown, effective rate, and monthly budget. Full breakdown →`,
-    alternates: { canonical: `/salary/${slug}` },
+    title: titles[v],
+    description: descs[v],
+    alternates: { canonical: `/salary/${amount}-${stateSlug}-${taxYear}` },
   };
 }
 
@@ -73,6 +91,11 @@ export default async function SalaryPage({ params }: PageProps) {
   const parsed = parseSlug(slug);
   if (!parsed) return notFound();
   const { amount, stateSlug, taxYear } = parsed;
+
+  // Redirect slugs missing a year suffix (e.g. "100000-california" → "100000-california-2026")
+  if (!/-(2025|2026)$/.test(slug)) {
+    permanentRedirect(`/salary/${amount}-${stateSlug}-2026`);
+  }
 
   // Redirect 2-letter state codes (e.g. "ca" → "california")
   if (/^[a-z]{2}$/.test(stateSlug)) {
