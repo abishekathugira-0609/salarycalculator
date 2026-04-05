@@ -42,11 +42,11 @@
     "healthcareMonthly": 206
   },
   "alpharetta": {
-    "index": 1.18,
-    "foodMonthly": 519,
-    "transportMonthly": 207,
-    "utilitiesMonthly": 195,
-    "healthcareMonthly": 236
+    "index": 1.47,
+    "foodMonthly": 647,
+    "transportMonthly": 257,
+    "utilitiesMonthly": 243,
+    "healthcareMonthly": 294
   },
   "anchorage": {
     "index": 1.08,
@@ -168,11 +168,11 @@
     "healthcareMonthly": 336
   },
   "bethesda": {
-    "index": 1.58,
-    "foodMonthly": 695,
-    "transportMonthly": 277,
-    "utilitiesMonthly": 261,
-    "healthcareMonthly": 316
+    "index": 1.86,
+    "foodMonthly": 818,
+    "transportMonthly": 326,
+    "utilitiesMonthly": 307,
+    "healthcareMonthly": 372
   },
   "biddeford": {
     "index": 1.03,
@@ -700,11 +700,11 @@
     "healthcareMonthly": 182
   },
   "glendale": {
-    "index": 1.4,
-    "foodMonthly": 616,
-    "transportMonthly": 245,
-    "utilitiesMonthly": 231,
-    "healthcareMonthly": 280
+    "index": 1.49,
+    "foodMonthly": 656,
+    "transportMonthly": 261,
+    "utilitiesMonthly": 246,
+    "healthcareMonthly": 298
   },
   "grand-forks": {
     "index": 0.85,
@@ -812,11 +812,11 @@
     "healthcareMonthly": 236
   },
   "hoboken": {
-    "index": 1.85,
-    "foodMonthly": 814,
-    "transportMonthly": 324,
-    "utilitiesMonthly": 305,
-    "healthcareMonthly": 370
+    "index": 2.27,
+    "foodMonthly": 999,
+    "transportMonthly": 397,
+    "utilitiesMonthly": 375,
+    "healthcareMonthly": 454
   },
   "honolulu": {
     "index": 1.63,
@@ -875,11 +875,11 @@
     "healthcareMonthly": 190
   },
   "irvine": {
-    "index": 1.68,
-    "foodMonthly": 739,
-    "transportMonthly": 294,
-    "utilitiesMonthly": 277,
-    "healthcareMonthly": 336
+    "index": 2.09,
+    "foodMonthly": 920,
+    "transportMonthly": 366,
+    "utilitiesMonthly": 345,
+    "healthcareMonthly": 418
   },
   "jackson": {
     "index": 0.83,
@@ -1078,11 +1078,11 @@
     "healthcareMonthly": 166
   },
   "long-beach": {
-    "index": 1.52,
-    "foodMonthly": 669,
-    "transportMonthly": 266,
-    "utilitiesMonthly": 251,
-    "healthcareMonthly": 304
+    "index": 1.79,
+    "foodMonthly": 788,
+    "transportMonthly": 313,
+    "utilitiesMonthly": 295,
+    "healthcareMonthly": 358
   },
   "los-angeles": {
     "index": 1.76,
@@ -1344,11 +1344,11 @@
     "healthcareMonthly": 276
   },
   "oakland": {
-    "index": 1.65,
-    "foodMonthly": 726,
-    "transportMonthly": 289,
-    "utilitiesMonthly": 272,
-    "healthcareMonthly": 330
+    "index": 1.99,
+    "foodMonthly": 876,
+    "transportMonthly": 348,
+    "utilitiesMonthly": 328,
+    "healthcareMonthly": 398
   },
   "ogden": {
     "index": 0.98,
@@ -1512,11 +1512,11 @@
     "healthcareMonthly": 186
   },
   "redmond": {
-    "index": 1.48,
-    "foodMonthly": 651,
-    "transportMonthly": 259,
-    "utilitiesMonthly": 244,
-    "healthcareMonthly": 296
+    "index": 1.81,
+    "foodMonthly": 796,
+    "transportMonthly": 317,
+    "utilitiesMonthly": 299,
+    "healthcareMonthly": 362
   },
   "reno": {
     "index": 1.18,
@@ -1638,18 +1638,18 @@
     "healthcareMonthly": 388
   },
   "sandy-springs": {
-    "index": 1.15,
-    "foodMonthly": 506,
-    "transportMonthly": 201,
-    "utilitiesMonthly": 190,
-    "healthcareMonthly": 230
+    "index": 1.37,
+    "foodMonthly": 603,
+    "transportMonthly": 240,
+    "utilitiesMonthly": 226,
+    "healthcareMonthly": 274
   },
   "santa-clara": {
-    "index": 1.75,
-    "foodMonthly": 770,
-    "transportMonthly": 306,
-    "utilitiesMonthly": 289,
-    "healthcareMonthly": 350
+    "index": 2.14,
+    "foodMonthly": 942,
+    "transportMonthly": 375,
+    "utilitiesMonthly": 353,
+    "healthcareMonthly": 428
   },
   "santa-fe": {
     "index": 1.13,
@@ -1925,11 +1925,11 @@
     "healthcareMonthly": 216
   },
   "washington-dc": {
-    "index": 1.55,
-    "foodMonthly": 682,
-    "transportMonthly": 271,
-    "utilitiesMonthly": 256,
-    "healthcareMonthly": 310
+    "index": 1.77,
+    "foodMonthly": 779,
+    "transportMonthly": 310,
+    "utilitiesMonthly": 292,
+    "healthcareMonthly": 354
   },
   "wasilla": {
     "index": 1,
@@ -1981,11 +1981,11 @@
     "healthcareMonthly": 220
   },
   "west-palm-beach": {
-    "index": 1.35,
-    "foodMonthly": 594,
-    "transportMonthly": 236,
-    "utilitiesMonthly": 223,
-    "healthcareMonthly": 270
+    "index": 1.75,
+    "foodMonthly": 770,
+    "transportMonthly": 306,
+    "utilitiesMonthly": 289,
+    "healthcareMonthly": 350
   },
   "west-valley-city": {
     "index": 1.1,
