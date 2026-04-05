@@ -9,13 +9,14 @@ import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-// ── All 70 jobs × 50 cities = 3,500 pages at build time ──────────────────────
+// ── Seed: top 20 jobs × top 20 cities = 400 pages at build time ──────────────
+// Remaining valid combinations are served on-demand via ISR.
 export function generateStaticParams() {
   const params: Array<{ job: string; city: string }> = [];
-  for (const job of jobsList as string[]) {
-    for (const city of SEED_CITIES) {
+  for (const job of SEED_JOBS.slice(0, 20)) {
+    for (const city of SEED_CITIES.slice(0, 20)) {
       params.push({ job, city });
     }
   }
