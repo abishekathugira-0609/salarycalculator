@@ -3,11 +3,22 @@ import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { calculateSalary } from "@/lib/tax";
 import { getCityCostEntry, getStateCodeForCity, getStatePrimaryCity, toTitle } from "@/lib/stateCodeMap";
-import { buildPageMeta } from "@/lib/seo";
+import { buildPageMeta, SEED_SALARIES, SEED_CITIES } from "@/lib/seo";
 
 export const dynamic = "force-static";
-export const revalidate = 604800;
+export const revalidate = false; // cache indefinitely — tax data only changes on redeploy
 export const dynamicParams = true;
+
+// ── Seed: 12 salaries × 20 cities = 240 pages at build time ──────────────────
+export function generateStaticParams() {
+  const params: Array<{ salary: string; city: string }> = [];
+  for (const salary of SEED_SALARIES) {
+    for (const city of SEED_CITIES.slice(0, 20)) {
+      params.push({ salary: salary.toString(), city });
+    }
+  }
+  return params;
+}
 
 export async function generateMetadata({
   params,

@@ -4,12 +4,23 @@ import { generateNegotiationInsights } from "@/lib/content/negotiationInsights";
 import { getSalaryEstimate } from "@/lib/data/salaryData";
 import { getCityCostEntry, getStateCodeForCity, toTitle, fmtUSD } from "@/lib/stateCodeMap";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
-import { buildPageMeta } from "@/lib/seo";
+import { buildPageMeta, SEED_JOBS, SEED_CITIES } from "@/lib/seo";
 import jobsList from "@/data/jobs.json";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
-export const dynamicParams = true;
+export const dynamicParams = false;
+
+// ── All 70 jobs × 50 cities = 3,500 pages at build time ──────────────────────
+export function generateStaticParams() {
+  const params: Array<{ job: string; city: string }> = [];
+  for (const job of jobsList as string[]) {
+    for (const city of SEED_CITIES) {
+      params.push({ job, city });
+    }
+  }
+  return params;
+}
 
 export async function generateMetadata({
   params,

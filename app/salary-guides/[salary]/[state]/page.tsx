@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { buildPageMeta, ALL_SALARY_BUCKETS } from "@/lib/seo";
-import { fmtUSD, fmtCompact, toTitle, stateSlugToCode } from "@/lib/stateCodeMap";
+import { fmtUSD, fmtCompact, toTitle, stateSlugToCode, STATE_CODE_MAP } from "@/lib/stateCodeMap";
 import { calculateNetSalary } from "@/lib/salary/netSalary";
 import { getRentByType } from "@/lib/data/rentData";
 import { getCOLData } from "@/lib/data/costOfLiving";
@@ -19,17 +19,11 @@ export const dynamicParams = true;
 
 type PageProps = { params: Promise<{ salary: string; state: string }> };
 
-// Top 15 states by search volume — remaining states served via ISR
-const STATE_SLUGS = [
-  "california","texas","florida","new-york","washington",
-  "illinois","pennsylvania","georgia","arizona","colorado",
-  "massachusetts","north-carolina","nevada","virginia","ohio",
-];
-
 export function generateStaticParams() {
+  const allStates = Object.keys(STATE_CODE_MAP);
   const params = [];
   for (const s of ALL_SALARY_BUCKETS) {
-    for (const state of STATE_SLUGS) {
+    for (const state of allStates) {
       params.push({ salary: String(s), state });
     }
   }
