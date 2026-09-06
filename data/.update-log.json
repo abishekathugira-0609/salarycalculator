@@ -1,5 +1,54 @@
 [
   {
+    "startedAt": "2026-09-06T02:45:58.849Z",
+    "steps": [
+      {
+        "ts": "2026-09-06T02:45:58.852Z",
+        "msg": "── Updating BLS OEWS salary data ──"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.764Z",
+        "msg": "WARN: No BLS data for psychologist (SOC 19303100) — using fallback"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.764Z",
+        "msg": "BLS: updated 0/35 job salary entries"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.765Z",
+        "msg": "Wrote 70 entries → data/bls-salary.json [bls-salary]"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.765Z",
+        "msg": "Wrote 70 entries → data/jobs.json [jobs]"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.766Z",
+        "msg": "── Updating HUD Fair Market Rent data ──"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.766Z",
+        "msg": "WARN: HUD_API_TOKEN not set — skipping HUD rent update (using existing data)"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.766Z",
+        "msg": "── Deriving cost-of-living index from rent data ──"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.770Z",
+        "msg": "COL: derived 294 city indexes from rent data"
+      },
+      {
+        "ts": "2026-09-06T02:45:59.770Z",
+        "msg": "Wrote 294 entries → data/cost-of-living.json [cost-of-living]"
+      }
+    ],
+    "errors": [],
+    "finishedAt": "2026-09-06T02:45:59.770Z",
+    "success": true,
+    "errorCount": 0
+  },
+  {
     "startedAt": "2026-08-30T03:26:31.871Z",
     "steps": [
       {
@@ -437,55 +486,6 @@
     ],
     "errors": [],
     "finishedAt": "2026-06-28T03:30:30.161Z",
-    "success": true,
-    "errorCount": 0
-  },
-  {
-    "startedAt": "2026-06-21T03:52:15.092Z",
-    "steps": [
-      {
-        "ts": "2026-06-21T03:52:15.095Z",
-        "msg": "── Updating BLS OEWS salary data ──"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.294Z",
-        "msg": "WARN: No BLS data for psychologist (SOC 19303100) — using fallback"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.294Z",
-        "msg": "BLS: updated 0/35 job salary entries"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.295Z",
-        "msg": "Wrote 70 entries → data/bls-salary.json [bls-salary]"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.295Z",
-        "msg": "Wrote 70 entries → data/jobs.json [jobs]"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.295Z",
-        "msg": "── Updating HUD Fair Market Rent data ──"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.296Z",
-        "msg": "WARN: HUD_API_TOKEN not set — skipping HUD rent update (using existing data)"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.296Z",
-        "msg": "── Deriving cost-of-living index from rent data ──"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.299Z",
-        "msg": "COL: derived 294 city indexes from rent data"
-      },
-      {
-        "ts": "2026-06-21T03:52:16.299Z",
-        "msg": "Wrote 294 entries → data/cost-of-living.json [cost-of-living]"
-      }
-    ],
-    "errors": [],
-    "finishedAt": "2026-06-21T03:52:16.300Z",
     "success": true,
     "errorCount": 0
   }
